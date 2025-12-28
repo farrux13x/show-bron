@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: #ffffff;
+  --surface-muted: #f1f5f9;
+  --accent: #f97316;
+  --accent-soft: #ffedd5;
+  --ink: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "IBM Plex Sans", "Segoe UI", Tahoma, sans-serif;
+}
+
+h1, h2, h3, .font-display {
+  font-family: "Space Grotesk", "Trebuchet MS", Verdana, sans-serif;
+}
+
+.app-background {
+  background: radial-gradient(circle at 10% 10%, rgba(249, 115, 22, 0.12), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(34, 197, 94, 0.15), transparent 40%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+}
+
+.card {
+  @apply bg-white/90 backdrop-blur shadow-soft rounded-2xl border border-fog/60;
+}
+
+.card-muted {
+  @apply bg-white/70 border border-fog/80;
+}
+
+.pill {
+  @apply rounded-full px-3 py-1 text-xs font-semibold tracking-wide;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition bg-ember text-white hover:bg-orange-600 shadow-soft;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition bg-white/80 text-ink border border-fog hover:bg-white;
+}
+
+.btn-muted {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition bg-slate-100 text-slate-700 hover:bg-slate-200;
+}
+
+.input {
+  @apply w-full rounded-xl border border-fog bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-ember/40;
+}
+
+.label {
+  @apply text-xs uppercase tracking-[0.15em] text-slate-500 font-semibold;
+}
