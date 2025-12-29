@@ -17,7 +17,7 @@
         </div>
         <button type="button" class="btn-primary w-full">Sign in</button>
       </form>
-      <RouterLink to="/today" class="mt-4 inline-flex text-sm font-semibold text-ember">
+      <RouterLink to="/" class="mt-4 inline-flex text-sm font-semibold text-ember">
         Continue to the dashboard
       </RouterLink>
     </section>

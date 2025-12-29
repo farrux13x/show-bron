@@ -7,7 +7,7 @@
           <h1 class="font-display text-2xl font-semibold text-ink">Barber Console</h1>
         </div>
         <nav class="hidden items-center gap-2 text-sm font-semibold text-slate-500 sm:flex">
-          <RouterLink class="nav-link" to="/today">Today</RouterLink>
+          <RouterLink class="nav-link" to="/">Today</RouterLink>
           <RouterLink class="nav-link" to="/calendar">Calendar</RouterLink>
           <RouterLink class="nav-link" to="/clients">Clients</RouterLink>
           <RouterLink class="nav-link" to="/settings">Settings</RouterLink>
@@ -28,7 +28,7 @@
       class="fixed bottom-3 left-1/2 z-10 w-[92%] -translate-x-1/2 rounded-3xl border border-fog bg-white/90 px-3 py-2 shadow-soft backdrop-blur sm:hidden"
     >
       <div class="grid grid-cols-4 text-xs font-semibold text-slate-500">
-        <RouterLink class="nav-link" to="/today">Today</RouterLink>
+        <RouterLink class="nav-link" to="/">Today</RouterLink>
         <RouterLink class="nav-link" to="/calendar">Calendar</RouterLink>
         <RouterLink class="nav-link" to="/clients">Clients</RouterLink>
         <RouterLink class="nav-link" to="/settings">Settings</RouterLink>

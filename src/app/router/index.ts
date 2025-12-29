@@ -13,7 +13,8 @@ import { usePostHog } from '@/composables/usePostHog';
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: '/today' },
+    { path: '/', component: TodayPage },
+    // { path: '/', redirect: '/today' },
     { path: '/login', component: LoginPage },
     { path: '/schedule-setup', component: ScheduleSetupPage },
     { path: '/calendar', component: CalendarPage },

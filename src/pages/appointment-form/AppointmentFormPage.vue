@@ -17,7 +17,7 @@
         v-else-if="ready"
         :initial="initial"
         @save="handleSave"
-        @cancel="router.push('/today')"
+        @cancel="router.push('/')"
         @delete="handleDelete"
       />
     </div>
@@ -74,7 +74,7 @@ const handleSave = (payload: Omit<Appointment, 'id'> & { id?: string }) => {
   } else {
     appointmentsStore.add({ ...payload, durationMinutes: payload.durationMinutes ?? 30 });
   }
-  router.push('/today');
+  router.push('/');
 };
 
 const handleDelete = () => {
@@ -83,6 +83,6 @@ const handleDelete = () => {
     return;
   }
   appointmentsStore.remove(id);
-  router.push('/today');
+  router.push('/');
 };
 </script>
