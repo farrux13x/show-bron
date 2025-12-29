@@ -8,6 +8,7 @@ import AppointmentFormPage from '@/pages/appointment-form/AppointmentFormPage.vu
 import ClientsPage from '@/pages/clients/ClientsPage.vue';
 import ClientProfilePage from '@/pages/clients/ClientProfilePage.vue';
 import SettingsPage from '@/pages/settings/SettingsPage.vue';
+import { usePostHog } from '@/composables/usePostHog';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -24,5 +25,7 @@ const router = createRouter({
     { path: '/settings', component: SettingsPage }
   ]
 });
+
+usePostHog();
 
 export default router;
