@@ -1,3 +1,5 @@
+import { getDateLocale } from '@/shared/i18n';
+
 export const MINUTE = 60 * 1000;
 
 export const toDateKey = (date: Date): string => {
@@ -12,21 +14,21 @@ export const fromDateKey = (key: string): Date => {
   return new Date(year, (month ?? 1) - 1, day ?? 1);
 };
 
-export const formatDate = (date: Date): string =>
-  new Intl.DateTimeFormat('en-US', {
+export const formatDate = (date: Date, locale?: string): string =>
+  new Intl.DateTimeFormat(getDateLocale(locale), {
     weekday: 'short',
     month: 'short',
     day: 'numeric'
   }).format(date);
 
-export const formatTime = (date: Date): string =>
-  new Intl.DateTimeFormat('en-US', {
+export const formatTime = (date: Date, locale?: string): string =>
+  new Intl.DateTimeFormat(getDateLocale(locale), {
     hour: 'numeric',
     minute: '2-digit'
   }).format(date);
 
-export const formatLongDate = (date: Date): string =>
-  new Intl.DateTimeFormat('en-US', {
+export const formatLongDate = (date: Date, locale?: string): string =>
+  new Intl.DateTimeFormat(getDateLocale(locale), {
     weekday: 'long',
     month: 'long',
     day: 'numeric'

@@ -2,81 +2,87 @@
   <form class="space-y-4" @submit.prevent="handleSubmit">
     <div class="grid gap-4 md:grid-cols-2">
       <div class="space-y-2">
-        <label class="label">Client name</label>
-        <input v-model.trim="clientName" class="input" placeholder="Name" required />
+        <label class="label">{{ t('form.clientName') }}</label>
+        <input v-model.trim="clientName" class="input" :placeholder="t('form.placeholder.name')" required />
       </div>
       <div class="space-y-2">
-        <label class="label">Phone</label>
-        <input v-model.trim="phone" class="input" placeholder="Phone" required />
+        <label class="label">{{ t('form.phone') }}</label>
+        <input v-model.trim="phone" class="input" :placeholder="t('form.placeholder.phone')" required />
       </div>
     </div>
 
     <div class="grid gap-4 md:grid-cols-3">
       <div class="space-y-2">
-        <label class="label">Service</label>
+        <label class="label">{{ t('form.service') }}</label>
         <select v-model="service" class="input">
-          <option>Haircut</option>
-          <option>Beard</option>
-          <option>Haircut + Beard</option>
-          <option>Kids</option>
+          <option v-for="option in serviceOptions" :key="option.value" :value="option.value">
+            {{ t(option.label) }}
+          </option>
         </select>
       </div>
       <div class="space-y-2">
-        <label class="label">Duration</label>
+        <label class="label">{{ t('form.duration') }}</label>
         <select v-model.number="duration" class="input">
-          <option :value="15">15 min</option>
-          <option :value="30">30 min</option>
-          <option :value="45">45 min</option>
-          <option :value="60">60 min</option>
+          <option v-for="option in durationOptions" :key="option" :value="option">
+            {{ t('time.minutesShort', { count: option }) }}
+          </option>
         </select>
       </div>
       <div class="space-y-2">
-        <label class="label">Price</label>
-        <input v-model.number="price" type="number" min="0" class="input" placeholder="Optional" />
+        <label class="label">{{ t('form.price') }}</label>
+        <input
+          v-model.number="price"
+          type="number"
+          min="0"
+          class="input"
+          :placeholder="t('form.placeholder.price')"
+        />
       </div>
     </div>
 
     <div class="grid gap-4 md:grid-cols-2">
       <div class="space-y-2">
-        <label class="label">Date</label>
+        <label class="label">{{ t('form.date') }}</label>
         <input v-model="startDate" type="date" class="input" />
       </div>
       <div class="space-y-2">
-        <label class="label">Time</label>
+        <label class="label">{{ t('form.time') }}</label>
         <input v-model="startTime" type="time" class="input" step="300" />
       </div>
     </div>
 
     <div class="space-y-2">
-      <label class="label">Notes</label>
-      <textarea v-model.trim="notes" rows="3" class="input" placeholder="Notes"></textarea>
+      <label class="label">{{ t('form.notes') }}</label>
+      <textarea v-model.trim="notes" rows="3" class="input" :placeholder="t('form.placeholder.notes')"></textarea>
     </div>
 
     <div v-if="conflict" class="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-900">
-      Conflict warning: this overlaps another booking. You can still save if you want to override.
+      {{ t('appointment.conflict') }}
     </div>
 
     <div class="flex flex-wrap items-center gap-3">
-      <button type="submit" class="btn-primary">Save booking</button>
-      <button type="button" class="btn-ghost" @click="emit('cancel')">Cancel</button>
+      <button type="submit" class="btn-primary">{{ t('actions.saveBooking') }}</button>
+      <button type="button" class="btn-ghost" @click="emit('cancel')">{{ t('actions.cancel') }}</button>
       <button
         v-if="isEdit"
         type="button"
         class="btn-muted"
         @click="emit('delete')"
       >
-        Delete
+        {{ t('actions.delete') }}
       </button>
-      <span v-if="isEdit" class="pill bg-slate-100 text-slate-600">Status: {{ status }}</span>
+      <span v-if="isEdit" class="pill bg-slate-100 text-slate-600">{{ statusLabel }}</span>
     </div>
   </form>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useScheduleStore } from '@/entities/schedule/model/schedule.store';
 import { useAppointmentsStore, type Appointment } from '@/entities/appointment/model/appointments.store';
 import { toISO } from '@/shared/lib/date';
+import { translateStatus } from '@/shared/i18n/labels';
 
 const props = defineProps<{ initial?: Partial<Appointment> }>();
 const emit = defineEmits<{
@@ -87,6 +93,16 @@ const emit = defineEmits<{
 
 const scheduleStore = useScheduleStore();
 const appointmentsStore = useAppointmentsStore();
+const { t } = useI18n();
+
+const serviceOptions = [
+  { value: 'Haircut', label: 'services.haircut' },
+  { value: 'Beard', label: 'services.beard' },
+  { value: 'Haircut + Beard', label: 'services.haircutBeard' },
+  { value: 'Kids', label: 'services.kids' }
+];
+
+const durationOptions = [15, 30, 45, 60];
 
 const isEdit = computed(() => Boolean(props.initial?.id));
 
@@ -135,6 +151,10 @@ const conflict = computed(() =>
     status: status.value as Appointment['status'],
     price: price.value
   })
+);
+
+const statusLabel = computed(() =>
+  t('appointment.status', { status: translateStatus(status.value, t) })
 );
 
 const handleSubmit = () => {

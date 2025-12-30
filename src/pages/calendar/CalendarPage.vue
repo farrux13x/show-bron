@@ -8,7 +8,7 @@
         <div class="min-w-[160px] flex-1">
           <div class="flex items-center gap-2">
             <h2 class="font-display text-2xl text-ink">{{ monthLabel }}</h2>
-            <button class="icon-btn" type="button" @click="goToday" aria-label="Go to today">
+            <button class="icon-btn" type="button" @click="goToday" :aria-label="t('calendar.goToday')">
               <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
@@ -22,7 +22,7 @@
             :class="viewMode === 'day' ? 'icon-btn-active' : ''"
             type="button"
             @click="viewMode = 'day'"
-            aria-label="Day view"
+            :aria-label="t('calendar.dayView')"
           >
             <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="3" y="4" width="18" height="18" rx="3" />
@@ -35,19 +35,19 @@
             :class="viewMode === 'week' ? 'icon-btn-active' : ''"
             type="button"
             @click="viewMode = 'week'"
-            aria-label="Week view"
+            :aria-label="t('calendar.weekView')"
           >
             <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="3" y="4" width="18" height="18" rx="3" />
               <path d="M8 4v16M16 4v16" />
             </svg>
           </button>
-          <button class="icon-btn" type="button" @click="goPrev" aria-label="Previous">
+          <button class="icon-btn" type="button" @click="goPrev" :aria-label="t('calendar.previous')">
             <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 6l-4 4 4 4" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </button>
-          <button class="icon-btn" type="button" @click="goNext" aria-label="Next">
+          <button class="icon-btn" type="button" @click="goNext" :aria-label="t('calendar.next')">
             <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M8 6l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -91,7 +91,7 @@
                 {{ getAppointmentAtSlot(day, slot.minutes)?.clientName }}
               </p>
               <p class="text-[11px] text-slate-600">
-                {{ getAppointmentAtSlot(day, slot.minutes)?.service }}
+                {{ translateService(getAppointmentAtSlot(day, slot.minutes)?.service ?? '', t) }}
               </p>
             </div>
           </button>
@@ -102,7 +102,7 @@
     <RouterLink
       to="/appointments/new"
       class="calendar-fab"
-      aria-label="Add booking"
+      :aria-label="t('calendar.addBooking')"
     >
       +
     </RouterLink>
@@ -112,13 +112,17 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { RouterLink, useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useAppointmentsStore, type Appointment } from '@/entities/appointment/model/appointments.store';
 import { useScheduleStore } from '@/entities/schedule/model/schedule.store';
 import { formatTime, getWeekDays, isSameDay, startOfDay, toDateKey } from '@/shared/lib/date';
+import { getDateLocale } from '@/shared/i18n';
+import { translateService } from '@/shared/i18n/labels';
 
 const router = useRouter();
 const appointmentsStore = useAppointmentsStore();
 const scheduleStore = useScheduleStore();
+const { t, locale } = useI18n();
 
 const viewMode = ref<'day' | 'week'>('week');
 const selectedDate = ref(startOfDay(new Date()));
@@ -126,8 +130,10 @@ const selectedDate = ref(startOfDay(new Date()));
 const weekDays = computed(() => getWeekDays(selectedDate.value));
 const visibleDays = computed(() => (viewMode.value === 'day' ? [selectedDate.value] : weekDays.value));
 
+const dateLocale = computed(() => getDateLocale(locale.value));
+
 const monthLabel = computed(() =>
-  new Intl.DateTimeFormat('en-US', { month: 'long' }).format(selectedDate.value)
+  new Intl.DateTimeFormat(dateLocale.value, { month: 'long' }).format(selectedDate.value)
 );
 
 const weekRange = computed(() => {
@@ -137,11 +143,12 @@ const weekRange = computed(() => {
   }
   const start = days[0];
   const end = days[days.length - 1];
-  const formatter = new Intl.DateTimeFormat('en-US', { weekday: 'short', day: 'numeric' });
+  const formatter = new Intl.DateTimeFormat(dateLocale.value, { weekday: 'short', day: 'numeric' });
   return `${formatter.format(start)} - ${formatter.format(end)}`;
 });
 
-const dayLabel = (date: Date) => new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(date);
+const dayLabel = (date: Date) =>
+  new Intl.DateTimeFormat(dateLocale.value, { weekday: 'short' }).format(date);
 
 const toMinutes = (time: string) => {
   const [hours, minutes] = time.split(':').map(Number);
@@ -175,6 +182,7 @@ const scheduleRange = computed(() => {
 const slotInterval = 30;
 
 const timeSlots = computed(() => {
+  const localeValue = locale.value;
   const slots: { minutes: number; label: string; isHour: boolean }[] = [];
   const { start, end } = scheduleRange.value;
   for (let minutes = start; minutes < end; minutes += slotInterval) {
@@ -183,7 +191,7 @@ const timeSlots = computed(() => {
     const slotDate = new Date(2000, 0, 1, hours, mins);
     slots.push({
       minutes,
-      label: formatTime(slotDate),
+      label: formatTime(slotDate, localeValue),
       isHour: mins === 0
     });
   }

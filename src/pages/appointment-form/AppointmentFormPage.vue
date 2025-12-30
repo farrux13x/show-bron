@@ -2,16 +2,16 @@
   <section class="card p-6 sm:p-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <p class="label">Booking</p>
-        <h2 class="font-display text-2xl">{{ isEdit ? 'Edit appointment' : 'Add appointment' }}</h2>
+        <p class="label">{{ t('appointment.label') }}</p>
+        <h2 class="font-display text-2xl">{{ pageTitle }}</h2>
       </div>
-      <RouterLink to="/calendar" class="btn-ghost">Back to calendar</RouterLink>
+      <RouterLink to="/calendar" class="btn-ghost">{{ t('actions.backToCalendar') }}</RouterLink>
     </div>
 
     <div class="mt-6">
       <div v-if="notFound" class="rounded-2xl border border-dashed border-fog bg-white/70 px-6 py-8 text-center">
-        <p class="text-sm text-slate-600">We could not find that appointment.</p>
-        <RouterLink to="/calendar" class="btn-ghost mt-4">Back to calendar</RouterLink>
+        <p class="text-sm text-slate-600">{{ t('appointment.notFound') }}</p>
+        <RouterLink to="/calendar" class="btn-ghost mt-4">{{ t('actions.backToCalendar') }}</RouterLink>
       </div>
       <AppointmentForm
         v-else-if="ready"
@@ -27,14 +27,17 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
 import { useRoute, useRouter, RouterLink } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import AppointmentForm from '@/features/appointment-form/AppointmentForm.vue';
 import { useAppointmentsStore, type Appointment } from '@/entities/appointment/model/appointments.store';
 
 const route = useRoute();
 const router = useRouter();
 const appointmentsStore = useAppointmentsStore();
+const { t } = useI18n();
 
 const isEdit = computed(() => typeof route.params.id === 'string');
+const pageTitle = computed(() => (isEdit.value ? t('appointment.edit') : t('appointment.add')));
 const ready = ref(false);
 const initial = ref<Partial<Appointment> | undefined>(undefined);
 const notFound = computed(() => isEdit.value && ready.value && !initial.value);

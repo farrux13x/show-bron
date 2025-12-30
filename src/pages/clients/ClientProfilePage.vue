@@ -2,8 +2,8 @@
   <section class="card p-6 sm:p-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <p class="label">Client profile</p>
-        <h2 class="font-display text-2xl">{{ client?.name ?? 'Client' }}</h2>
+        <p class="label">{{ t('clients.profile') }}</p>
+        <h2 class="font-display text-2xl">{{ client?.name ?? t('clients.fallbackName') }}</h2>
         <p class="text-sm text-slate-600">{{ client?.phone }}</p>
       </div>
       <RouterLink
@@ -14,29 +14,31 @@
           query: { clientName: client.name, phone: client.phone, service: client.lastService }
         }"
       >
-        Rebook
+        {{ t('actions.rebook') }}
       </RouterLink>
     </div>
 
     <div class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">Last visit</p>
+        <p class="label">{{ t('clients.lastVisitLabel') }}</p>
         <p class="mt-2 text-lg font-semibold text-ink">
           {{ client ? formatDate(new Date(client.lastVisit)) : '-' }}
         </p>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">Last service</p>
-        <p class="mt-2 text-lg font-semibold text-ink">{{ client?.lastService ?? '-' }}</p>
+        <p class="label">{{ t('clients.lastService') }}</p>
+        <p class="mt-2 text-lg font-semibold text-ink">
+          {{ client ? translateService(client.lastService, t) : '-' }}
+        </p>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">Visits</p>
+        <p class="label">{{ t('clients.visits') }}</p>
         <p class="mt-2 text-lg font-semibold text-ink">{{ client?.visits ?? 0 }}</p>
       </div>
     </div>
 
     <div class="mt-6 space-y-3">
-      <h3 class="font-display text-lg">Appointment history</h3>
+      <h3 class="font-display text-lg">{{ t('clients.appointmentHistory') }}</h3>
       <div
         v-for="appointment in history"
         :key="appointment.id"
@@ -45,10 +47,10 @@
         <p class="text-xs uppercase tracking-[0.2em] text-slate-400">
           {{ formatDate(new Date(appointment.startAt)) }} - {{ formatTime(new Date(appointment.startAt)) }}
         </p>
-        <p class="font-semibold text-ink">{{ appointment.service }}</p>
-        <p class="text-sm text-slate-600">{{ appointment.status }}</p>
+        <p class="font-semibold text-ink">{{ translateService(appointment.service, t) }}</p>
+        <p class="text-sm text-slate-600">{{ translateStatus(appointment.status, t) }}</p>
       </div>
-      <div v-if="history.length === 0" class="text-sm text-slate-600">No appointment history yet.</div>
+      <div v-if="history.length === 0" class="text-sm text-slate-600">{{ t('clients.noHistory') }}</div>
     </div>
   </section>
 </template>
@@ -56,13 +58,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, RouterLink } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { useAppointmentsStore } from '@/entities/appointment/model/appointments.store';
 import { buildClientSummaries } from '@/entities/client/model/clients';
 import { formatDate, formatTime, fromISO } from '@/shared/lib/date';
+import { translateService, translateStatus } from '@/shared/i18n/labels';
 
 const route = useRoute();
 const appointmentsStore = useAppointmentsStore();
 const clientId = computed(() => route.params.id as string);
+const { t } = useI18n();
 
 const client = computed(() =>
   buildClientSummaries(appointmentsStore.appointments).find((item) => item.id === clientId.value)
