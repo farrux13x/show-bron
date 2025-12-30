@@ -3,7 +3,7 @@
     <div class="border-b border-fog bg-white/80 px-6 py-5 sm:px-8">
       <div class="flex flex-wrap items-center gap-4">
         <div class="flex h-12 w-12 items-center justify-center rounded-full bg-ember text-lg font-semibold text-white">
-          H
+          {{ todayDate }}
         </div>
         <div class="min-w-[160px] flex-1">
           <div class="flex items-center gap-2">
@@ -131,6 +131,7 @@ const weekDays = computed(() => getWeekDays(selectedDate.value));
 const visibleDays = computed(() => (viewMode.value === 'day' ? [selectedDate.value] : weekDays.value));
 
 const dateLocale = computed(() => getDateLocale(locale.value));
+const todayDate = computed(() => new Date().getDate());
 
 const monthLabel = computed(() =>
   new Intl.DateTimeFormat(dateLocale.value, { month: 'long' }).format(selectedDate.value)

@@ -53,6 +53,21 @@
         <RouterLink to="/statistics" class="btn-muted mt-4">{{ t('actions.viewStatistics') }}</RouterLink>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
+        <p class="label">{{ t('settings.faq') }}</p>
+        <a
+          class="mt-3 inline-flex w-full items-center justify-between text-sm font-semibold text-ink"
+          href="https://t.me/abdusalomoff_13"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>{{ t('settings.faqCta') }}</span>
+          <svg class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M7 5h8v8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M13 5l-8 8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('settings.bookingRules') }}</p>
         <p class="mt-2 text-sm text-slate-600">{{ t('settings.bookingRulesText') }}</p>
         <button class="btn-muted mt-4">{{ t('actions.configureRules') }}</button>
