@@ -7,7 +7,7 @@
       </div>
       <div class="space-y-2">
         <label class="label">{{ t('form.phone') }}</label>
-        <input v-model.trim="phone" class="input" :placeholder="t('form.placeholder.phone')" required />
+        <input v-model.trim="phone" class="input" :placeholder="t('form.placeholder.phone')" required type="numer" inputmode="numeric"/>
       </div>
     </div>
 
@@ -56,8 +56,11 @@
       <textarea v-model.trim="notes" rows="3" class="input" :placeholder="t('form.placeholder.notes')"></textarea>
     </div>
 
-    <div v-if="conflict" class="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-900">
-      {{ t('appointment.conflict') }}
+    <div v-if="validationErrors.length" class="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-900">
+      <p class="font-semibold">{{ t('validation.title') }}</p>
+      <ul class="mt-2 space-y-1">
+        <li v-for="(message, index) in validationErrors" :key="index">{{ message }}</li>
+      </ul>
     </div>
 
     <div class="flex flex-wrap items-center gap-3">
@@ -156,15 +159,44 @@ watch(
   { immediate: true }
 );
 
-const startAt = computed(() => {
+const parseTime = (time: string) => {
+  const [hours, minutes] = time.split(':').map(Number);
+  if (Number.isNaN(hours) || Number.isNaN(minutes)) {
+    return null;
+  }
+  return { hours, minutes };
+};
+
+const toMinutes = (time: string) => {
+  const parsed = parseTime(time);
+  if (!parsed) {
+    return null;
+  }
+  return parsed.hours * 60 + parsed.minutes;
+};
+
+const startDateTime = computed(() => {
+  if (!startDate.value || !startTime.value) {
+    return null;
+  }
   const [year, month, day] = startDate.value.split('-').map(Number);
-  const [hours, minutes] = startTime.value.split(':').map(Number);
-  const date = new Date(year ?? 0, (month ?? 1) - 1, day ?? 1, hours ?? 0, minutes ?? 0);
+  const parsedTime = parseTime(startTime.value);
+  if (!parsedTime || Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day)) {
+    return null;
+  }
+  return new Date(year, month - 1, day, parsedTime.hours, parsedTime.minutes);
+});
+
+const startAt = computed(() => {
+  const date = startDateTime.value ?? new Date();
   return toISO(date);
 });
 
-const conflict = computed(() =>
-  appointmentsStore.hasConflict({
+const conflict = computed(() => {
+  if (!startDateTime.value) {
+    return false;
+  }
+  return appointmentsStore.hasConflict({
     id: props.initial?.id,
     clientName: clientName.value,
     phone: phone.value,
@@ -174,14 +206,55 @@ const conflict = computed(() =>
     startAt: startAt.value,
     status: status.value as Appointment['status'],
     price: price.value
-  })
-);
+  });
+});
+
+const validationErrors = computed(() => {
+  const errors: string[] = [];
+  const date = startDateTime.value;
+  if (!date) {
+    errors.push(t('validation.dateTimeRequired'));
+    return errors;
+  }
+
+  const template = scheduleStore.dayForDate(date);
+  if (!template.enabled) {
+    errors.push(t('validation.nonWorkingDay'));
+  } else {
+    const minutes = date.getHours() * 60 + date.getMinutes();
+    const startMinutes = toMinutes(template.start);
+    const endMinutes = toMinutes(template.end);
+    const breakStart = toMinutes(template.breakStart);
+    const breakEnd = toMinutes(template.breakEnd);
+    const appointmentEnd = minutes + duration.value;
+
+    if (startMinutes == null || endMinutes == null || breakStart == null || breakEnd == null) {
+      errors.push(t('validation.outsideWorkingHours'));
+    } else {
+      if (minutes < startMinutes || appointmentEnd > endMinutes) {
+        errors.push(t('validation.outsideWorkingHours'));
+      }
+      if (minutes < breakEnd && appointmentEnd > breakStart) {
+        errors.push(t('validation.duringBreak'));
+      }
+    }
+  }
+
+  if (conflict.value) {
+    errors.push(t('validation.conflict'));
+  }
+
+  return errors;
+});
 
 const statusLabel = computed(() =>
   t('appointment.status', { status: translateStatus(status.value, t) })
 );
 
 const handleSubmit = () => {
+  if (validationErrors.value.length > 0) {
+    return;
+  }
   const payload = {
     id: props.initial?.id,
     clientName: clientName.value,

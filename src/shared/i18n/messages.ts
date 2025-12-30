@@ -87,6 +87,14 @@
       haircutBeard: 'Haircut + Beard',
       kids: 'Kids'
     },
+    validation: {
+      title: 'Check appointment details',
+      dateTimeRequired: 'Select a valid date and time.',
+      nonWorkingDay: 'This day is not a working day.',
+      outsideWorkingHours: 'Selected time is outside working hours.',
+      duringBreak: 'Selected time overlaps the break.',
+      conflict: 'Selected time is already booked.'
+    },
     status: {
       booked: 'Booked',
       arrived: 'Arrived',
@@ -292,6 +300,14 @@
       haircutBeard: 'Soch olish + Soqol',
       kids: 'Bolalar'
     },
+    validation: {
+      title: 'Uchrashuv ma`lumotlarini tekshiring',
+      dateTimeRequired: 'To`g`ri sana va vaqtni tanlang.',
+      nonWorkingDay: 'Bu kun ish kuni emas.',
+      outsideWorkingHours: 'Tanlangan vaqt ish soatlaridan tashqarida.',
+      duringBreak: 'Tanlangan vaqt tanaffusga to`g`ri keladi.',
+      conflict: 'Tanlangan vaqt band qilingan.'
+    },
     status: {
       booked: 'Bron qilingan',
       arrived: 'Keldi',
@@ -496,6 +512,14 @@
       beard: 'Борода',
       haircutBeard: 'Стрижка + борода',
       kids: 'Детская'
+    },
+    validation: {
+      title: '????????? ?????? ??????',
+      dateTimeRequired: '???????? ?????????? ???? ? ?????.',
+      nonWorkingDay: '???? ???? ?? ???????.',
+      outsideWorkingHours: '????????? ????? ??? ??????? ?????.',
+      duringBreak: '????????? ????? ???????????? ? ?????????.',
+      conflict: '????????? ????? ??? ??????.'
     },
     status: {
       booked: 'Записан',
