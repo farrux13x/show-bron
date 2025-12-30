@@ -15,6 +15,11 @@
       ru: 'Russian',
       uz: 'Uzbek'
     },
+    theme: {
+      label: 'Theme',
+      light: 'Light',
+      dark: 'Dark'
+    },
     actions: {
       newBooking: 'New booking',
       loadSample: 'Load sample',
@@ -213,6 +218,11 @@
       ru: 'Ruscha',
       uz: "O'zbekcha"
     },
+    theme: {
+      label: 'Mavzu',
+      light: "Yorug'",
+      dark: "Qorong'i"
+    },
     actions: {
       newBooking: 'Yangi bron',
       loadSample: 'Namuna yuklash',
@@ -410,6 +420,11 @@
       en: 'Английский',
       ru: 'Русский',
       uz: 'Узбекский'
+    },
+    theme: {
+      label: '????',
+      light: '???????',
+      dark: '??????'
     },
     actions: {
       newBooking: 'Новая запись',

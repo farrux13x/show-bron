@@ -22,6 +22,27 @@
         </select>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
+        <p class="label">{{ t('theme.label') }}</p>
+        <div class="mt-3 flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            class="btn-muted"
+            :class="theme === 'light' ? 'bg-amber-100 text-amber-900' : ''"
+            @click="theme = 'light'"
+          >
+            {{ t('theme.light') }}
+          </button>
+          <button
+            type="button"
+            class="btn-muted"
+            :class="theme === 'dark' ? 'bg-amber-100 text-amber-900' : ''"
+            @click="theme = 'dark'"
+          >
+            {{ t('theme.dark') }}
+          </button>
+        </div>
+      </div>
+      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('settings.services') }}</p>
         <p class="mt-2 text-sm text-slate-600">{{ t('settings.servicesText') }}</p>
         <RouterLink to="/services" class="btn-muted mt-4">{{ t('actions.manageServices') }}</RouterLink>
@@ -56,10 +77,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { setLocale, type AppLocale } from '@/shared/i18n';
+import { getInitialTheme, setTheme, type AppTheme } from '@/shared/theme';
 
 const { t, locale } = useI18n();
 
@@ -73,4 +95,14 @@ const localeOptions = computed(() => [
   { value: 'ru', label: t('language.ru') },
   { value: 'en', label: t('language.en') }
 ]);
+
+const theme = ref<AppTheme>(getInitialTheme());
+
+watch(
+  theme,
+  (value) => {
+    setTheme(value);
+  },
+  { immediate: true }
+);
 </script>

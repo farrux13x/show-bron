@@ -63,3 +63,124 @@ h1, h2, h3, .font-display {
 .label {
   @apply text-xs uppercase tracking-[0.15em] text-slate-500 font-semibold;
 }
+
+[data-theme='dark'] body {
+  background-color: #0b1220;
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .app-background {
+  background: radial-gradient(circle at 12% 10%, rgba(249, 115, 22, 0.18), transparent 45%),
+    radial-gradient(circle at 88% 12%, rgba(34, 197, 94, 0.18), transparent 40%),
+    linear-gradient(180deg, #0b1220 0%, #111827 100%);
+}
+
+[data-theme='dark'] .card {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: #1f2937;
+}
+
+[data-theme='dark'] .card-muted {
+  background: rgba(15, 23, 42, 0.7);
+  border-color: #1f2937;
+}
+
+[data-theme='dark'] .btn-ghost {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .btn-muted {
+  background: #1f2937;
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .input {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .nav-link.router-link-active {
+  background: rgba(249, 115, 22, 0.3);
+  color: #f8fafc;
+}
+
+[data-theme='dark'] .text-ink {
+  color: #f8fafc;
+}
+
+[data-theme='dark'] .text-slate-700 {
+  color: #d1d5db;
+}
+
+[data-theme='dark'] .text-slate-600 {
+  color: #cbd5f5;
+}
+
+[data-theme='dark'] .text-slate-500 {
+  color: #94a3b8;
+}
+
+[data-theme='dark'] .text-slate-400 {
+  color: #64748b;
+}
+
+[data-theme='dark'] .border-fog {
+  border-color: #1f2937;
+}
+
+[data-theme='dark'] .border-fog\/60,
+[data-theme='dark'] .border-fog\/80,
+[data-theme='dark'] .border-fog\/40 {
+  border-color: #1f2937;
+}
+
+[data-theme='dark'] .bg-white {
+  background-color: #0f172a;
+}
+
+[data-theme='dark'] .bg-white\/90 {
+  background-color: rgba(15, 23, 42, 0.9);
+}
+
+[data-theme='dark'] .bg-white\/80 {
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+[data-theme='dark'] .bg-white\/70 {
+  background-color: rgba(15, 23, 42, 0.7);
+}
+
+[data-theme='dark'] .calendar-header,
+[data-theme='dark'] .calendar-grid {
+  background: #0f172a;
+  border-color: #1f2937;
+}
+
+[data-theme='dark'] .time-cell {
+  background: #0b1220;
+  border-color: #1f2937;
+  color: #94a3b8;
+}
+
+[data-theme='dark'] .day-cell {
+  background: #0f172a;
+  border-color: #1f2937;
+}
+
+[data-theme='dark'] .day-cell:hover {
+  background: #1f2937;
+}
+
+[data-theme='dark'] .day-date {
+  background: #0f172a;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .appointment-pill {
+  background: #1f2937;
+  border-color: #334155;
+}

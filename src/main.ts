@@ -3,7 +3,10 @@ import { createPinia } from 'pinia';
 import App from '@/app/App.vue';
 import router from '@/app/router';
 import { i18n } from '@/shared/i18n';
+import { initTheme } from '@/shared/theme';
 import '@/app/styles/tailwind.css';
+
+initTheme();
 
 const app = createApp(App);
 
