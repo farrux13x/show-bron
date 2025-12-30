@@ -10,6 +10,18 @@
 
     <div class="mt-6 grid gap-4 md:grid-cols-2">
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
+        <p class="label">{{ t('language.label') }}</p>
+        <select
+          v-model="localeModel"
+          class="input mt-2 text-sm font-semibold text-slate-600"
+          :aria-label="t('language.label')"
+        >
+          <option v-for="option in localeOptions" :key="option.value" :value="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+      </div>
+      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('settings.bookingRules') }}</p>
         <p class="mt-2 text-sm text-slate-600">{{ t('settings.bookingRulesText') }}</p>
         <button class="btn-muted mt-4">{{ t('actions.configureRules') }}</button>
@@ -34,8 +46,21 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { setLocale, type AppLocale } from '@/shared/i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
+
+const localeModel = computed({
+  get: () => locale.value,
+  set: (value) => setLocale(value as AppLocale)
+});
+
+const localeOptions = computed(() => [
+  { value: 'uz', label: t('language.uz') },
+  { value: 'ru', label: t('language.ru') },
+  { value: 'en', label: t('language.en') }
+]);
 </script>

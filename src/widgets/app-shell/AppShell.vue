@@ -13,15 +13,6 @@
             <RouterLink class="nav-link" to="/clients">{{ t('nav.clients') }}</RouterLink>
             <RouterLink class="nav-link" to="/settings">{{ t('nav.settings') }}</RouterLink>
           </nav>
-          <select
-            v-model="localeModel"
-            class="input w-[140px] text-xs font-semibold text-slate-600"
-            :aria-label="t('language.label')"
-          >
-            <option v-for="option in localeOptions" :key="option.value" :value="option.value">
-              {{ option.label }}
-            </option>
-          </select>
           <RouterLink to="/appointments/new" class="btn-primary">
             <span class="text-base">+ {{ t('actions.newBooking') }}</span>
           </RouterLink>
@@ -49,23 +40,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { setLocale, type AppLocale } from '@/shared/i18n';
 
-const { t, locale } = useI18n();
-
-const localeModel = computed({
-  get: () => locale.value,
-  set: (value) => setLocale(value as AppLocale)
-});
-
-const localeOptions = computed(() => [
-  { value: 'uz', label: t('language.uz') },
-  { value: 'ru', label: t('language.ru') },
-  { value: 'en', label: t('language.en') }
-]);
+const { t } = useI18n();
 </script>
 
 <style scoped>
