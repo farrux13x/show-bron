@@ -99,15 +99,90 @@ export const useAppointmentsStore = defineStore('appointments', {
         return;
       }
       const now = new Date();
-      const sample = [
+      const dayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+      const makeDate = (base: Date, dayOffset: number, hour: number, minute: number) =>
+        toISO(new Date(base.getFullYear(), base.getMonth(), base.getDate() + dayOffset, hour, minute));
+      const sample: AppointmentInput[] = [
+        {
+          clientName: 'Ava Stone',
+          phone: '555-1001',
+          service: 'Haircut',
+          durationMinutes: 30,
+          notes: 'Skin fade',
+          startAt: makeDate(monthStart, 1, 9, 0),
+          status: 'arrived',
+          price: 50
+        },
+        {
+          clientName: 'Noah Finch',
+          phone: '555-1002',
+          service: 'Beard',
+          durationMinutes: 30,
+          notes: 'Shape up',
+          startAt: makeDate(monthStart, 5, 11, 30),
+          status: 'arrived',
+          price: 30
+        },
+        {
+          clientName: 'Mia Clarke',
+          phone: '555-1003',
+          service: 'Haircut + Beard',
+          durationMinutes: 60,
+          notes: 'Full service',
+          startAt: makeDate(monthStart, 9, 13, 0),
+          status: 'arrived',
+          price: 70
+        },
+        {
+          clientName: 'Eli Carter',
+          phone: '555-1004',
+          service: 'Kids',
+          durationMinutes: 30,
+          notes: 'First haircut',
+          startAt: makeDate(monthStart, 13, 10, 0),
+          status: 'booked',
+          price: 25
+        },
+        {
+          clientName: 'Zoe Price',
+          phone: '555-1005',
+          service: 'Haircut',
+          durationMinutes: 45,
+          notes: 'Textured crop',
+          startAt: makeDate(monthStart, 17, 14, 0),
+          status: 'arrived',
+          price: 50
+        },
+        {
+          clientName: 'Liam Woods',
+          phone: '555-1006',
+          service: 'Beard',
+          durationMinutes: 30,
+          notes: 'Hot towel',
+          startAt: makeDate(monthStart, 21, 16, 30),
+          status: 'cancelled',
+          price: 30
+        },
+        {
+          clientName: 'Aria Miles',
+          phone: '555-1007',
+          service: 'Haircut + Beard',
+          durationMinutes: 60,
+          notes: 'Beard blend',
+          startAt: makeDate(monthStart, 25, 18, 0),
+          status: 'arrived',
+          price: 70
+        },
         {
           clientName: 'Omar Reed',
           phone: '555-2011',
           service: 'Haircut',
           durationMinutes: 30,
           notes: 'Fade + lineup',
-          startAt: toISO(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 11, 0)),
-          status: 'booked' as const
+          startAt: makeDate(dayStart, -6, 9, 30),
+          status: 'arrived',
+          price: 50
         },
         {
           clientName: 'Luis Carter',
@@ -115,8 +190,69 @@ export const useAppointmentsStore = defineStore('appointments', {
           service: 'Beard',
           durationMinutes: 30,
           notes: 'Short trim',
-          startAt: toISO(new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 30)),
-          status: 'arrived' as const
+          startAt: makeDate(dayStart, -4, 12, 0),
+          status: 'arrived',
+          price: 30
+        },
+        {
+          clientName: 'Nora Diaz',
+          phone: '555-1208',
+          service: 'Kids',
+          durationMinutes: 30,
+          notes: '',
+          startAt: makeDate(dayStart, -2, 15, 0),
+          status: 'no-show',
+          price: 25
+        },
+        {
+          clientName: 'Wyatt Hale',
+          phone: '555-1209',
+          service: 'Haircut + Beard',
+          durationMinutes: 60,
+          notes: 'Scissor finish',
+          startAt: makeDate(dayStart, -1, 11, 0),
+          status: 'arrived',
+          price: 70
+        },
+        {
+          clientName: 'Luna Scott',
+          phone: '555-1210',
+          service: 'Haircut',
+          durationMinutes: 30,
+          notes: 'Skin fade',
+          startAt: makeDate(dayStart, 0, 10, 30),
+          status: 'booked',
+          price: 50
+        },
+        {
+          clientName: 'Mason Hill',
+          phone: '555-1211',
+          service: 'Beard',
+          durationMinutes: 30,
+          notes: 'Clean line',
+          startAt: makeDate(dayStart, 1, 13, 30),
+          status: 'arrived',
+          price: 30
+        },
+        {
+          clientName: 'Ruby James',
+          phone: '555-1212',
+          service: 'Kids',
+          durationMinutes: 30,
+          notes: 'Trim only',
+          startAt: makeDate(dayStart, 2, 9, 0),
+          status: 'booked',
+          price: 25
+        },
+        {
+          clientName: 'Owen Brooks',
+          phone: '555-1213',
+          service: 'Haircut',
+          durationMinutes: 45,
+          notes: 'Low fade',
+          startAt: makeDate(dayStart, 4, 16, 0),
+          status: 'arrived',
+          price: 50
         }
       ];
 
