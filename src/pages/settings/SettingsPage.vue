@@ -10,6 +10,16 @@
 
     <div class="mt-6 grid gap-4 md:grid-cols-2">
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
+        <p class="label">{{ t('settings.services') }}</p>
+        <p class="mt-2 text-sm text-slate-600">{{ t('settings.servicesText') }}</p>
+        <RouterLink to="/services" class="btn-muted mt-4">{{ t('actions.manageServices') }}</RouterLink>
+      </div>
+      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
+        <p class="label">{{ t('settings.statistics') }}</p>
+        <p class="mt-2 text-sm text-slate-600">{{ t('settings.statisticsText') }}</p>
+        <RouterLink to="/statistics" class="btn-muted mt-4">{{ t('actions.viewStatistics') }}</RouterLink>
+      </div>
+      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('language.label') }}</p>
         <select
           v-model="localeModel"
@@ -43,16 +53,6 @@
         </div>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('settings.services') }}</p>
-        <p class="mt-2 text-sm text-slate-600">{{ t('settings.servicesText') }}</p>
-        <RouterLink to="/services" class="btn-muted mt-4">{{ t('actions.manageServices') }}</RouterLink>
-      </div>
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('settings.statistics') }}</p>
-        <p class="mt-2 text-sm text-slate-600">{{ t('settings.statisticsText') }}</p>
-        <RouterLink to="/statistics" class="btn-muted mt-4">{{ t('actions.viewStatistics') }}</RouterLink>
-      </div>
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('settings.faq') }}</p>
         <a
           class="mt-3 inline-flex w-full items-center justify-between text-sm font-semibold text-ink"
@@ -66,26 +66,6 @@
             <path d="M13 5l-8 8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </a>
-      </div>
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('settings.bookingRules') }}</p>
-        <p class="mt-2 text-sm text-slate-600">{{ t('settings.bookingRulesText') }}</p>
-        <button class="btn-muted mt-4">{{ t('actions.configureRules') }}</button>
-      </div>
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('settings.reminders') }}</p>
-        <p class="mt-2 text-sm text-slate-600">{{ t('settings.remindersText') }}</p>
-        <button class="btn-muted mt-4">{{ t('actions.setReminder') }}</button>
-      </div>
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('settings.account') }}</p>
-        <p class="mt-2 text-sm text-slate-600">{{ t('settings.accountText') }}</p>
-        <button class="btn-muted mt-4">{{ t('actions.updateProfile') }}</button>
-      </div>
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('settings.data') }}</p>
-        <p class="mt-2 text-sm text-slate-600">{{ t('settings.dataText') }}</p>
-        <button class="btn-muted mt-4">{{ t('actions.exportCsv') }}</button>
       </div>
     </div>
   </section>
