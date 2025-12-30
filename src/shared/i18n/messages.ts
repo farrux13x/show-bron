@@ -33,6 +33,7 @@
       exportCsv: 'Export CSV',
       manageServices: 'Manage services',
       addService: 'Add service',
+      viewStatistics: 'View statistics',
       signIn: 'Sign in',
       continueDashboard: 'Continue to the dashboard'
     },
@@ -111,6 +112,8 @@
       title: 'Barber preferences',
       services: 'Services',
       servicesText: 'Manage services and pricing for bookings.',
+      statistics: 'Statistics',
+      statisticsText: 'View customer and revenue performance.',
       bookingRules: 'Booking rules',
       bookingRulesText: 'Double booking warning is enabled.',
       reminders: 'Reminders',
@@ -161,6 +164,37 @@
       priceLabel: 'Price',
       pricePlaceholder: 'e.g. 50',
       empty: 'No services yet. Add your first service to get started.'
+    },
+    statistics: {
+      label: 'Dashboard',
+      title: 'Statistics',
+      subtitle: 'Track customers and revenue in the selected period.',
+      none: 'No data yet',
+      noRevenue: 'No revenue',
+      period: {
+        week: 'This week',
+        month: 'This month'
+      },
+      kpi: {
+        customers: 'Customers',
+        revenue: 'Total revenue',
+        avgRevenue: 'Avg revenue',
+        perCustomer: 'per customer',
+        topService: 'Top service'
+      },
+      charts: {
+        customersPerDay: 'Customers per day',
+        revenuePerDay: 'Revenue per day',
+        revenueByService: 'Revenue by service',
+        customersByService: 'Customers by service'
+      },
+      table: {
+        title: 'Service performance',
+        service: 'Service',
+        customers: 'Customers',
+        revenue: 'Revenue',
+        avgTicket: 'Average ticket'
+      }
     }
   },
   uz: {
@@ -197,6 +231,7 @@
       exportCsv: 'CSV eksport',
       manageServices: 'Xizmatlarni boshqarish',
       addService: "Xizmat qo'shish",
+      viewStatistics: "Statistikani ko'rish",
       signIn: 'Kirish',
       continueDashboard: "Boshqaruv paneliga o'tish"
     },
@@ -275,6 +310,8 @@
       title: 'Sartarosh sozlamalari',
       services: 'Xizmatlar',
       servicesText: 'Bron uchun xizmatlar va narxlarni boshqaring.',
+      statistics: 'Statistika',
+      statisticsText: "Mijozlar va daromad ko'rsatkichlarini ko'ring.",
       bookingRules: 'Bron qoidalari',
       bookingRulesText: 'Ikki karra bron ogohlantirish yoqilgan.',
       reminders: 'Eslatmalar',
@@ -325,6 +362,37 @@
       priceLabel: 'Narx',
       pricePlaceholder: 'Masalan: 50',
       empty: "Hali xizmatlar yo'q. Boshlash uchun birinchi xizmatni qo'shing."
+    },
+    statistics: {
+      label: 'Dashboard',
+      title: 'Statistika',
+      subtitle: "Tanlangan davr bo'yicha mijozlar va daromadni kuzating.",
+      none: "Hozircha ma'lumot yo'q",
+      noRevenue: "Daromad yo'q",
+      period: {
+        week: 'Joriy hafta',
+        month: 'Joriy oy'
+      },
+      kpi: {
+        customers: 'Mijozlar',
+        revenue: 'Jami daromad',
+        avgRevenue: "O'rtacha daromad",
+        perCustomer: 'har bir mijoz',
+        topService: 'Eng top xizmat'
+      },
+      charts: {
+        customersPerDay: 'Kunlik mijozlar',
+        revenuePerDay: 'Kunlik daromad',
+        revenueByService: "Xizmat bo'yicha daromad",
+        customersByService: "Xizmat bo'yicha mijozlar"
+      },
+      table: {
+        title: "Xizmat ko'rsatkichlari",
+        service: 'Xizmat',
+        customers: 'Mijozlar',
+        revenue: 'Daromad',
+        avgTicket: "O'rtacha chek"
+      }
     }
   },
   ru: {
@@ -361,6 +429,7 @@
       exportCsv: 'Экспорт CSV',
       manageServices: 'Управление услугами',
       addService: 'Добавить услугу',
+      viewStatistics: 'Открыть статистику',
       signIn: 'Войти',
       continueDashboard: 'Продолжить в панели'
     },
@@ -439,6 +508,8 @@
       title: 'Предпочтения барбера',
       services: 'Услуги',
       servicesText: 'Управляйте услугами и ценами для записей.',
+      statistics: 'Статистика',
+      statisticsText: 'Просматривайте клиентов и выручку за период.',
       bookingRules: 'Правила записи',
       bookingRulesText: 'Предупреждение о двойной записи включено.',
       reminders: 'Напоминания',
@@ -489,6 +560,37 @@
       priceLabel: 'Цена',
       pricePlaceholder: 'Напр. 50',
       empty: 'Услуг пока нет. Добавьте первую услугу, чтобы начать.'
+    },
+    statistics: {
+      label: 'Дашборд',
+      title: 'Статистика',
+      subtitle: 'Отслеживайте клиентов и выручку за выбранный период.',
+      none: 'Данных пока нет',
+      noRevenue: 'Нет выручки',
+      period: {
+        week: 'Эта неделя',
+        month: 'Этот месяц'
+      },
+      kpi: {
+        customers: 'Клиенты',
+        revenue: 'Общая выручка',
+        avgRevenue: 'Средняя выручка',
+        perCustomer: 'на клиента',
+        topService: 'Топ услуга'
+      },
+      charts: {
+        customersPerDay: 'Клиенты по дням',
+        revenuePerDay: 'Выручка по дням',
+        revenueByService: 'Выручка по услугам',
+        customersByService: 'Клиенты по услугам'
+      },
+      table: {
+        title: 'Эффективность услуг',
+        service: 'Услуга',
+        customers: 'Клиенты',
+        revenue: 'Выручка',
+        avgTicket: 'Средний чек'
+      }
     }
   }
 };
