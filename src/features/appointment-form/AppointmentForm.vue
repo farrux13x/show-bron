@@ -15,8 +15,8 @@
       <div class="space-y-2">
         <label class="label">{{ t('form.service') }}</label>
         <select v-model="service" class="input">
-          <option v-for="option in serviceOptions" :key="option.value" :value="option.value">
-            {{ t(option.label) }}
+          <option v-for="name in serviceOptions" :key="name" :value="name">
+            {{ translateService(name, t) }}
           </option>
         </select>
       </div>
@@ -77,12 +77,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useScheduleStore } from '@/entities/schedule/model/schedule.store';
 import { useAppointmentsStore, type Appointment } from '@/entities/appointment/model/appointments.store';
+import { useServicesStore } from '@/entities/service/model/services.store';
 import { toISO } from '@/shared/lib/date';
-import { translateStatus } from '@/shared/i18n/labels';
+import { translateService, translateStatus } from '@/shared/i18n/labels';
 
 const props = defineProps<{ initial?: Partial<Appointment> }>();
 const emit = defineEmits<{
@@ -93,14 +94,8 @@ const emit = defineEmits<{
 
 const scheduleStore = useScheduleStore();
 const appointmentsStore = useAppointmentsStore();
+const servicesStore = useServicesStore();
 const { t } = useI18n();
-
-const serviceOptions = [
-  { value: 'Haircut', label: 'services.haircut' },
-  { value: 'Beard', label: 'services.beard' },
-  { value: 'Haircut + Beard', label: 'services.haircutBeard' },
-  { value: 'Kids', label: 'services.kids' }
-];
 
 const durationOptions = [15, 30, 45, 60];
 
@@ -124,13 +119,42 @@ const toTimeInput = (date: Date) =>
 
 const clientName = ref(props.initial?.clientName ?? '');
 const phone = ref(props.initial?.phone ?? '');
-const service = ref(props.initial?.service ?? 'Haircut');
+const fallbackServiceName = computed(() => servicesStore.services[0]?.name ?? 'Haircut');
+const service = ref(props.initial?.service ?? fallbackServiceName.value);
 const duration = ref(props.initial?.durationMinutes ?? scheduleStore.defaultServiceMinutes);
 const notes = ref(props.initial?.notes ?? '');
 const price = ref(props.initial?.price ?? undefined);
 const status = ref(props.initial?.status ?? 'booked');
 const startDate = ref(toDateInput(initialDate));
 const startTime = ref(toTimeInput(initialDate));
+const lastAutoPrice = ref<number | undefined>(undefined);
+
+const serviceOptions = computed(() => {
+  const options = servicesStore.services.map((item) => item.name);
+
+  if (service.value && !servicesStore.byName(service.value)) {
+    options.unshift(service.value);
+  }
+
+  return options;
+});
+
+const selectedServicePrice = computed(() => servicesStore.byName(service.value)?.price);
+
+watch(
+  () => service.value,
+  () => {
+    const nextPrice = selectedServicePrice.value;
+    if (nextPrice == null) {
+      return;
+    }
+    if (price.value == null || price.value === lastAutoPrice.value) {
+      price.value = nextPrice;
+      lastAutoPrice.value = nextPrice;
+    }
+  },
+  { immediate: true }
+);
 
 const startAt = computed(() => {
   const [year, month, day] = startDate.value.split('-').map(Number);

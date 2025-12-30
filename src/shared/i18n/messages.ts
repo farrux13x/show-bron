@@ -31,6 +31,8 @@
       setReminder: 'Set reminder',
       updateProfile: 'Update profile',
       exportCsv: 'Export CSV',
+      manageServices: 'Manage services',
+      addService: 'Add service',
       signIn: 'Sign in',
       continueDashboard: 'Continue to the dashboard'
     },
@@ -107,6 +109,8 @@
     settings: {
       label: 'Settings',
       title: 'Barber preferences',
+      services: 'Services',
+      servicesText: 'Manage services and pricing for bookings.',
       bookingRules: 'Booking rules',
       bookingRulesText: 'Double booking warning is enabled.',
       reminders: 'Reminders',
@@ -146,6 +150,17 @@
       bullet3: 'Run the day from a clean Today list.',
       livePreview: 'Live preview',
       livePreviewText: '12:30 PM - Luis Carter - Beard - Arrived'
+    },
+    servicesPage: {
+      label: 'Services',
+      title: 'Service catalog',
+      subtitle: 'Add, remove, and price the services you offer.',
+      addTitle: 'Add new service',
+      nameLabel: 'Service name',
+      namePlaceholder: 'e.g. Haircut',
+      priceLabel: 'Price',
+      pricePlaceholder: 'e.g. 50',
+      empty: 'No services yet. Add your first service to get started.'
     }
   },
   uz: {
@@ -180,6 +195,8 @@
       setReminder: 'Eslatma sozlash',
       updateProfile: 'Profilni yangilash',
       exportCsv: 'CSV eksport',
+      manageServices: 'Xizmatlarni boshqarish',
+      addService: "Xizmat qo'shish",
       signIn: 'Kirish',
       continueDashboard: "Boshqaruv paneliga o'tish"
     },
@@ -256,6 +273,8 @@
     settings: {
       label: 'Sozlamalar',
       title: 'Sartarosh sozlamalari',
+      services: 'Xizmatlar',
+      servicesText: 'Bron uchun xizmatlar va narxlarni boshqaring.',
       bookingRules: 'Bron qoidalari',
       bookingRulesText: 'Ikki karra bron ogohlantirish yoqilgan.',
       reminders: 'Eslatmalar',
@@ -295,6 +314,17 @@
       bullet3: "Kunni toza Bugun ro'yxati orqali boshqaring.",
       livePreview: "Jonli ko'rinish",
       livePreviewText: '12:30 - Luis Carter - Soqol - Keldi'
+    },
+    servicesPage: {
+      label: 'Xizmatlar',
+      title: "Xizmatlar ro'yxati",
+      subtitle: "Xizmatlarni qo'shing, o'chiring va narxini belgilang.",
+      addTitle: "Yangi xizmat qo'shish",
+      nameLabel: 'Xizmat nomi',
+      namePlaceholder: 'Masalan: Soch olish',
+      priceLabel: 'Narx',
+      pricePlaceholder: 'Masalan: 50',
+      empty: "Hali xizmatlar yo'q. Boshlash uchun birinchi xizmatni qo'shing."
     }
   },
   ru: {
@@ -329,6 +359,8 @@
       setReminder: 'Установить напоминание',
       updateProfile: 'Обновить профиль',
       exportCsv: 'Экспорт CSV',
+      manageServices: 'Управление услугами',
+      addService: 'Добавить услугу',
       signIn: 'Войти',
       continueDashboard: 'Продолжить в панели'
     },
@@ -405,6 +437,8 @@
     settings: {
       label: 'Настройки',
       title: 'Предпочтения барбера',
+      services: 'Услуги',
+      servicesText: 'Управляйте услугами и ценами для записей.',
       bookingRules: 'Правила записи',
       bookingRulesText: 'Предупреждение о двойной записи включено.',
       reminders: 'Напоминания',
@@ -444,6 +478,17 @@
       bullet3: 'Управляйте днем из аккуратного списка Сегодня.',
       livePreview: 'Живой просмотр',
       livePreviewText: '12:30 PM - Luis Carter - Борода - Пришел'
+    },
+    servicesPage: {
+      label: 'Услуги',
+      title: 'Каталог услуг',
+      subtitle: 'Добавляйте, удаляйте и задавайте цены на услуги.',
+      addTitle: 'Добавить новую услугу',
+      nameLabel: 'Название услуги',
+      namePlaceholder: 'Напр. Стрижка',
+      priceLabel: 'Цена',
+      pricePlaceholder: 'Напр. 50',
+      empty: 'Услуг пока нет. Добавьте первую услугу, чтобы начать.'
     }
   }
 };

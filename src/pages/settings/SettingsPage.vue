@@ -22,6 +22,11 @@
         </select>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
+        <p class="label">{{ t('settings.services') }}</p>
+        <p class="mt-2 text-sm text-slate-600">{{ t('settings.servicesText') }}</p>
+        <RouterLink to="/services" class="btn-muted mt-4">{{ t('actions.manageServices') }}</RouterLink>
+      </div>
+      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('settings.bookingRules') }}</p>
         <p class="mt-2 text-sm text-slate-600">{{ t('settings.bookingRulesText') }}</p>
         <button class="btn-muted mt-4">{{ t('actions.configureRules') }}</button>

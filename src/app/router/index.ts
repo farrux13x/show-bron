@@ -8,6 +8,7 @@ import AppointmentFormPage from '@/pages/appointment-form/AppointmentFormPage.vu
 import ClientsPage from '@/pages/clients/ClientsPage.vue';
 import ClientProfilePage from '@/pages/clients/ClientProfilePage.vue';
 import SettingsPage from '@/pages/settings/SettingsPage.vue';
+import ServicesPage from '@/pages/services/ServicesPage.vue';
 import { usePostHog } from '@/composables/usePostHog';
 
 const router = createRouter({
@@ -23,7 +24,8 @@ const router = createRouter({
     { path: '/appointments/:id', component: AppointmentFormPage },
     { path: '/clients', component: ClientsPage },
     { path: '/clients/:id', component: ClientProfilePage },
-    { path: '/settings', component: SettingsPage }
+    { path: '/settings', component: SettingsPage },
+    { path: '/services', component: ServicesPage }
   ]
 });
 
