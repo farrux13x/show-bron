@@ -151,9 +151,11 @@ export function useStatisticsPage() {
   const revenueLinePoints = computed(() => buildLinePoints(revenueByDay.value));
 
   const formatCurrency = (value: number) => {
-    const formatted = new Intl.NumberFormat(locale.value, {
+    const formatted = new Intl.NumberFormat('ru-RU', {
       maximumFractionDigits: 0
-    }).format(value);
+    })
+      .format(value)
+      .replace(/\u00A0/g, ' ');
     return `${formatted} so'm`;
   };
 

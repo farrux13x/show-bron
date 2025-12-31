@@ -4,7 +4,7 @@ import { useServicesStore } from '@/entities/service/model/services.store';
 import { translateService } from '@/shared/i18n/labels';
 
 export function useServicesPage() {
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
   const servicesStore = useServicesStore();
 
   const newName = ref('');
@@ -30,9 +30,11 @@ export function useServicesPage() {
   };
 
   const formatPrice = (value: number) => {
-    const formatted = new Intl.NumberFormat(locale.value, {
+    const formatted = new Intl.NumberFormat('ru-RU', {
       maximumFractionDigits: 0
-    }).format(value);
+    })
+      .format(value)
+      .replace(/\u00A0/g, ' ');
     return `${formatted} so'm`;
   };
 
