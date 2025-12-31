@@ -54,11 +54,7 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import { useI18n } from 'vue-i18n';
-import { useAppointmentsStore } from '@/entities/appointment/model/appointments.store';
-import { formatTime } from '@/shared/lib/date';
-import { translateService, translateStatus } from '@/shared/i18n/labels';
+import { useTodayPage } from './useTodayPage';
 
-const appointmentsStore = useAppointmentsStore();
-const { t } = useI18n();
+const { appointmentsStore, formatTime, t, translateService, translateStatus } = useTodayPage();
 </script>

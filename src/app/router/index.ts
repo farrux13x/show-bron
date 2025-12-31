@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import LoginPage from '@/pages/login/LoginPage.vue';
 import ScheduleSetupPage from '@/pages/schedule-setup/ScheduleSetupPage.vue';
 import CalendarPage from '@/pages/calendar/CalendarPage.vue';
 import TodayPage from '@/pages/today/TodayPage.vue';
@@ -17,7 +16,6 @@ const router = createRouter({
   routes: [
     { path: '/', component: TodayPage },
     // { path: '/', redirect: '/today' },
-    { path: '/login', component: LoginPage },
     { path: '/schedule-setup', component: ScheduleSetupPage },
     { path: '/calendar', component: CalendarPage },
     { path: '/today', component: TodayPage },

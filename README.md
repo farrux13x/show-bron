@@ -27,7 +27,6 @@ MVP barber scheduling app (Vue 3 + Vite + TypeScript). Built for fast, one-hand 
 - `/clients/:id` Client profile
 - `/schedule-setup` Weekly schedule
 - `/settings` Settings
-- `/login` Login (prototype)
 
 ## Scripts
 - `npm run dev` start dev server

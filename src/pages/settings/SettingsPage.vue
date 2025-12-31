@@ -72,32 +72,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
-import { useI18n } from 'vue-i18n';
-import { setLocale, type AppLocale } from '@/shared/i18n';
-import { getInitialTheme, setTheme, type AppTheme } from '@/shared/theme';
+import { useSettingsPage } from './useSettingsPage';
 
-const { t, locale } = useI18n();
-
-const localeModel = computed({
-  get: () => locale.value,
-  set: (value) => setLocale(value as AppLocale)
-});
-
-const localeOptions = computed(() => [
-  { value: 'uz', label: t('language.uz') },
-  { value: 'ru', label: t('language.ru') },
-  { value: 'en', label: t('language.en') }
-]);
-
-const theme = ref<AppTheme>(getInitialTheme());
-
-watch(
-  theme,
-  (value) => {
-    setTheme(value);
-  },
-  { immediate: true }
-);
+const { t, localeModel, localeOptions, theme } = useSettingsPage();
 </script>
