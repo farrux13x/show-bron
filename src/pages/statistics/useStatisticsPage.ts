@@ -150,12 +150,12 @@ export function useStatisticsPage() {
   const customerLinePoints = computed(() => buildLinePoints(customersByDay.value));
   const revenueLinePoints = computed(() => buildLinePoints(revenueByDay.value));
 
-  const formatCurrency = (value: number) =>
-    new Intl.NumberFormat(locale.value, {
-      style: 'currency',
-      currency: 'USD',
+  const formatCurrency = (value: number) => {
+    const formatted = new Intl.NumberFormat(locale.value, {
       maximumFractionDigits: 0
     }).format(value);
+    return `${formatted} so'm`;
+  };
 
   return {
     avgRevenue,

@@ -29,12 +29,12 @@ export function useServicesPage() {
     newPrice.value = null;
   };
 
-  const formatPrice = (value: number) =>
-    new Intl.NumberFormat(locale.value, {
-      style: 'currency',
-      currency: 'USD',
+  const formatPrice = (value: number) => {
+    const formatted = new Intl.NumberFormat(locale.value, {
       maximumFractionDigits: 0
     }).format(value);
+    return `${formatted} so'm`;
+  };
 
   return {
     formatPrice,
