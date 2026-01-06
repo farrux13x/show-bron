@@ -64,6 +64,14 @@ h1, h2, h3, .font-display {
   @apply text-xs uppercase tracking-[0.15em] text-slate-500 font-semibold;
 }
 
+.nav-link {
+  @apply flex items-center justify-center rounded-full px-2 py-2 transition;
+}
+
+.nav-link.router-link-active {
+  @apply bg-orange-100 text-ink;
+}
+
 [data-theme='dark'] body {
   background-color: #0b1220;
   color: #e2e8f0;
