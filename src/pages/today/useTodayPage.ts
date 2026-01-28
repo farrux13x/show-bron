@@ -12,6 +12,6 @@ export function useTodayPage() {
     formatTime,
     t,
     translateService,
-    translateStatus
+    translateStatus,
   };
 }

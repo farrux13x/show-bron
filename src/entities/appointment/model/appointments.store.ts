@@ -1,6 +1,12 @@
 import { defineStore } from 'pinia';
 import { loadFromStorage, saveToStorage } from '@/shared/lib/storage';
-import { addMinutes, fromISO, isSameDay, startOfDay, toISO } from '@/shared/lib/date';
+import {
+  addMinutes,
+  fromISO,
+  isSameDay,
+  startOfDay,
+  toISO,
+} from '@/shared/lib/date';
 
 export type AppointmentStatus = 'booked' | 'arrived' | 'cancelled' | 'no-show';
 
@@ -30,20 +36,21 @@ const sortByStart = (a: Appointment, b: Appointment) =>
 
 export const useAppointmentsStore = defineStore('appointments', {
   state: () => ({
-    appointments: loadFromStorage<Appointment[]>(STORAGE_KEY, [])
+    appointments: loadFromStorage<Appointment[]>(STORAGE_KEY, []),
   }),
   getters: {
     byDate: (state) => (date: Date) =>
       state.appointments
         .filter((item) => isSameDay(fromISO(item.startAt), date))
         .sort(sortByStart),
-    byId: (state) => (id: string) => state.appointments.find((item) => item.id === id),
+    byId: (state) => (id: string) =>
+      state.appointments.find((item) => item.id === id),
     upcomingToday: (state) => {
       const today = startOfDay(new Date());
       return state.appointments
         .filter((item) => isSameDay(fromISO(item.startAt), today))
         .sort(sortByStart);
-    }
+    },
   },
   actions: {
     add(input: AppointmentInput) {
@@ -56,7 +63,7 @@ export const useAppointmentsStore = defineStore('appointments', {
         notes: input.notes,
         startAt: input.startAt,
         status: input.status ?? 'booked',
-        price: input.price
+        price: input.price,
       };
 
       this.appointments.push(appointment);
@@ -99,10 +106,27 @@ export const useAppointmentsStore = defineStore('appointments', {
         return;
       }
       const now = new Date();
-      const dayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const dayStart = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate(),
+      );
       const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-      const makeDate = (base: Date, dayOffset: number, hour: number, minute: number) =>
-        toISO(new Date(base.getFullYear(), base.getMonth(), base.getDate() + dayOffset, hour, minute));
+      const makeDate = (
+        base: Date,
+        dayOffset: number,
+        hour: number,
+        minute: number,
+      ) =>
+        toISO(
+          new Date(
+            base.getFullYear(),
+            base.getMonth(),
+            base.getDate() + dayOffset,
+            hour,
+            minute,
+          ),
+        );
       const sample: AppointmentInput[] = [
         {
           clientName: 'Ava Stone',
@@ -112,7 +136,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Skin fade',
           startAt: makeDate(monthStart, 1, 9, 0),
           status: 'arrived',
-          price: 50
+          price: 50,
         },
         {
           clientName: 'Noah Finch',
@@ -122,7 +146,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Shape up',
           startAt: makeDate(monthStart, 5, 11, 30),
           status: 'arrived',
-          price: 30
+          price: 30,
         },
         {
           clientName: 'Mia Clarke',
@@ -132,7 +156,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Full service',
           startAt: makeDate(monthStart, 9, 13, 0),
           status: 'arrived',
-          price: 70
+          price: 70,
         },
         {
           clientName: 'Eli Carter',
@@ -142,7 +166,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'First haircut',
           startAt: makeDate(monthStart, 13, 10, 0),
           status: 'booked',
-          price: 25
+          price: 25,
         },
         {
           clientName: 'Zoe Price',
@@ -152,7 +176,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Textured crop',
           startAt: makeDate(monthStart, 17, 14, 0),
           status: 'arrived',
-          price: 50
+          price: 50,
         },
         {
           clientName: 'Liam Woods',
@@ -162,7 +186,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Hot towel',
           startAt: makeDate(monthStart, 21, 16, 30),
           status: 'cancelled',
-          price: 30
+          price: 30,
         },
         {
           clientName: 'Aria Miles',
@@ -172,7 +196,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Beard blend',
           startAt: makeDate(monthStart, 25, 18, 0),
           status: 'arrived',
-          price: 70
+          price: 70,
         },
         {
           clientName: 'Omar Reed',
@@ -182,7 +206,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Fade + lineup',
           startAt: makeDate(dayStart, -6, 9, 30),
           status: 'arrived',
-          price: 50
+          price: 50,
         },
         {
           clientName: 'Luis Carter',
@@ -192,7 +216,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Short trim',
           startAt: makeDate(dayStart, -4, 12, 0),
           status: 'arrived',
-          price: 30
+          price: 30,
         },
         {
           clientName: 'Nora Diaz',
@@ -202,7 +226,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: '',
           startAt: makeDate(dayStart, -2, 15, 0),
           status: 'no-show',
-          price: 25
+          price: 25,
         },
         {
           clientName: 'Wyatt Hale',
@@ -212,7 +236,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Scissor finish',
           startAt: makeDate(dayStart, -1, 11, 0),
           status: 'arrived',
-          price: 70
+          price: 70,
         },
         {
           clientName: 'Luna Scott',
@@ -222,7 +246,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Skin fade',
           startAt: makeDate(dayStart, 0, 10, 30),
           status: 'booked',
-          price: 50
+          price: 50,
         },
         {
           clientName: 'Mason Hill',
@@ -232,7 +256,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Clean line',
           startAt: makeDate(dayStart, 1, 13, 30),
           status: 'arrived',
-          price: 30
+          price: 30,
         },
         {
           clientName: 'Ruby James',
@@ -242,7 +266,7 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Trim only',
           startAt: makeDate(dayStart, 2, 9, 0),
           status: 'booked',
-          price: 25
+          price: 25,
         },
         {
           clientName: 'Owen Brooks',
@@ -252,11 +276,11 @@ export const useAppointmentsStore = defineStore('appointments', {
           notes: 'Low fade',
           startAt: makeDate(dayStart, 4, 16, 0),
           status: 'arrived',
-          price: 50
-        }
+          price: 50,
+        },
       ];
 
       sample.forEach((item) => this.add(item));
-    }
-  }
+    },
+  },
 });

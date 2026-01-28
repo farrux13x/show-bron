@@ -1,17 +1,20 @@
-export type Translate = (key: string, values?: Record<string, unknown>) => string;
+export type Translate = (
+  key: string,
+  values?: Record<string, unknown>,
+) => string;
 
 const SERVICE_KEYS: Record<string, string> = {
   Haircut: 'services.haircut',
   Beard: 'services.beard',
   'Haircut + Beard': 'services.haircutBeard',
-  Kids: 'services.kids'
+  Kids: 'services.kids',
 };
 
 const STATUS_KEYS: Record<string, string> = {
   booked: 'status.booked',
   arrived: 'status.arrived',
   cancelled: 'status.cancelled',
-  'no-show': 'status.noShow'
+  'no-show': 'status.noShow',
 };
 
 export const translateService = (value: string, t: Translate): string =>

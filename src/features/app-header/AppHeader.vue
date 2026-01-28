@@ -2,15 +2,27 @@
   <header class="app-header px-4 pt-6 pb-4 sm:px-8">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-6">
       <div>
-        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Timetrack</p>
-        <h1 class="font-display text-2xl font-semibold text-ink">{{ t('app.consoleTitle') }}</h1>
+        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">
+          Timetrack
+        </p>
+        <h1 class="font-display text-2xl font-semibold text-ink">
+          {{ t('app.consoleTitle') }}
+        </h1>
       </div>
       <div class="flex flex-wrap items-center gap-3">
-        <nav class="app-topnav hidden items-center gap-2 text-sm font-semibold text-slate-500 sm:flex">
+        <nav
+          class="app-topnav hidden items-center gap-2 text-sm font-semibold text-slate-500 sm:flex"
+        >
           <RouterLink class="nav-link" to="/">{{ t('nav.today') }}</RouterLink>
-          <RouterLink class="nav-link" to="/calendar">{{ t('nav.calendar') }}</RouterLink>
-          <RouterLink class="nav-link" to="/clients">{{ t('nav.clients') }}</RouterLink>
-          <RouterLink class="nav-link" to="/settings">{{ t('nav.settings') }}</RouterLink>
+          <RouterLink class="nav-link" to="/calendar">{{
+            t('nav.calendar')
+          }}</RouterLink>
+          <RouterLink class="nav-link" to="/clients">{{
+            t('nav.clients')
+          }}</RouterLink>
+          <RouterLink class="nav-link" to="/settings">{{
+            t('nav.settings')
+          }}</RouterLink>
         </nav>
         <RouterLink to="/appointments/new" class="btn-primary">
           <span class="text-base">+ {{ t('actions.newBooking') }}</span>

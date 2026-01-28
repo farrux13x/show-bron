@@ -3,9 +3,11 @@
 > The app is fully local and persists data in localStorage. There is no backend schema yet; this is inferred from TypeScript types and stores.
 
 ## Appointment
+
 Stored in: timetrack.appointments.v1
 
 Fields:
+
 - id (string)
 - clientName (string)
 - phone (string) - also used as client identity
@@ -17,21 +19,26 @@ Fields:
 - price (number, optional)
 
 ## Service
+
 Stored in: timetrack.services.v1
 
 Fields:
+
 - id (string)
 - name (string)
 - price (number)
 
 ## Schedule Template
+
 Stored in: timetrack.schedule.v1
 
 ### ScheduleTemplate
+
 - defaultServiceMinutes (number)
 - days (record keyed by weekday)
 
 ### ScheduleDay
+
 - enabled (boolean)
 - start (string, HH:mm)
 - end (string, HH:mm)
@@ -39,6 +46,7 @@ Stored in: timetrack.schedule.v1
 - breakEnd (string, HH:mm)
 
 ### ScheduleException
+
 - id (string)
 - date (string, ISO or YYYY-MM-DD)
 - type (off | custom | block)
@@ -49,9 +57,11 @@ Stored in: timetrack.schedule.v1
 > Exceptions are supported in the store but not yet surfaced in UI.
 
 ## Client Summary (Derived)
+
 Derived from appointments; not stored directly.
 
 Fields:
+
 - id = phone
 - name
 - phone
@@ -60,6 +70,8 @@ Fields:
 - visits (number)
 
 ## User Preferences
+
 Stored in:
+
 - timetrack.locale -> uz | ru | en
 - timetrack.theme -> light | dark

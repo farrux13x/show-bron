@@ -13,13 +13,13 @@ export function useSettingsPage() {
 
   const localeModel = computed({
     get: () => locale.value,
-    set: (value) => setLocale(value as AppLocale)
+    set: (value) => setLocale(value as AppLocale),
   });
 
   const localeOptions = computed<LocaleOption[]>(() => [
     { value: 'uz', label: t('language.uz') },
     { value: 'ru', label: t('language.ru') },
-    { value: 'en', label: t('language.en') }
+    { value: 'en', label: t('language.en') },
   ]);
 
   const theme = ref<AppTheme>(getInitialTheme());
@@ -29,13 +29,13 @@ export function useSettingsPage() {
     (value) => {
       setTheme(value);
     },
-    { immediate: true }
+    { immediate: true },
   );
 
   return {
     t,
     localeModel,
     localeOptions,
-    theme
+    theme,
   };
 }

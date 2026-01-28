@@ -1,9 +1,18 @@
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { useAppointmentsStore, type Appointment } from '@/entities/appointment/model/appointments.store';
+import {
+  useAppointmentsStore,
+  type Appointment,
+} from '@/entities/appointment/model/appointments.store';
 import { useScheduleStore } from '@/entities/schedule/model/schedule.store';
-import { formatTime, getWeekDays, isSameDay, startOfDay, toDateKey } from '@/shared/lib/date';
+import {
+  formatTime,
+  getWeekDays,
+  isSameDay,
+  startOfDay,
+  toDateKey,
+} from '@/shared/lib/date';
 import { getDateLocale } from '@/shared/i18n';
 import { translateService } from '@/shared/i18n/labels';
 
@@ -25,13 +34,17 @@ export function useCalendarPage() {
   const selectedDate = ref(startOfDay(new Date()));
 
   const weekDays = computed(() => getWeekDays(selectedDate.value));
-  const visibleDays = computed(() => (viewMode.value === 'day' ? [selectedDate.value] : weekDays.value));
+  const visibleDays = computed(() =>
+    viewMode.value === 'day' ? [selectedDate.value] : weekDays.value,
+  );
 
   const dateLocale = computed(() => getDateLocale(locale.value));
   const todayDate = computed(() => new Date().getDate());
 
   const monthLabel = computed(() =>
-    new Intl.DateTimeFormat(dateLocale.value, { month: 'long' }).format(selectedDate.value)
+    new Intl.DateTimeFormat(dateLocale.value, { month: 'long' }).format(
+      selectedDate.value,
+    ),
   );
 
   const weekRange = computed(() => {
@@ -41,12 +54,17 @@ export function useCalendarPage() {
     }
     const start = days[0];
     const end = days[days.length - 1];
-    const formatter = new Intl.DateTimeFormat(dateLocale.value, { weekday: 'short', day: 'numeric' });
+    const formatter = new Intl.DateTimeFormat(dateLocale.value, {
+      weekday: 'short',
+      day: 'numeric',
+    });
     return `${formatter.format(start)} - ${formatter.format(end)}`;
   });
 
   const dayLabel = (date: Date) =>
-    new Intl.DateTimeFormat(dateLocale.value, { weekday: 'short' }).format(date);
+    new Intl.DateTimeFormat(dateLocale.value, { weekday: 'short' }).format(
+      date,
+    );
 
   const toMinutes = (time: string) => {
     const [hours, minutes] = time.split(':').map(Number);
@@ -90,14 +108,14 @@ export function useCalendarPage() {
       slots.push({
         minutes,
         label: formatTime(slotDate, localeValue),
-        isHour: mins === 0
+        isHour: mins === 0,
       });
     }
     return slots;
   });
 
   const gridStyle = computed(() => ({
-    gridTemplateColumns: `72px repeat(${visibleDays.value.length}, minmax(0, 1fr))`
+    gridTemplateColumns: `72px repeat(${visibleDays.value.length}, minmax(0, 1fr))`,
   }));
 
   const isSelectedDay = (date: Date) => isSameDay(date, selectedDate.value);
@@ -126,7 +144,13 @@ export function useCalendarPage() {
   const getSlotDate = (day: Date, minutes: number) => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
-    return new Date(day.getFullYear(), day.getMonth(), day.getDate(), hours, mins);
+    return new Date(
+      day.getFullYear(),
+      day.getMonth(),
+      day.getDate(),
+      hours,
+      mins,
+    );
   };
 
   const appointmentLookup = computed(() => {
@@ -168,8 +192,8 @@ export function useCalendarPage() {
     router.push({
       path: '/appointments/new',
       query: {
-        date: date.toISOString()
-      }
+        date: date.toISOString(),
+      },
     });
   };
 
@@ -208,6 +232,6 @@ export function useCalendarPage() {
     viewMode,
     visibleDays,
     selectDay,
-    weekRange
+    weekRange,
   };
 }

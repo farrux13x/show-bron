@@ -4,9 +4,15 @@
   >
     <div class="grid grid-cols-4 text-xs font-semibold text-slate-500">
       <RouterLink class="nav-link" to="/">{{ t('nav.today') }}</RouterLink>
-      <RouterLink class="nav-link" to="/calendar">{{ t('nav.calendar') }}</RouterLink>
-      <RouterLink class="nav-link" to="/clients">{{ t('nav.clients') }}</RouterLink>
-      <RouterLink class="nav-link" to="/settings">{{ t('nav.settings') }}</RouterLink>
+      <RouterLink class="nav-link" to="/calendar">{{
+        t('nav.calendar')
+      }}</RouterLink>
+      <RouterLink class="nav-link" to="/clients">{{
+        t('nav.clients')
+      }}</RouterLink>
+      <RouterLink class="nav-link" to="/settings">{{
+        t('nav.settings')
+      }}</RouterLink>
     </div>
   </nav>
 </template>

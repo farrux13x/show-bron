@@ -1,24 +1,24 @@
 export const messages = {
   en: {
     app: {
-      consoleTitle: 'Barber Console'
+      consoleTitle: 'Barber Console',
     },
     nav: {
       today: 'Today',
       calendar: 'Calendar',
       clients: 'Clients',
-      settings: 'Settings'
+      settings: 'Settings',
     },
     language: {
       label: 'Language',
       en: 'English',
       ru: 'Russian',
-      uz: 'Uzbek'
+      uz: 'Uzbek',
     },
     theme: {
       label: 'Theme',
       light: 'Light',
-      dark: 'Dark'
+      dark: 'Dark',
     },
     actions: {
       newBooking: 'New booking',
@@ -40,13 +40,13 @@ export const messages = {
       addService: 'Add service',
       viewStatistics: 'View statistics',
       signIn: 'Sign in',
-      continueDashboard: 'Continue to the dashboard'
+      continueDashboard: 'Continue to the dashboard',
     },
     today: {
       label: 'Today',
       title: 'Run the day',
       subtitle: 'Tap to update status, call, or edit in seconds.',
-      empty: "No bookings yet. Tap \"{action}\" to fill the day."
+      empty: 'No bookings yet. Tap "{action}" to fill the day.',
     },
     calendar: {
       goToday: 'Go to today',
@@ -54,7 +54,7 @@ export const messages = {
       weekView: 'Week view',
       previous: 'Previous',
       next: 'Next',
-      addBooking: 'Add booking'
+      addBooking: 'Add booking',
     },
     appointment: {
       label: 'Booking',
@@ -63,7 +63,7 @@ export const messages = {
       notFound: 'We could not find that appointment.',
       status: 'Status: {status}',
       conflict:
-        'Conflict warning: this overlaps another booking. You can still save if you want to override.'
+        'Conflict warning: this overlaps another booking. You can still save if you want to override.',
     },
     form: {
       clientName: 'Client name',
@@ -78,14 +78,14 @@ export const messages = {
         name: 'Name',
         phone: 'Phone',
         price: 'Optional',
-        notes: 'Notes'
-      }
+        notes: 'Notes',
+      },
     },
     services: {
       haircut: 'Haircut',
       beard: 'Beard',
       haircutBeard: 'Haircut + Beard',
-      kids: 'Kids'
+      kids: 'Kids',
     },
     validation: {
       title: 'Check appointment details',
@@ -93,19 +93,19 @@ export const messages = {
       nonWorkingDay: 'This day is not a working day.',
       outsideWorkingHours: 'Selected time is outside working hours.',
       duringBreak: 'Selected time overlaps the break.',
-      conflict: 'Selected time is already booked.'
+      conflict: 'Selected time is already booked.',
     },
     status: {
       booked: 'Booked',
       arrived: 'Arrived',
       cancelled: 'Cancelled',
-      noShow: 'No-show'
+      noShow: 'No-show',
     },
     time: {
       minutesShort: '{count} min',
       minutesLong: '{count} minutes',
       to: 'to',
-      break: 'Break'
+      break: 'Break',
     },
     clients: {
       label: 'Clients',
@@ -118,7 +118,7 @@ export const messages = {
       lastService: 'Last service',
       visits: 'Visits',
       appointmentHistory: 'Appointment history',
-      noHistory: 'No appointment history yet.'
+      noHistory: 'No appointment history yet.',
     },
     settings: {
       label: 'Settings',
@@ -136,7 +136,7 @@ export const messages = {
       account: 'Account',
       accountText: 'Single-user barber profile.',
       data: 'Data',
-      dataText: 'Export or wipe local demo data.'
+      dataText: 'Export or wipe local demo data.',
     },
     schedule: {
       weeklyTemplate: 'Weekly template',
@@ -145,7 +145,8 @@ export const messages = {
       bookingDefaults: 'Booking defaults',
       defaultServiceDuration: 'Default service duration',
       bookingRules: 'Booking rules',
-      bookingRulesText: 'Double bookings are blocked, with override warning enabled.'
+      bookingRulesText:
+        'Double bookings are blocked, with override warning enabled.',
     },
     days: {
       mon: 'Mon',
@@ -154,7 +155,7 @@ export const messages = {
       thu: 'Thu',
       fri: 'Fri',
       sat: 'Sat',
-      sun: 'Sun'
+      sun: 'Sun',
     },
     login: {
       welcomeBack: 'Welcome back',
@@ -167,7 +168,7 @@ export const messages = {
       bullet2: 'Book a client in under 10 seconds with defaults.',
       bullet3: 'Run the day from a clean Today list.',
       livePreview: 'Live preview',
-      livePreviewText: '12:30 PM - Luis Carter - Beard - Arrived'
+      livePreviewText: '12:30 PM - Luis Carter - Beard - Arrived',
     },
     servicesPage: {
       label: 'Services',
@@ -178,7 +179,7 @@ export const messages = {
       namePlaceholder: 'e.g. Haircut',
       priceLabel: 'Price',
       pricePlaceholder: 'e.g. 50',
-      empty: 'No services yet. Add your first service to get started.'
+      empty: 'No services yet. Add your first service to get started.',
     },
     statistics: {
       label: 'Dashboard',
@@ -188,50 +189,50 @@ export const messages = {
       noRevenue: 'No revenue',
       period: {
         week: 'This week',
-        month: 'This month'
+        month: 'This month',
       },
       kpi: {
         customers: 'Customers',
         revenue: 'Total revenue',
         avgRevenue: 'Avg revenue',
         perCustomer: 'per customer',
-        topService: 'Top service'
+        topService: 'Top service',
       },
       charts: {
         customersPerDay: 'Customers per day',
         revenuePerDay: 'Revenue per day',
         revenueByService: 'Revenue by service',
-        customersByService: 'Customers by service'
+        customersByService: 'Customers by service',
       },
       table: {
         title: 'Service performance',
         service: 'Service',
         customers: 'Customers',
         revenue: 'Revenue',
-        avgTicket: 'Average ticket'
-      }
-    }
+        avgTicket: 'Average ticket',
+      },
+    },
   },
   uz: {
     app: {
-      consoleTitle: 'Sartarosh konsoli'
+      consoleTitle: 'Sartarosh konsoli',
     },
     nav: {
       today: 'Bugun',
       calendar: 'Kalendar',
       clients: 'Mijozlar',
-      settings: 'Sozlamalar'
+      settings: 'Sozlamalar',
     },
     language: {
       label: 'Til',
       en: 'Inglizcha',
       ru: 'Ruscha',
-      uz: "O'zbekcha"
+      uz: "O'zbekcha",
     },
     theme: {
       label: 'Mavzu',
       light: "Yorug'",
-      dark: "Qorong'i"
+      dark: "Qorong'i",
     },
     actions: {
       newBooking: 'Yangi bron',
@@ -253,13 +254,14 @@ export const messages = {
       addService: "Xizmat qo'shish",
       viewStatistics: "Statistikani ko'rish",
       signIn: 'Kirish',
-      continueDashboard: "Boshqaruv paneliga o'tish"
+      continueDashboard: "Boshqaruv paneliga o'tish",
     },
     today: {
       label: 'Bugun',
       title: 'Kunni boshqaring',
-      subtitle: "Holatni yangilash, qo'ng'iroq qilish yoki tahrirlash uchun bosing.",
-      empty: 'Hali bronlar yo\'q. Kunni to\'ldirish uchun "{action}"ni bosing.'
+      subtitle:
+        "Holatni yangilash, qo'ng'iroq qilish yoki tahrirlash uchun bosing.",
+      empty: 'Hali bronlar yo\'q. Kunni to\'ldirish uchun "{action}"ni bosing.',
     },
     calendar: {
       goToday: "Bugun sanasiga o'tish",
@@ -267,7 +269,7 @@ export const messages = {
       weekView: "Hafta ko'rinishi",
       previous: 'Oldingi',
       next: 'Keyingi',
-      addBooking: "Bron qo'shish"
+      addBooking: "Bron qo'shish",
     },
     appointment: {
       label: 'Bron',
@@ -276,7 +278,7 @@ export const messages = {
       notFound: 'Ushbu uchrashuv topilmadi.',
       status: 'Holat: {status}',
       conflict:
-        "To'qnashuv ogohlantirishi: bu boshqa bron bilan ustma-ust keladi. Xohlasangiz baribir saqlashingiz mumkin."
+        "To'qnashuv ogohlantirishi: bu boshqa bron bilan ustma-ust keladi. Xohlasangiz baribir saqlashingiz mumkin.",
     },
     form: {
       clientName: 'Mijoz ismi',
@@ -291,14 +293,14 @@ export const messages = {
         name: 'Ism',
         phone: 'Telefon',
         price: 'Ixtiyoriy',
-        notes: 'Izohlar'
-      }
+        notes: 'Izohlar',
+      },
     },
     services: {
       haircut: 'Soch olish',
       beard: 'Soqol',
       haircutBeard: 'Soch olish + Soqol',
-      kids: 'Bolalar'
+      kids: 'Bolalar',
     },
     validation: {
       title: 'Uchrashuv ma`lumotlarini tekshiring',
@@ -306,19 +308,19 @@ export const messages = {
       nonWorkingDay: 'Bu kun ish kuni emas.',
       outsideWorkingHours: 'Tanlangan vaqt ish soatlaridan tashqarida.',
       duringBreak: 'Tanlangan vaqt tanaffusga to`g`ri keladi.',
-      conflict: 'Tanlangan vaqt band qilingan.'
+      conflict: 'Tanlangan vaqt band qilingan.',
     },
     status: {
       booked: 'Bron qilingan',
       arrived: 'Keldi',
       cancelled: 'Bekor qilindi',
-      noShow: 'Kelmagan'
+      noShow: 'Kelmagan',
     },
     time: {
       minutesShort: '{count} daq.',
       minutesLong: '{count} daqiqa',
       to: 'gacha',
-      break: 'Tanaffus'
+      break: 'Tanaffus',
     },
     clients: {
       label: 'Mijozlar',
@@ -331,7 +333,7 @@ export const messages = {
       lastService: "So'nggi xizmat",
       visits: 'Tashriflar',
       appointmentHistory: 'Uchrashuvlar tarixi',
-      noHistory: "Hali uchrashuvlar tarixi yo'q."
+      noHistory: "Hali uchrashuvlar tarixi yo'q.",
     },
     settings: {
       label: 'Sozlamalar',
@@ -349,7 +351,7 @@ export const messages = {
       account: 'Hisob',
       accountText: 'Yakka foydalanuvchi sartarosh profili.',
       data: "Ma'lumotlar",
-      dataText: "Mahalliy demo ma'lumotlarini eksport qilish yoki tozalash."
+      dataText: "Mahalliy demo ma'lumotlarini eksport qilish yoki tozalash.",
     },
     schedule: {
       weeklyTemplate: 'Haftalik shablon',
@@ -358,7 +360,8 @@ export const messages = {
       bookingDefaults: "Bron bo'yicha standartlar",
       defaultServiceDuration: 'Standart xizmat davomiyligi',
       bookingRules: 'Bron qoidalari',
-      bookingRulesText: 'Ikki karra bronlar bloklanadi, ogohlantirish bilan bekor qilish mumkin.'
+      bookingRulesText:
+        'Ikki karra bronlar bloklanadi, ogohlantirish bilan bekor qilish mumkin.',
     },
     days: {
       mon: 'Du',
@@ -367,7 +370,7 @@ export const messages = {
       thu: 'Pa',
       fri: 'Ju',
       sat: 'Sh',
-      sun: 'Ya'
+      sun: 'Ya',
     },
     login: {
       welcomeBack: 'Xush kelibsiz',
@@ -376,11 +379,12 @@ export const messages = {
       phoneOrEmail: 'Telefon yoki email',
       passcode: 'Parol kodi',
       whyTitle: 'Nega sartaroshlar Timetrackni tanlaydi',
-      bullet1: "Haftalik shablonni bir marta sozlang, kerak bo'lsa o'zgartiring.",
+      bullet1:
+        "Haftalik shablonni bir marta sozlang, kerak bo'lsa o'zgartiring.",
       bullet2: 'Standartlar bilan mijozni 10 soniyadan kam vaqtda bron qiling.',
       bullet3: "Kunni toza Bugun ro'yxati orqali boshqaring.",
       livePreview: "Jonli ko'rinish",
-      livePreviewText: '12:30 - Luis Carter - Soqol - Keldi'
+      livePreviewText: '12:30 - Luis Carter - Soqol - Keldi',
     },
     servicesPage: {
       label: 'Xizmatlar',
@@ -391,7 +395,7 @@ export const messages = {
       namePlaceholder: 'Masalan: Soch olish',
       priceLabel: 'Narx',
       pricePlaceholder: 'Masalan: 50',
-      empty: "Hali xizmatlar yo'q. Boshlash uchun birinchi xizmatni qo'shing."
+      empty: "Hali xizmatlar yo'q. Boshlash uchun birinchi xizmatni qo'shing.",
     },
     statistics: {
       label: 'Dashboard',
@@ -401,50 +405,50 @@ export const messages = {
       noRevenue: "Daromad yo'q",
       period: {
         week: 'Joriy hafta',
-        month: 'Joriy oy'
+        month: 'Joriy oy',
       },
       kpi: {
         customers: 'Mijozlar',
         revenue: 'Jami daromad',
         avgRevenue: "O'rtacha daromad",
         perCustomer: 'har bir mijoz',
-        topService: 'Eng top xizmat'
+        topService: 'Eng top xizmat',
       },
       charts: {
         customersPerDay: 'Kunlik mijozlar',
         revenuePerDay: 'Kunlik daromad',
         revenueByService: "Xizmat bo'yicha daromad",
-        customersByService: "Xizmat bo'yicha mijozlar"
+        customersByService: "Xizmat bo'yicha mijozlar",
       },
       table: {
         title: "Xizmat ko'rsatkichlari",
         service: 'Xizmat',
         customers: 'Mijozlar',
         revenue: 'Daromad',
-        avgTicket: "O'rtacha chek"
-      }
-    }
+        avgTicket: "O'rtacha chek",
+      },
+    },
   },
   ru: {
     app: {
-      consoleTitle: 'Консоль барбера'
+      consoleTitle: 'Консоль барбера',
     },
     nav: {
       today: 'Сегодня',
       calendar: 'Календарь',
       clients: 'Клиенты',
-      settings: 'Настройки'
+      settings: 'Настройки',
     },
     language: {
       label: 'Язык',
       en: 'Английский',
       ru: 'Русский',
-      uz: 'Узбекский'
+      uz: 'Узбекский',
     },
     theme: {
       label: 'Тема',
       light: 'Светлая',
-      dark: 'Темная'
+      dark: 'Темная',
     },
     actions: {
       newBooking: 'Новая запись',
@@ -466,13 +470,14 @@ export const messages = {
       addService: 'Добавить услугу',
       viewStatistics: 'Посмотреть статистику',
       signIn: 'Войти',
-      continueDashboard: 'Перейти в панель'
+      continueDashboard: 'Перейти в панель',
     },
     today: {
       label: 'Сегодня',
       title: 'Управляйте днем',
-      subtitle: 'Нажмите, чтобы обновить статус, позвонить или отредактировать за секунды.',
-      empty: 'Пока нет записей. Нажмите "{action}", чтобы заполнить день.'
+      subtitle:
+        'Нажмите, чтобы обновить статус, позвонить или отредактировать за секунды.',
+      empty: 'Пока нет записей. Нажмите "{action}", чтобы заполнить день.',
     },
     calendar: {
       goToday: 'Перейти к сегодняшнему дню',
@@ -480,7 +485,7 @@ export const messages = {
       weekView: 'Недельный вид',
       previous: 'Назад',
       next: 'Вперед',
-      addBooking: 'Добавить запись'
+      addBooking: 'Добавить запись',
     },
     appointment: {
       label: 'Запись',
@@ -489,7 +494,7 @@ export const messages = {
       notFound: 'Не удалось найти эту запись.',
       status: 'Статус: {status}',
       conflict:
-        'Предупреждение о конфликте: это пересекается с другой записью. Вы все равно можете сохранить, если хотите переопределить.'
+        'Предупреждение о конфликте: это пересекается с другой записью. Вы все равно можете сохранить, если хотите переопределить.',
     },
     form: {
       clientName: 'Имя клиента',
@@ -504,14 +509,14 @@ export const messages = {
         name: 'Имя',
         phone: 'Телефон',
         price: 'Необязательно',
-        notes: 'Заметки'
-      }
+        notes: 'Заметки',
+      },
     },
     services: {
       haircut: 'Стрижка',
       beard: 'Борода',
       haircutBeard: 'Стрижка + Борода',
-      kids: 'Детская'
+      kids: 'Детская',
     },
     validation: {
       title: 'Проверьте детали записи',
@@ -519,19 +524,19 @@ export const messages = {
       nonWorkingDay: 'Этот день не является рабочим.',
       outsideWorkingHours: 'Выбранное время вне рабочих часов.',
       duringBreak: 'Выбранное время попадает на перерыв.',
-      conflict: 'Выбранное время уже занято.'
+      conflict: 'Выбранное время уже занято.',
     },
     status: {
       booked: 'Записан',
       arrived: 'Пришел',
       cancelled: 'Отменен',
-      noShow: 'Не пришел'
+      noShow: 'Не пришел',
     },
     time: {
       minutesShort: '{count} мин',
       minutesLong: '{count} минут',
       to: 'до',
-      break: 'Перерыв'
+      break: 'Перерыв',
     },
     clients: {
       label: 'Клиенты',
@@ -544,7 +549,7 @@ export const messages = {
       lastService: 'Последняя услуга',
       visits: 'Визиты',
       appointmentHistory: 'История записей',
-      noHistory: 'Истории записей пока нет.'
+      noHistory: 'Истории записей пока нет.',
     },
     settings: {
       label: 'Настройки',
@@ -562,7 +567,7 @@ export const messages = {
       account: 'Аккаунт',
       accountText: 'Профиль барбера для одного пользователя.',
       data: 'Данные',
-      dataText: 'Экспортировать или очистить локальные демо-данные.'
+      dataText: 'Экспортировать или очистить локальные демо-данные.',
     },
     schedule: {
       weeklyTemplate: 'Недельный шаблон',
@@ -571,7 +576,8 @@ export const messages = {
       bookingDefaults: 'Настройки записи',
       defaultServiceDuration: 'Стандартная длительность услуги',
       bookingRules: 'Правила записи',
-      bookingRulesText: 'Двойные записи блокируются, с предупреждением об исключении.'
+      bookingRulesText:
+        'Двойные записи блокируются, с предупреждением об исключении.',
     },
     days: {
       mon: 'Пн',
@@ -580,7 +586,7 @@ export const messages = {
       thu: 'Чт',
       fri: 'Пт',
       sat: 'Сб',
-      sun: 'Вс'
+      sun: 'Вс',
     },
     login: {
       welcomeBack: 'С возвращением',
@@ -589,11 +595,13 @@ export const messages = {
       phoneOrEmail: 'Телефон или email',
       passcode: 'Код доступа',
       whyTitle: 'Почему барберы выбирают Timetrack',
-      bullet1: 'Настройте недельный шаблон один раз, при необходимости корректируйте.',
-      bullet2: 'Записывайте клиента меньше чем за 10 секунд с настройками по умолчанию.',
+      bullet1:
+        'Настройте недельный шаблон один раз, при необходимости корректируйте.',
+      bullet2:
+        'Записывайте клиента меньше чем за 10 секунд с настройками по умолчанию.',
       bullet3: 'Управляйте днем через чистый список Сегодня.',
       livePreview: 'Живой пример',
-      livePreviewText: '12:30 - Luis Carter - Борода - Пришел'
+      livePreviewText: '12:30 - Luis Carter - Борода - Пришел',
     },
     servicesPage: {
       label: 'Услуги',
@@ -604,7 +612,7 @@ export const messages = {
       namePlaceholder: 'например: Стрижка',
       priceLabel: 'Цена',
       pricePlaceholder: 'например: 50',
-      empty: 'Услуг пока нет. Добавьте первую услугу, чтобы начать.'
+      empty: 'Услуг пока нет. Добавьте первую услугу, чтобы начать.',
     },
     statistics: {
       label: 'Панель',
@@ -614,29 +622,28 @@ export const messages = {
       noRevenue: 'Нет дохода',
       period: {
         week: 'Эта неделя',
-        month: 'Этот месяц'
+        month: 'Этот месяц',
       },
       kpi: {
         customers: 'Клиенты',
         revenue: 'Общий доход',
         avgRevenue: 'Средний доход',
         perCustomer: 'на клиента',
-        topService: 'Топ-услуга'
+        topService: 'Топ-услуга',
       },
       charts: {
         customersPerDay: 'Клиенты по дням',
         revenuePerDay: 'Доход по дням',
         revenueByService: 'Доход по услугам',
-        customersByService: 'Клиенты по услугам'
+        customersByService: 'Клиенты по услугам',
       },
       table: {
         title: 'Эффективность услуг',
         service: 'Услуга',
         customers: 'Клиенты',
         revenue: 'Доход',
-        avgTicket: 'Средний чек'
-      }
-    }
-  }
-
+        avgTicket: 'Средний чек',
+      },
+    },
+  },
 };

@@ -2,7 +2,13 @@ import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useAppointmentsStore } from '@/entities/appointment/model/appointments.store';
 import { useServicesStore } from '@/entities/service/model/services.store';
-import { formatDate, fromISO, getWeekDays, startOfDay, toDateKey } from '@/shared/lib/date';
+import {
+  formatDate,
+  fromISO,
+  getWeekDays,
+  startOfDay,
+  toDateKey,
+} from '@/shared/lib/date';
 import { translateService } from '@/shared/i18n/labels';
 
 type Period = 'week' | 'month';
@@ -40,7 +46,9 @@ export function useStatisticsPage() {
     return days;
   });
 
-  const periodKeys = computed(() => new Set(periodDays.value.map((date) => toDateKey(date))));
+  const periodKeys = computed(
+    () => new Set(periodDays.value.map((date) => toDateKey(date))),
+  );
 
   const appointmentsInPeriod = computed(() =>
     appointmentsStore.appointments.filter((appointment) => {
@@ -49,7 +57,7 @@ export function useStatisticsPage() {
       }
       const dateKey = toDateKey(fromISO(appointment.startAt));
       return periodKeys.value.has(dateKey);
-    })
+    }),
   );
 
   const getAppointmentRevenue = (service: string, price?: number) =>
@@ -58,10 +66,15 @@ export function useStatisticsPage() {
   const totalCustomers = computed(() => appointmentsInPeriod.value.length);
 
   const totalRevenue = computed(() =>
-    appointmentsInPeriod.value.reduce((sum, item) => sum + getAppointmentRevenue(item.service, item.price), 0)
+    appointmentsInPeriod.value.reduce(
+      (sum, item) => sum + getAppointmentRevenue(item.service, item.price),
+      0,
+    ),
   );
 
-  const avgRevenue = computed(() => (totalCustomers.value ? totalRevenue.value / totalCustomers.value : 0));
+  const avgRevenue = computed(() =>
+    totalCustomers.value ? totalRevenue.value / totalCustomers.value : 0,
+  );
 
   const periodLabel = computed(() => {
     const days = periodDays.value;
@@ -74,7 +87,10 @@ export function useStatisticsPage() {
   });
 
   const serviceStats = computed<ServiceStat[]>(() => {
-    const map = new Map<string, { name: string; customers: number; revenue: number }>();
+    const map = new Map<
+      string,
+      { name: string; customers: number; revenue: number }
+    >();
     servicesStore.services.forEach((service) => {
       map.set(service.name, { name: service.name, customers: 0, revenue: 0 });
     });
@@ -89,18 +105,23 @@ export function useStatisticsPage() {
         return;
       }
       entry.customers += 1;
-      entry.revenue += getAppointmentRevenue(appointment.service, appointment.price);
+      entry.revenue += getAppointmentRevenue(
+        appointment.service,
+        appointment.price,
+      );
     });
 
     return Array.from(map.values())
       .map((item) => ({
         ...item,
-        avgTicket: item.customers ? item.revenue / item.customers : 0
+        avgTicket: item.customers ? item.revenue / item.customers : 0,
       }))
       .sort((a, b) => b.revenue - a.revenue);
   });
 
-  const topService = computed(() => serviceStats.value.find((item) => item.revenue > 0));
+  const topService = computed(() =>
+    serviceStats.value.find((item) => item.revenue > 0),
+  );
   const topServiceName = computed(() => topService.value?.name ?? '');
   const topServiceRevenue = computed(() => topService.value?.revenue ?? 0);
 
@@ -117,16 +138,24 @@ export function useStatisticsPage() {
     const totals = new Map<string, number>();
     appointmentsInPeriod.value.forEach((appointment) => {
       const key = toDateKey(fromISO(appointment.startAt));
-      totals.set(key, (totals.get(key) ?? 0) + getAppointmentRevenue(appointment.service, appointment.price));
+      totals.set(
+        key,
+        (totals.get(key) ?? 0) +
+          getAppointmentRevenue(appointment.service, appointment.price),
+      );
     });
     return periodDays.value.map((day) => totals.get(toDateKey(day)) ?? 0);
   });
 
-  const maxRevenue = computed(() => Math.max(0, ...serviceStats.value.map((item) => item.revenue)));
-  const maxCustomers = computed(() => Math.max(0, ...serviceStats.value.map((item) => item.customers)));
+  const maxRevenue = computed(() =>
+    Math.max(0, ...serviceStats.value.map((item) => item.revenue)),
+  );
+  const maxCustomers = computed(() =>
+    Math.max(0, ...serviceStats.value.map((item) => item.customers)),
+  );
 
   const barStyle = (value: number, max: number) => ({
-    width: `${max > 0 ? (value / max) * 100 : 0}%`
+    width: `${max > 0 ? (value / max) * 100 : 0}%`,
   });
 
   const buildLinePoints = (values: number[]) => {
@@ -137,7 +166,8 @@ export function useStatisticsPage() {
       return '';
     }
     const max = Math.max(1, ...values);
-    const step = values.length > 1 ? (width - padding * 2) / (values.length - 1) : 0;
+    const step =
+      values.length > 1 ? (width - padding * 2) / (values.length - 1) : 0;
     return values
       .map((value, index) => {
         const x = padding + step * index;
@@ -147,12 +177,14 @@ export function useStatisticsPage() {
       .join(' ');
   };
 
-  const customerLinePoints = computed(() => buildLinePoints(customersByDay.value));
+  const customerLinePoints = computed(() =>
+    buildLinePoints(customersByDay.value),
+  );
   const revenueLinePoints = computed(() => buildLinePoints(revenueByDay.value));
 
   const formatCurrency = (value: number) => {
     const formatted = new Intl.NumberFormat('ru-RU', {
-      maximumFractionDigits: 0
+      maximumFractionDigits: 0,
     })
       .format(value)
       .replace(/\u00A0/g, ' ');
@@ -175,6 +207,6 @@ export function useStatisticsPage() {
     topServiceRevenue,
     totalCustomers,
     totalRevenue,
-    translateService
+    translateService,
   };
 }

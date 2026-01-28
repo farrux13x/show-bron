@@ -1,9 +1,11 @@
 ﻿# Product Requirements Document (PRD)
 
 ## Project Overview
+
 Timetrack is a single-page scheduling console for barbers. It focuses on fast, one-hand appointment booking, a clear daily plan, and a reusable weekly schedule template. The app runs entirely in the browser and stores data locally (no backend yet). It supports multiple languages (uz/ru/en) and light/dark themes.
 
 ## Core Features (Implemented)
+
 - Today view: See today’s bookings, update status (arrived/cancelled/no-show), call client, or edit quickly.
 - Calendar (day/week): Grid view with time slots; disabled slots respect working hours and breaks. Click to create or edit a booking.
 - Appointment management: Create, edit, delete bookings; conflict detection warns on overlaps.
@@ -15,7 +17,9 @@ Timetrack is a single-page scheduling console for barbers. It focuses on fast, o
 - Demo data: Seed sample appointments from Today view.
 
 ## User Roles & Flows
+
 ### Primary user
+
 - Barber / single-user operator
   - Onboarding flow: Set weekly schedule template -> add services/prices -> start booking.
   - Daily flow: Open Today -> update statuses -> call/edit -> add bookings quickly.
@@ -25,9 +29,11 @@ Timetrack is a single-page scheduling console for barbers. It focuses on fast, o
   - Preferences: Update language/theme; manage services and schedule.
 
 ### Secondary user (implicit)
+
 - Client is not a system user; client data is captured via booking form and used for history.
 
 ## Future Potential (Gaps / Next)
+
 - Authentication & multi-user accounts (currently single-user, local-only).
 - Backend sync & multi-device support (currently localStorage).
 - Reminders/notifications (labels exist; no implementation).

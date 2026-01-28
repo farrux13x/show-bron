@@ -18,20 +18,20 @@ export const formatDate = (date: Date, locale?: string): string =>
   new Intl.DateTimeFormat(getDateLocale(locale), {
     weekday: 'short',
     month: 'short',
-    day: 'numeric'
+    day: 'numeric',
   }).format(date);
 
 export const formatTime = (date: Date, locale?: string): string =>
   new Intl.DateTimeFormat(getDateLocale(locale), {
     hour: 'numeric',
-    minute: '2-digit'
+    minute: '2-digit',
   }).format(date);
 
 export const formatLongDate = (date: Date, locale?: string): string =>
   new Intl.DateTimeFormat(getDateLocale(locale), {
     weekday: 'long',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   }).format(date);
 
 export const addMinutes = (date: Date, minutes: number): Date =>

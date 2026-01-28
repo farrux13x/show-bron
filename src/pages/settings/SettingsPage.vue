@@ -5,19 +5,29 @@
         <p class="label">{{ t('settings.label') }}</p>
         <h2 class="font-display text-2xl">{{ t('settings.title') }}</h2>
       </div>
-      <RouterLink to="/schedule-setup" class="btn-primary">{{ t('actions.editWeeklySchedule') }}</RouterLink>
+      <RouterLink to="/schedule-setup" class="btn-primary">{{
+        t('actions.editWeeklySchedule')
+      }}</RouterLink>
     </div>
 
     <div class="mt-6 grid gap-4 md:grid-cols-2">
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('settings.services') }}</p>
-        <p class="mt-2 text-sm text-slate-600">{{ t('settings.servicesText') }}</p>
-        <RouterLink to="/services" class="btn-muted mt-4">{{ t('actions.manageServices') }}</RouterLink>
+        <p class="mt-2 text-sm text-slate-600">
+          {{ t('settings.servicesText') }}
+        </p>
+        <RouterLink to="/services" class="btn-muted mt-4">{{
+          t('actions.manageServices')
+        }}</RouterLink>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('settings.statistics') }}</p>
-        <p class="mt-2 text-sm text-slate-600">{{ t('settings.statisticsText') }}</p>
-        <RouterLink to="/statistics" class="btn-muted mt-4">{{ t('actions.viewStatistics') }}</RouterLink>
+        <p class="mt-2 text-sm text-slate-600">
+          {{ t('settings.statisticsText') }}
+        </p>
+        <RouterLink to="/statistics" class="btn-muted mt-4">{{
+          t('actions.viewStatistics')
+        }}</RouterLink>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('language.label') }}</p>
@@ -26,7 +36,11 @@
           class="input mt-2 text-sm font-semibold text-slate-600"
           :aria-label="t('language.label')"
         >
-          <option v-for="option in localeOptions" :key="option.value" :value="option.value">
+          <option
+            v-for="option in localeOptions"
+            :key="option.value"
+            :value="option.value"
+          >
             {{ option.label }}
           </option>
         </select>

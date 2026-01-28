@@ -10,7 +10,7 @@ const DEFAULT_LOCALE: AppLocale = 'uz';
 const DATE_LOCALE_MAP: Record<AppLocale, string> = {
   uz: 'uz-UZ',
   ru: 'ru-RU',
-  en: 'en-US'
+  en: 'en-US',
 };
 
 const isAppLocale = (value: string | null | undefined): value is AppLocale =>
@@ -27,11 +27,13 @@ export const i18n = createI18n({
   legacy: false,
   locale: initialLocale,
   fallbackLocale: 'en',
-  messages
+  messages,
 });
 
 export const getDateLocale = (locale?: string): string => {
-  const resolved = isAppLocale(locale) ? locale : (i18n.global.locale.value as AppLocale);
+  const resolved = isAppLocale(locale)
+    ? locale
+    : (i18n.global.locale.value as AppLocale);
   return DATE_LOCALE_MAP[resolved] ?? DATE_LOCALE_MAP[DEFAULT_LOCALE];
 };
 

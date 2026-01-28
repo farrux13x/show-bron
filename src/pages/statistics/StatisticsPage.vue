@@ -34,21 +34,35 @@
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('statistics.kpi.revenue') }}</p>
-        <p class="mt-2 text-2xl font-semibold text-ink">{{ formatCurrency(totalRevenue) }}</p>
+        <p class="mt-2 text-2xl font-semibold text-ink">
+          {{ formatCurrency(totalRevenue) }}
+        </p>
         <p class="text-xs text-slate-500">{{ periodLabel }}</p>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('statistics.kpi.avgRevenue') }}</p>
-        <p class="mt-2 text-2xl font-semibold text-ink">{{ formatCurrency(avgRevenue) }}</p>
-        <p class="text-xs text-slate-500">{{ t('statistics.kpi.perCustomer') }}</p>
+        <p class="mt-2 text-2xl font-semibold text-ink">
+          {{ formatCurrency(avgRevenue) }}
+        </p>
+        <p class="text-xs text-slate-500">
+          {{ t('statistics.kpi.perCustomer') }}
+        </p>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('statistics.kpi.topService') }}</p>
         <p class="mt-2 text-lg font-semibold text-ink">
-          {{ topServiceName ? translateService(topServiceName, t) : t('statistics.none') }}
+          {{
+            topServiceName
+              ? translateService(topServiceName, t)
+              : t('statistics.none')
+          }}
         </p>
         <p class="text-xs text-slate-500">
-          {{ topServiceRevenue ? formatCurrency(topServiceRevenue) : t('statistics.noRevenue') }}
+          {{
+            topServiceRevenue
+              ? formatCurrency(topServiceRevenue)
+              : t('statistics.noRevenue')
+          }}
         </p>
       </div>
     </div>
@@ -60,7 +74,10 @@
           <p class="text-xs text-slate-400">{{ periodLabel }}</p>
         </div>
         <div class="mt-3">
-          <LineChartIcon class="h-40 w-full text-ember" :points="customerLinePoints" />
+          <LineChartIcon
+            class="h-40 w-full text-ember"
+            :points="customerLinePoints"
+          />
         </div>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
@@ -69,22 +86,32 @@
           <p class="text-xs text-slate-400">{{ periodLabel }}</p>
         </div>
         <div class="mt-3">
-          <LineChartIcon class="h-40 w-full text-emerald-500" :points="revenueLinePoints" />
+          <LineChartIcon
+            class="h-40 w-full text-emerald-500"
+            :points="revenueLinePoints"
+          />
         </div>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <div class="flex items-center justify-between">
           <p class="label">{{ t('statistics.charts.revenueByService') }}</p>
-          <p class="text-xs text-slate-400">{{ t('statistics.kpi.revenue') }}</p>
+          <p class="text-xs text-slate-400">
+            {{ t('statistics.kpi.revenue') }}
+          </p>
         </div>
         <div class="mt-4 space-y-3">
           <div v-for="item in serviceStats" :key="item.name" class="space-y-1">
-            <div class="flex items-center justify-between text-xs text-slate-500">
+            <div
+              class="flex items-center justify-between text-xs text-slate-500"
+            >
               <span>{{ translateService(item.name, t) }}</span>
               <span>{{ formatCurrency(item.revenue) }}</span>
             </div>
             <div class="h-2 rounded-full bg-slate-100">
-              <div class="h-2 rounded-full bg-emerald-400" :style="barStyle(item.revenue, maxRevenue)" />
+              <div
+                class="h-2 rounded-full bg-emerald-400"
+                :style="barStyle(item.revenue, maxRevenue)"
+              />
             </div>
           </div>
         </div>
@@ -92,16 +119,23 @@
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <div class="flex items-center justify-between">
           <p class="label">{{ t('statistics.charts.customersByService') }}</p>
-          <p class="text-xs text-slate-400">{{ t('statistics.kpi.customers') }}</p>
+          <p class="text-xs text-slate-400">
+            {{ t('statistics.kpi.customers') }}
+          </p>
         </div>
         <div class="mt-4 space-y-3">
           <div v-for="item in serviceStats" :key="item.name" class="space-y-1">
-            <div class="flex items-center justify-between text-xs text-slate-500">
+            <div
+              class="flex items-center justify-between text-xs text-slate-500"
+            >
               <span>{{ translateService(item.name, t) }}</span>
               <span>{{ item.customers }}</span>
             </div>
             <div class="h-2 rounded-full bg-slate-100">
-              <div class="h-2 rounded-full bg-amber-400" :style="barStyle(item.customers, maxCustomers)" />
+              <div
+                class="h-2 rounded-full bg-amber-400"
+                :style="barStyle(item.customers, maxCustomers)"
+              />
             </div>
           </div>
         </div>
@@ -121,8 +155,14 @@
             </tr>
           </thead>
           <tbody class="text-slate-700">
-            <tr v-for="item in serviceStats" :key="item.name" class="border-t border-fog/60">
-              <td class="py-3 pr-6 font-semibold text-ink">{{ translateService(item.name, t) }}</td>
+            <tr
+              v-for="item in serviceStats"
+              :key="item.name"
+              class="border-t border-fog/60"
+            >
+              <td class="py-3 pr-6 font-semibold text-ink">
+                {{ translateService(item.name, t) }}
+              </td>
               <td class="py-3 pr-6">{{ item.customers }}</td>
               <td class="py-3 pr-6">{{ formatCurrency(item.revenue) }}</td>
               <td class="py-3">{{ formatCurrency(item.avgTicket) }}</td>
@@ -154,6 +194,6 @@ const {
   topServiceRevenue,
   totalCustomers,
   totalRevenue,
-  translateService
+  translateService,
 } = useStatisticsPage();
 </script>

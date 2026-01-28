@@ -1,7 +1,10 @@
 import { computed, ref, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { useAppointmentsStore, type Appointment } from '@/entities/appointment/model/appointments.store';
+import {
+  useAppointmentsStore,
+  type Appointment,
+} from '@/entities/appointment/model/appointments.store';
 
 export function useAppointmentFormPage() {
   const route = useRoute();
@@ -10,10 +13,14 @@ export function useAppointmentFormPage() {
   const { t } = useI18n();
 
   const isEdit = computed(() => typeof route.params.id === 'string');
-  const pageTitle = computed(() => (isEdit.value ? t('appointment.edit') : t('appointment.add')));
+  const pageTitle = computed(() =>
+    isEdit.value ? t('appointment.edit') : t('appointment.add'),
+  );
   const ready = ref(false);
   const initial = ref<Partial<Appointment> | undefined>(undefined);
-  const notFound = computed(() => isEdit.value && ready.value && !initial.value);
+  const notFound = computed(
+    () => isEdit.value && ready.value && !initial.value,
+  );
 
   watchEffect(() => {
     ready.value = false;
@@ -30,17 +37,18 @@ export function useAppointmentFormPage() {
     const queryPhone = route.query.phone as string | undefined;
     const queryService = route.query.service as string | undefined;
 
-    initial.value = queryDate || queryName || queryPhone
-      ? {
-          clientName: queryName ?? '',
-          phone: queryPhone ?? '',
-          service: queryService ?? 'Haircut',
-          durationMinutes: 30,
-          notes: '',
-          startAt: queryDate,
-          status: 'booked'
-        }
-      : undefined;
+    initial.value =
+      queryDate || queryName || queryPhone
+        ? {
+            clientName: queryName ?? '',
+            phone: queryPhone ?? '',
+            service: queryService ?? 'Haircut',
+            durationMinutes: 30,
+            notes: '',
+            startAt: queryDate,
+            status: 'booked',
+          }
+        : undefined;
     ready.value = true;
   });
 
@@ -48,7 +56,10 @@ export function useAppointmentFormPage() {
     if (isEdit.value && payload.id) {
       appointmentsStore.update(payload.id, payload);
     } else {
-      appointmentsStore.add({ ...payload, durationMinutes: payload.durationMinutes ?? 30 });
+      appointmentsStore.add({
+        ...payload,
+        durationMinutes: payload.durationMinutes ?? 30,
+      });
     }
     router.push('/');
   };
@@ -70,6 +81,6 @@ export function useAppointmentFormPage() {
     pageTitle,
     ready,
     router,
-    t
+    t,
   };
 }

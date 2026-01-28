@@ -10,7 +10,9 @@ export type ClientSummary = {
   visits: number;
 };
 
-export const buildClientSummaries = (appointments: Appointment[]): ClientSummary[] => {
+export const buildClientSummaries = (
+  appointments: Appointment[],
+): ClientSummary[] => {
   const map = new Map<string, ClientSummary>();
 
   appointments.forEach((appointment) => {
@@ -26,7 +28,7 @@ export const buildClientSummaries = (appointments: Appointment[]): ClientSummary
         phone: appointment.phone,
         lastVisit,
         lastService: appointment.service,
-        visits: 1
+        visits: 1,
       });
       return;
     }
@@ -40,7 +42,7 @@ export const buildClientSummaries = (appointments: Appointment[]): ClientSummary
     }
   });
 
-  return Array.from(map.values()).sort((a, b) =>
-    fromISO(b.lastVisit).getTime() - fromISO(a.lastVisit).getTime()
+  return Array.from(map.values()).sort(
+    (a, b) => fromISO(b.lastVisit).getTime() - fromISO(a.lastVisit).getTime(),
   );
 };

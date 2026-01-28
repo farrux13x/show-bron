@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         display: ['"Space Grotesk"', '"Trebuchet MS"', 'Verdana', 'sans-serif'],
-        body: ['"IBM Plex Sans"', '"Segoe UI"', 'Tahoma', 'sans-serif']
+        body: ['"IBM Plex Sans"', '"Segoe UI"', 'Tahoma', 'sans-serif'],
       },
       colors: {
         ink: '#0F172A',
@@ -13,12 +13,12 @@ module.exports = {
         haze: '#F8FAFC',
         ember: '#F97316',
         cinder: '#1F2937',
-        leaf: '#22C55E'
+        leaf: '#22C55E',
       },
       boxShadow: {
-        soft: '0 10px 30px -15px rgba(15, 23, 42, 0.35)'
-      }
-    }
+        soft: '0 10px 30px -15px rgba(15, 23, 42, 0.35)',
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };

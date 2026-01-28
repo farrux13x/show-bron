@@ -25,8 +25,8 @@ const router = createRouter({
     { path: '/clients/:id', component: ClientProfilePage },
     { path: '/settings', component: SettingsPage },
     { path: '/services', component: ServicesPage },
-    { path: '/statistics', component: StatisticsPage }
-  ]
+    { path: '/statistics', component: StatisticsPage },
+  ],
 });
 
 usePostHog();

@@ -3,11 +3,23 @@
     <div class="grid gap-4 md:grid-cols-2">
       <div class="space-y-2">
         <label class="label">{{ t('form.clientName') }}</label>
-        <input v-model.trim="clientName" class="input" :placeholder="t('form.placeholder.name')" required />
+        <input
+          v-model.trim="clientName"
+          class="input"
+          :placeholder="t('form.placeholder.name')"
+          required
+        />
       </div>
       <div class="space-y-2">
         <label class="label">{{ t('form.phone') }}</label>
-        <input v-model.trim="phone" class="input" :placeholder="t('form.placeholder.phone')" required type="numer" inputmode="numeric"/>
+        <input
+          v-model.trim="phone"
+          class="input"
+          :placeholder="t('form.placeholder.phone')"
+          required
+          type="numer"
+          inputmode="numeric"
+        />
       </div>
     </div>
 
@@ -23,7 +35,11 @@
       <div class="space-y-2">
         <label class="label">{{ t('form.duration') }}</label>
         <select v-model.number="duration" class="input">
-          <option v-for="option in durationOptions" :key="option" :value="option">
+          <option
+            v-for="option in durationOptions"
+            :key="option"
+            :value="option"
+          >
             {{ t('time.minutesShort', { count: option }) }}
           </option>
         </select>
@@ -53,19 +69,33 @@
 
     <div class="space-y-2">
       <label class="label">{{ t('form.notes') }}</label>
-      <textarea v-model.trim="notes" rows="3" class="input" :placeholder="t('form.placeholder.notes')"></textarea>
+      <textarea
+        v-model.trim="notes"
+        rows="3"
+        class="input"
+        :placeholder="t('form.placeholder.notes')"
+      ></textarea>
     </div>
 
-    <div v-if="validationErrors.length" class="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-900">
+    <div
+      v-if="validationErrors.length"
+      class="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-900"
+    >
       <p class="font-semibold">{{ t('validation.title') }}</p>
       <ul class="mt-2 space-y-1">
-        <li v-for="(message, index) in validationErrors" :key="index">{{ message }}</li>
+        <li v-for="(message, index) in validationErrors" :key="index">
+          {{ message }}
+        </li>
       </ul>
     </div>
 
     <div class="flex flex-wrap items-center gap-3">
-      <button type="submit" class="btn-primary">{{ t('actions.saveBooking') }}</button>
-      <button type="button" class="btn-ghost" @click="emit('cancel')">{{ t('actions.cancel') }}</button>
+      <button type="submit" class="btn-primary">
+        {{ t('actions.saveBooking') }}
+      </button>
+      <button type="button" class="btn-ghost" @click="emit('cancel')">
+        {{ t('actions.cancel') }}
+      </button>
       <button
         v-if="isEdit"
         type="button"
@@ -74,7 +104,9 @@
       >
         {{ t('actions.delete') }}
       </button>
-      <span v-if="isEdit" class="pill bg-slate-100 text-slate-600">{{ statusLabel }}</span>
+      <span v-if="isEdit" class="pill bg-slate-100 text-slate-600">{{
+        statusLabel
+      }}</span>
     </div>
   </form>
 </template>
@@ -83,7 +115,10 @@
 import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useScheduleStore } from '@/entities/schedule/model/schedule.store';
-import { useAppointmentsStore, type Appointment } from '@/entities/appointment/model/appointments.store';
+import {
+  useAppointmentsStore,
+  type Appointment,
+} from '@/entities/appointment/model/appointments.store';
 import { useServicesStore } from '@/entities/service/model/services.store';
 import { toISO } from '@/shared/lib/date';
 import { translateService, translateStatus } from '@/shared/i18n/labels';
@@ -110,11 +145,13 @@ const roundToStep = (date: Date, stepMinutes: number) => {
   return new Date(Math.ceil(ms / stepMs) * stepMs);
 };
 
-const initialDate = props.initial?.startAt ? new Date(props.initial.startAt) : roundToStep(new Date(), 30);
+const initialDate = props.initial?.startAt
+  ? new Date(props.initial.startAt)
+  : roundToStep(new Date(), 30);
 
 const toDateInput = (date: Date) =>
   `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(
-    date.getDate()
+    date.getDate(),
   ).padStart(2, '0')}`;
 
 const toTimeInput = (date: Date) =>
@@ -122,9 +159,13 @@ const toTimeInput = (date: Date) =>
 
 const clientName = ref(props.initial?.clientName ?? '');
 const phone = ref(props.initial?.phone ?? '');
-const fallbackServiceName = computed(() => servicesStore.services[0]?.name ?? 'Haircut');
+const fallbackServiceName = computed(
+  () => servicesStore.services[0]?.name ?? 'Haircut',
+);
 const service = ref(props.initial?.service ?? fallbackServiceName.value);
-const duration = ref(props.initial?.durationMinutes ?? scheduleStore.defaultServiceMinutes);
+const duration = ref(
+  props.initial?.durationMinutes ?? scheduleStore.defaultServiceMinutes,
+);
 const notes = ref(props.initial?.notes ?? '');
 const price = ref(props.initial?.price ?? undefined);
 const status = ref(props.initial?.status ?? 'booked');
@@ -142,7 +183,9 @@ const serviceOptions = computed(() => {
   return options;
 });
 
-const selectedServicePrice = computed(() => servicesStore.byName(service.value)?.price);
+const selectedServicePrice = computed(
+  () => servicesStore.byName(service.value)?.price,
+);
 
 watch(
   () => service.value,
@@ -156,7 +199,7 @@ watch(
       lastAutoPrice.value = nextPrice;
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 const parseTime = (time: string) => {
@@ -181,7 +224,12 @@ const startDateTime = computed(() => {
   }
   const [year, month, day] = startDate.value.split('-').map(Number);
   const parsedTime = parseTime(startTime.value);
-  if (!parsedTime || Number.isNaN(year) || Number.isNaN(month) || Number.isNaN(day)) {
+  if (
+    !parsedTime ||
+    Number.isNaN(year) ||
+    Number.isNaN(month) ||
+    Number.isNaN(day)
+  ) {
     return null;
   }
   return new Date(year, month - 1, day, parsedTime.hours, parsedTime.minutes);
@@ -205,7 +253,7 @@ const conflict = computed(() => {
     notes: notes.value,
     startAt: startAt.value,
     status: status.value as Appointment['status'],
-    price: price.value
+    price: price.value,
   });
 });
 
@@ -228,7 +276,12 @@ const validationErrors = computed(() => {
     const breakEnd = toMinutes(template.breakEnd);
     const appointmentEnd = minutes + duration.value;
 
-    if (startMinutes == null || endMinutes == null || breakStart == null || breakEnd == null) {
+    if (
+      startMinutes == null ||
+      endMinutes == null ||
+      breakStart == null ||
+      breakEnd == null
+    ) {
       errors.push(t('validation.outsideWorkingHours'));
     } else {
       if (minutes < startMinutes || appointmentEnd > endMinutes) {
@@ -248,7 +301,7 @@ const validationErrors = computed(() => {
 });
 
 const statusLabel = computed(() =>
-  t('appointment.status', { status: translateStatus(status.value, t) })
+  t('appointment.status', { status: translateStatus(status.value, t) }),
 );
 
 const handleSubmit = () => {
@@ -264,7 +317,7 @@ const handleSubmit = () => {
     notes: notes.value,
     startAt: startAt.value,
     status: status.value as Appointment['status'],
-    price: price.value
+    price: price.value,
   };
 
   emit('save', payload);

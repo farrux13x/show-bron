@@ -2,13 +2,20 @@
   <section class="card relative overflow-hidden">
     <div class="border-b border-fog bg-white/80 px-6 py-5 sm:px-8">
       <div class="flex flex-wrap items-center gap-4">
-        <div class="flex h-12 w-12 items-center justify-center rounded-full bg-ember text-lg font-semibold text-white">
+        <div
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-ember text-lg font-semibold text-white"
+        >
           {{ todayDate }}
         </div>
         <div class="min-w-[160px] flex-1">
           <div class="flex items-center gap-2">
             <h2 class="font-display text-2xl text-ink">{{ monthLabel }}</h2>
-            <button class="icon-btn" type="button" @click="goToday" :aria-label="t('calendar.goToday')">
+            <button
+              class="icon-btn"
+              type="button"
+              @click="goToday"
+              :aria-label="t('calendar.goToday')"
+            >
               <ChevronDownIcon class="h-4 w-4" />
             </button>
           </div>
@@ -33,10 +40,20 @@
           >
             <CalendarWeekIcon class="h-4 w-4" />
           </button>
-          <button class="icon-btn" type="button" @click="goPrev" :aria-label="t('calendar.previous')">
+          <button
+            class="icon-btn"
+            type="button"
+            @click="goPrev"
+            :aria-label="t('calendar.previous')"
+          >
             <ChevronLeftIcon class="h-4 w-4" />
           </button>
-          <button class="icon-btn" type="button" @click="goNext" :aria-label="t('calendar.next')">
+          <button
+            class="icon-btn"
+            type="button"
+            @click="goNext"
+            :aria-label="t('calendar.next')"
+          >
             <ChevronRightIcon class="h-4 w-4" />
           </button>
         </div>
@@ -54,7 +71,9 @@
           :class="isSelectedDay(day) ? 'day-pill-active' : ''"
           @click="selectDay(day)"
         >
-          <span class="text-xs uppercase tracking-[0.2em] text-slate-400">{{ dayLabel(day) }}</span>
+          <span class="text-xs uppercase tracking-[0.2em] text-slate-400">{{
+            dayLabel(day)
+          }}</span>
           <span class="day-date">{{ day.getDate() }}</span>
         </button>
       </div>
@@ -73,12 +92,20 @@
             :disabled="isSlotDisabled(day, slot.minutes)"
             @click="handleCellClick(day, slot.minutes)"
           >
-            <div v-if="getAppointmentAtSlot(day, slot.minutes)" class="appointment-pill">
+            <div
+              v-if="getAppointmentAtSlot(day, slot.minutes)"
+              class="appointment-pill"
+            >
               <p class="text-xs font-semibold text-ink">
                 {{ getAppointmentAtSlot(day, slot.minutes)?.clientName }}
               </p>
               <p class="text-[11px] text-slate-600">
-                {{ translateService(getAppointmentAtSlot(day, slot.minutes)?.service ?? '', t) }}
+                {{
+                  translateService(
+                    getAppointmentAtSlot(day, slot.minutes)?.service ?? '',
+                    t,
+                  )
+                }}
               </p>
             </div>
           </button>
@@ -124,7 +151,7 @@ const {
   viewMode,
   visibleDays,
   selectDay,
-  weekRange
+  weekRange,
 } = useCalendarPage();
 </script>
 

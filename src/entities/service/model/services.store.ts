@@ -15,23 +15,25 @@ const defaultServices: ServiceItem[] = [
   { id: 'svc_haircut', name: 'Haircut', price: 50 },
   { id: 'svc_beard', name: 'Beard', price: 30 },
   { id: 'svc_haircut_beard', name: 'Haircut + Beard', price: 70 },
-  { id: 'svc_kids', name: 'Kids', price: 25 }
+  { id: 'svc_kids', name: 'Kids', price: 25 },
 ];
 
 export const useServicesStore = defineStore('services', {
   state: () => ({
-    services: loadFromStorage<ServiceItem[]>(STORAGE_KEY, defaultServices)
+    services: loadFromStorage<ServiceItem[]>(STORAGE_KEY, defaultServices),
   }),
   getters: {
     byName: (state) => (name: string) =>
-      state.services.find((item) => item.name.toLowerCase() === name.toLowerCase())
+      state.services.find(
+        (item) => item.name.toLowerCase() === name.toLowerCase(),
+      ),
   },
   actions: {
     addService(payload: { name: string; price: number }) {
       const service: ServiceItem = {
         id: createId(),
         name: payload.name,
-        price: payload.price
+        price: payload.price,
       };
       this.services.push(service);
       this.persist();
@@ -51,6 +53,6 @@ export const useServicesStore = defineStore('services', {
     },
     persist() {
       saveToStorage(STORAGE_KEY, this.services);
-    }
-  }
+    },
+  },
 });

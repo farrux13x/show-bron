@@ -5,13 +5,20 @@
         <p class="label">{{ t('appointment.label') }}</p>
         <h2 class="font-display text-2xl">{{ pageTitle }}</h2>
       </div>
-      <RouterLink to="/calendar" class="btn-ghost">{{ t('actions.backToCalendar') }}</RouterLink>
+      <RouterLink to="/calendar" class="btn-ghost">{{
+        t('actions.backToCalendar')
+      }}</RouterLink>
     </div>
 
     <div class="mt-6">
-      <div v-if="notFound" class="rounded-2xl border border-dashed border-fog bg-white/70 px-6 py-8 text-center">
+      <div
+        v-if="notFound"
+        class="rounded-2xl border border-dashed border-fog bg-white/70 px-6 py-8 text-center"
+      >
         <p class="text-sm text-slate-600">{{ t('appointment.notFound') }}</p>
-        <RouterLink to="/calendar" class="btn-ghost mt-4">{{ t('actions.backToCalendar') }}</RouterLink>
+        <RouterLink to="/calendar" class="btn-ghost mt-4">{{
+          t('actions.backToCalendar')
+        }}</RouterLink>
       </div>
       <AppointmentForm
         v-else-if="ready"
@@ -29,5 +36,14 @@ import { RouterLink } from 'vue-router';
 import AppointmentForm from '@/features/appointment-form/AppointmentForm.vue';
 import { useAppointmentFormPage } from './useAppointmentFormPage';
 
-const { handleDelete, handleSave, initial, notFound, pageTitle, ready, router, t } = useAppointmentFormPage();
+const {
+  handleDelete,
+  handleSave,
+  initial,
+  notFound,
+  pageTitle,
+  ready,
+  router,
+  t,
+} = useAppointmentFormPage();
 </script>

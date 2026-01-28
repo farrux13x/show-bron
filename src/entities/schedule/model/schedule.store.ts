@@ -30,38 +30,90 @@ const STORAGE_KEY = 'timetrack.schedule.v1';
 const defaultTemplate: ScheduleTemplate = {
   defaultServiceMinutes: 30,
   days: {
-    mon: { enabled: true, start: '10:00', end: '20:00', breakStart: '14:00', breakEnd: '15:00' },
-    tue: { enabled: true, start: '10:00', end: '20:00', breakStart: '14:00', breakEnd: '15:00' },
-    wed: { enabled: true, start: '10:00', end: '20:00', breakStart: '14:00', breakEnd: '15:00' },
-    thu: { enabled: true, start: '10:00', end: '20:00', breakStart: '14:00', breakEnd: '15:00' },
-    fri: { enabled: true, start: '10:00', end: '20:00', breakStart: '14:00', breakEnd: '15:00' },
-    sat: { enabled: true, start: '10:00', end: '20:00', breakStart: '14:00', breakEnd: '15:00' },
-    sun: { enabled: false, start: '10:00', end: '20:00', breakStart: '14:00', breakEnd: '15:00' }
-  }
+    mon: {
+      enabled: true,
+      start: '10:00',
+      end: '20:00',
+      breakStart: '14:00',
+      breakEnd: '15:00',
+    },
+    tue: {
+      enabled: true,
+      start: '10:00',
+      end: '20:00',
+      breakStart: '14:00',
+      breakEnd: '15:00',
+    },
+    wed: {
+      enabled: true,
+      start: '10:00',
+      end: '20:00',
+      breakStart: '14:00',
+      breakEnd: '15:00',
+    },
+    thu: {
+      enabled: true,
+      start: '10:00',
+      end: '20:00',
+      breakStart: '14:00',
+      breakEnd: '15:00',
+    },
+    fri: {
+      enabled: true,
+      start: '10:00',
+      end: '20:00',
+      breakStart: '14:00',
+      breakEnd: '15:00',
+    },
+    sat: {
+      enabled: true,
+      start: '10:00',
+      end: '20:00',
+      breakStart: '14:00',
+      breakEnd: '15:00',
+    },
+    sun: {
+      enabled: false,
+      start: '10:00',
+      end: '20:00',
+      breakStart: '14:00',
+      breakEnd: '15:00',
+    },
+  },
 };
 
-const weekdayMap: WeekdayKey[] = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const weekdayMap: WeekdayKey[] = [
+  'sun',
+  'mon',
+  'tue',
+  'wed',
+  'thu',
+  'fri',
+  'sat',
+];
 
-const getWeekdayKey = (date: Date): WeekdayKey => weekdayMap[date.getDay()] ?? 'mon';
+const getWeekdayKey = (date: Date): WeekdayKey =>
+  weekdayMap[date.getDay()] ?? 'mon';
 
 const createId = () => Math.random().toString(36).slice(2, 10);
 
 export const useScheduleStore = defineStore('schedule', {
   state: () => {
-    const saved = loadFromStorage<{ template: ScheduleTemplate; exceptions: ScheduleException[] }>(
-      STORAGE_KEY,
-      { template: defaultTemplate, exceptions: [] }
-    );
+    const saved = loadFromStorage<{
+      template: ScheduleTemplate;
+      exceptions: ScheduleException[];
+    }>(STORAGE_KEY, { template: defaultTemplate, exceptions: [] });
 
     return {
       template: saved.template ?? defaultTemplate,
-      exceptions: saved.exceptions ?? []
+      exceptions: saved.exceptions ?? [],
     };
   },
   getters: {
     defaultServiceMinutes: (state) => state.template.defaultServiceMinutes,
     dayTemplate: (state) => (key: WeekdayKey) => state.template.days[key],
-    dayForDate: (state) => (date: Date) => state.template.days[getWeekdayKey(date)]
+    dayForDate: (state) => (date: Date) =>
+      state.template.days[getWeekdayKey(date)],
   },
   actions: {
     updateDay(key: WeekdayKey, patch: Partial<ScheduleDay>) {
@@ -83,8 +135,8 @@ export const useScheduleStore = defineStore('schedule', {
     persist() {
       saveToStorage(STORAGE_KEY, {
         template: this.template,
-        exceptions: this.exceptions
+        exceptions: this.exceptions,
       });
-    }
-  }
+    },
+  },
 });

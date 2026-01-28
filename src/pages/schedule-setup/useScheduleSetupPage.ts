@@ -1,5 +1,9 @@
 import { useI18n } from 'vue-i18n';
-import { useScheduleStore, type WeekdayKey, type ScheduleDay } from '@/entities/schedule/model/schedule.store';
+import {
+  useScheduleStore,
+  type WeekdayKey,
+  type ScheduleDay,
+} from '@/entities/schedule/model/schedule.store';
 
 export function useScheduleSetupPage() {
   const scheduleStore = useScheduleStore();
@@ -12,7 +16,7 @@ export function useScheduleSetupPage() {
     { key: 'thu' },
     { key: 'fri' },
     { key: 'sat' },
-    { key: 'sun' }
+    { key: 'sun' },
   ];
 
   const updateDay = (key: WeekdayKey, patch: Partial<ScheduleDay>) => {
@@ -23,6 +27,6 @@ export function useScheduleSetupPage() {
     days,
     scheduleStore,
     t,
-    updateDay
+    updateDay,
   };
 }
