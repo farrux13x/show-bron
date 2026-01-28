@@ -60,10 +60,7 @@
           <p class="text-xs text-slate-400">{{ periodLabel }}</p>
         </div>
         <div class="mt-3">
-          <svg viewBox="0 0 600 160" class="h-40 w-full text-ember">
-            <polyline :points="customerLinePoints" fill="none" stroke="currentColor" stroke-width="3" />
-            <line x1="20" y1="140" x2="580" y2="140" stroke="#e2e8f0" stroke-width="2" />
-          </svg>
+          <LineChartIcon class="h-40 w-full text-ember" :points="customerLinePoints" />
         </div>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
@@ -72,10 +69,7 @@
           <p class="text-xs text-slate-400">{{ periodLabel }}</p>
         </div>
         <div class="mt-3">
-          <svg viewBox="0 0 600 160" class="h-40 w-full text-emerald-500">
-            <polyline :points="revenueLinePoints" fill="none" stroke="currentColor" stroke-width="3" />
-            <line x1="20" y1="140" x2="580" y2="140" stroke="#e2e8f0" stroke-width="2" />
-          </svg>
+          <LineChartIcon class="h-40 w-full text-emerald-500" :points="revenueLinePoints" />
         </div>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
@@ -141,6 +135,7 @@
 </template>
 
 <script setup lang="ts">
+import LineChartIcon from '@/shared/ui/icons/LineChartIcon.vue';
 import { useStatisticsPage } from './useStatisticsPage';
 
 const {

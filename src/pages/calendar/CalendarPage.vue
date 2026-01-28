@@ -9,9 +9,7 @@
           <div class="flex items-center gap-2">
             <h2 class="font-display text-2xl text-ink">{{ monthLabel }}</h2>
             <button class="icon-btn" type="button" @click="goToday" :aria-label="t('calendar.goToday')">
-              <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+              <ChevronDownIcon class="h-4 w-4" />
             </button>
           </div>
           <p class="text-sm text-slate-500">{{ weekRange }}</p>
@@ -24,11 +22,7 @@
             @click="viewMode = 'day'"
             :aria-label="t('calendar.dayView')"
           >
-            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="3" />
-              <path d="M7 2v4M17 2v4" stroke-linecap="round" />
-              <path d="M3 10h18" stroke-linecap="round" />
-            </svg>
+            <CalendarDayIcon class="h-4 w-4" />
           </button>
           <button
             class="icon-btn"
@@ -37,20 +31,13 @@
             @click="viewMode = 'week'"
             :aria-label="t('calendar.weekView')"
           >
-            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="3" />
-              <path d="M8 4v16M16 4v16" />
-            </svg>
+            <CalendarWeekIcon class="h-4 w-4" />
           </button>
           <button class="icon-btn" type="button" @click="goPrev" :aria-label="t('calendar.previous')">
-            <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 6l-4 4 4 4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <ChevronLeftIcon class="h-4 w-4" />
           </button>
           <button class="icon-btn" type="button" @click="goNext" :aria-label="t('calendar.next')">
-            <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M8 6l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <ChevronRightIcon class="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -111,6 +98,11 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import CalendarDayIcon from '@/shared/ui/icons/CalendarDayIcon.vue';
+import CalendarWeekIcon from '@/shared/ui/icons/CalendarWeekIcon.vue';
+import ChevronDownIcon from '@/shared/ui/icons/ChevronDownIcon.vue';
+import ChevronLeftIcon from '@/shared/ui/icons/ChevronLeftIcon.vue';
+import ChevronRightIcon from '@/shared/ui/icons/ChevronRightIcon.vue';
 import { useCalendarPage } from './useCalendarPage';
 
 const {
@@ -131,6 +123,7 @@ const {
   translateService,
   viewMode,
   visibleDays,
+  selectDay,
   weekRange
 } = useCalendarPage();
 </script>

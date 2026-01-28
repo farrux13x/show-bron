@@ -1,0 +1,24 @@
+## Icon Management Guidelines (FSD - Shared Layer)
+
+**Strict Rules:**
+1.  **No Hardcoded SVGs:** Never use raw `<svg>` tags inside features/widgets/pages.
+2.  **Location:** All icons must be created in `src/shared/ui/icons/`.
+3.  **Naming:** Use PascalCase with `Icon` suffix (e.g., `CalendarIcon.vue`).
+4.  **Implementation & Attributes:**
+    * The component must contain **only** the `<svg>` tag in the template.
+    * **Crucial:** You MUST add `v-bind="$attrs"` to the root `<svg>` tag. This ensures that Tailwind classes (like `w-6 h-6 text-blue-500`) and event listeners passed from the parent are applied correctly to the icon.
+    * Do NOT define `props` for width/height/color. Rely on CSS classes via `$attrs`.
+
+**Code Example:**
+When generating an icon (e.g., `SearchIcon.vue`), follow this exact pattern:
+
+```vue
+<template>
+  <svg 
+    xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    v-bind="$attrs"
+  >
+    </svg>
+</template>

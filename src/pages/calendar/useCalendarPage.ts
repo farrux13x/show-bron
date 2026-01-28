@@ -207,6 +207,7 @@ export function useCalendarPage() {
     translateService,
     viewMode,
     visibleDays,
+    selectDay,
     weekRange
   };
 }
