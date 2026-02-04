@@ -11,19 +11,24 @@
     "format": "npx prettier --write ."
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.563.0",
     "pinia": "^2.1.7",
     "posthog-js": "^1.310.1",
+    "reka-ui": "^2.8.0",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7",
     "vue": "^3.4.27",
     "vue-i18n": "^9.14.5",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^22.9.0",
     "@vitejs/plugin-vue": "^5.1.4",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
     "prettier": "^3.8.1",
-    "tailwindcss": "^3.4.14",
+    "tailwindcss": "^4.0.0",
     "typescript": "^5.6.3",
     "vite": "^5.4.11"
   }
