@@ -8,9 +8,8 @@
         </h2>
         <p class="text-sm text-slate-600">{{ client?.phone }}</p>
       </div>
-      <RouterLink
+      <AppButton
         v-if="client"
-        class="btn-primary"
         :to="{
           path: '/appointments/new',
           query: {
@@ -21,7 +20,7 @@
         }"
       >
         {{ t('actions.rebook') }}
-      </RouterLink>
+      </AppButton>
     </div>
 
     <div class="mt-6 grid gap-4 md:grid-cols-3">
@@ -74,12 +73,13 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useRoute, RouterLink } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useAppointmentsStore } from '@/entities/appointment/model/appointments.store';
 import { buildClientSummaries } from '@/entities/client/model/clients';
 import { formatDate, formatTime, fromISO } from '@/shared/lib/date';
 import { translateService, translateStatus } from '@/shared/i18n/labels';
+import AppButton from '@/shared/ui/AppButton.vue';
 
 const route = useRoute();
 const appointmentsStore = useAppointmentsStore();

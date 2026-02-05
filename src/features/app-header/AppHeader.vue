@@ -24,9 +24,9 @@
             t('nav.settings')
           }}</RouterLink>
         </nav>
-        <RouterLink to="/appointments/new" class="btn-primary">
+        <AppButton to="/appointments/new">
           <span class="text-base">+ {{ t('actions.newBooking') }}</span>
-        </RouterLink>
+        </AppButton>
       </div>
     </div>
   </header>
@@ -35,6 +35,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import AppButton from '@/shared/ui/AppButton.vue';
 
 const { t } = useI18n();
 </script>

@@ -6,9 +6,9 @@
         <h2 class="font-display text-2xl">{{ t('today.title') }}</h2>
         <p class="text-sm text-slate-600">{{ t('today.subtitle') }}</p>
       </div>
-      <button class="btn-ghost" @click="appointmentsStore.seedDemo">
+      <AppButton variant="ghost" type="button" @click="appointmentsStore.seedDemo">
         {{ t('actions.loadSample') }}
-      </button>
+      </AppButton>
     </div>
 
     <div class="mt-6 space-y-4">
@@ -38,32 +38,33 @@
           </div>
         </div>
         <div class="mt-4 flex flex-wrap items-center gap-2">
-          <button
-            class="btn-muted"
+          <AppButton
+            variant="muted"
+            type="button"
             @click="appointmentsStore.setStatus(appointment.id, 'arrived')"
           >
             {{ t('status.arrived') }}
-          </button>
-          <button
-            class="btn-muted"
+          </AppButton>
+          <AppButton
+            variant="muted"
+            type="button"
             @click="appointmentsStore.setStatus(appointment.id, 'cancelled')"
           >
             {{ t('status.cancelled') }}
-          </button>
-          <button
-            class="btn-muted"
+          </AppButton>
+          <AppButton
+            variant="muted"
+            type="button"
             @click="appointmentsStore.setStatus(appointment.id, 'no-show')"
           >
             {{ t('status.noShow') }}
-          </button>
-          <RouterLink
-            class="btn-ghost"
-            :to="`/appointments/${appointment.id}`"
-            >{{ t('actions.edit') }}</RouterLink
-          >
-          <a class="btn-ghost" :href="`tel:${appointment.phone}`">{{
-            t('actions.call')
-          }}</a>
+          </AppButton>
+          <AppButton variant="ghost" :to="`/appointments/${appointment.id}`">
+            {{ t('actions.edit') }}
+          </AppButton>
+          <AppButton variant="ghost" :href="`tel:${appointment.phone}`">
+            {{ t('actions.call') }}
+          </AppButton>
         </div>
       </div>
 
@@ -80,8 +81,8 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
 import { useTodayPage } from './useTodayPage';
+import AppButton from '@/shared/ui/AppButton.vue';
 
 const { appointmentsStore, formatTime, t, translateService, translateStatus } =
   useTodayPage();

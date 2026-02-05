@@ -5,9 +5,9 @@
         <p class="label">{{ t('clients.label') }}</p>
         <h2 class="font-display text-2xl">{{ t('clients.title') }}</h2>
       </div>
-      <RouterLink to="/appointments/new" class="btn-primary">{{
-        t('actions.newBooking')
-      }}</RouterLink>
+      <AppButton to="/appointments/new">
+        {{ t('actions.newBooking') }}
+      </AppButton>
     </div>
 
     <div class="mt-6 space-y-4">
@@ -32,11 +32,10 @@
             </p>
           </div>
           <div class="flex flex-wrap items-center gap-2">
-            <RouterLink class="btn-ghost" :to="`/clients/${client.id}`">{{
-              t('actions.profile')
-            }}</RouterLink>
-            <RouterLink
-              class="btn-primary"
+            <AppButton variant="ghost" :to="`/clients/${client.id}`">
+              {{ t('actions.profile') }}
+            </AppButton>
+            <AppButton
               :to="{
                 path: '/appointments/new',
                 query: {
@@ -47,7 +46,7 @@
               }"
             >
               {{ t('actions.rebook') }}
-            </RouterLink>
+            </AppButton>
           </div>
         </div>
       </div>
@@ -64,12 +63,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { RouterLink } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { useAppointmentsStore } from '@/entities/appointment/model/appointments.store';
 import { buildClientSummaries } from '@/entities/client/model/clients';
 import { formatDate } from '@/shared/lib/date';
 import { translateService } from '@/shared/i18n/labels';
+import AppButton from '@/shared/ui/AppButton.vue';
 
 const appointmentsStore = useAppointmentsStore();
 const clients = computed(() =>

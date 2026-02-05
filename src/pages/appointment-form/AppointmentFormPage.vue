@@ -5,9 +5,9 @@
         <p class="label">{{ t('appointment.label') }}</p>
         <h2 class="font-display text-2xl">{{ pageTitle }}</h2>
       </div>
-      <RouterLink to="/calendar" class="btn-ghost">{{
-        t('actions.backToCalendar')
-      }}</RouterLink>
+      <AppButton variant="ghost" to="/calendar">
+        {{ t('actions.backToCalendar') }}
+      </AppButton>
     </div>
 
     <div class="mt-6">
@@ -16,9 +16,9 @@
         class="rounded-2xl border border-dashed border-fog bg-white/70 px-6 py-8 text-center"
       >
         <p class="text-sm text-slate-600">{{ t('appointment.notFound') }}</p>
-        <RouterLink to="/calendar" class="btn-ghost mt-4">{{
-          t('actions.backToCalendar')
-        }}</RouterLink>
+        <AppButton variant="ghost" to="/calendar" class="mt-4">
+          {{ t('actions.backToCalendar') }}
+        </AppButton>
       </div>
       <AppointmentForm
         v-else-if="ready"
@@ -32,8 +32,8 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
 import AppointmentForm from '@/features/appointment-form/AppointmentForm.vue';
+import AppButton from '@/shared/ui/AppButton.vue';
 import { useAppointmentFormPage } from './useAppointmentFormPage';
 
 const {

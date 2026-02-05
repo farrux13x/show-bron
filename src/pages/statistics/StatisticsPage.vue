@@ -7,22 +7,22 @@
         <p class="text-sm text-slate-600">{{ t('statistics.subtitle') }}</p>
       </div>
       <div class="flex items-center gap-2">
-        <button
+        <AppButton
+          variant="muted"
           type="button"
-          class="btn-muted"
           :class="period === 'week' ? 'bg-amber-100 text-amber-900' : ''"
           @click="period = 'week'"
         >
           {{ t('statistics.period.week') }}
-        </button>
-        <button
+        </AppButton>
+        <AppButton
+          variant="muted"
           type="button"
-          class="btn-muted"
           :class="period === 'month' ? 'bg-amber-100 text-amber-900' : ''"
           @click="period = 'month'"
         >
           {{ t('statistics.period.month') }}
-        </button>
+        </AppButton>
       </div>
     </div>
 
@@ -176,6 +176,7 @@
 
 <script setup lang="ts">
 import LineChartIcon from '@/shared/ui/icons/LineChartIcon.vue';
+import AppButton from '@/shared/ui/AppButton.vue';
 import { useStatisticsPage } from './useStatisticsPage';
 
 const {

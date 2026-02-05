@@ -24,13 +24,13 @@
                 {{ formatPrice(service.price) }}
               </p>
             </div>
-            <button
-              class="btn-muted"
+            <AppButton
+              variant="muted"
               type="button"
               @click="servicesStore.removeService(service.id)"
             >
               {{ t('actions.delete') }}
-            </button>
+            </AppButton>
           </div>
         </div>
 
@@ -67,9 +67,9 @@
             required
           />
         </div>
-        <button type="submit" class="btn-primary mt-6 w-full">
+        <AppButton type="submit" class="mt-6 w-full">
           {{ t('actions.addService') }}
-        </button>
+        </AppButton>
       </form>
     </div>
   </section>
@@ -77,6 +77,7 @@
 
 <script setup lang="ts">
 import { useServicesPage } from './useServicesPage';
+import AppButton from '@/shared/ui/AppButton.vue';
 
 const {
   formatPrice,

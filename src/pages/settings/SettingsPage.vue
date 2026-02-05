@@ -5,9 +5,9 @@
         <p class="label">{{ t('settings.label') }}</p>
         <h2 class="font-display text-2xl">{{ t('settings.title') }}</h2>
       </div>
-      <RouterLink to="/schedule-setup" class="btn-primary">{{
-        t('actions.editWeeklySchedule')
-      }}</RouterLink>
+      <AppButton to="/schedule-setup">
+        {{ t('actions.editWeeklySchedule') }}
+      </AppButton>
     </div>
 
     <div class="mt-6 grid gap-4 md:grid-cols-2">
@@ -16,18 +16,18 @@
         <p class="mt-2 text-sm text-slate-600">
           {{ t('settings.servicesText') }}
         </p>
-        <RouterLink to="/services" class="btn-muted mt-4">{{
-          t('actions.manageServices')
-        }}</RouterLink>
+        <AppButton variant="muted" to="/services" class="mt-4">
+          {{ t('actions.manageServices') }}
+        </AppButton>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('settings.statistics') }}</p>
         <p class="mt-2 text-sm text-slate-600">
           {{ t('settings.statisticsText') }}
         </p>
-        <RouterLink to="/statistics" class="btn-muted mt-4">{{
-          t('actions.viewStatistics')
-        }}</RouterLink>
+        <AppButton variant="muted" to="/statistics" class="mt-4">
+          {{ t('actions.viewStatistics') }}
+        </AppButton>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('language.label') }}</p>
@@ -48,22 +48,22 @@
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('theme.label') }}</p>
         <div class="mt-3 flex flex-wrap items-center gap-2">
-          <button
+          <AppButton
+            variant="muted"
             type="button"
-            class="btn-muted"
             :class="theme === 'light' ? 'bg-amber-100 text-amber-900' : ''"
             @click="theme = 'light'"
           >
             {{ t('theme.light') }}
-          </button>
-          <button
+          </AppButton>
+          <AppButton
+            variant="muted"
             type="button"
-            class="btn-muted"
             :class="theme === 'dark' ? 'bg-amber-100 text-amber-900' : ''"
             @click="theme = 'dark'"
           >
             {{ t('theme.dark') }}
-          </button>
+          </AppButton>
         </div>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
@@ -83,8 +83,8 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
 import ExternalLinkIcon from '@/shared/ui/icons/ExternalLinkIcon.vue';
+import AppButton from '@/shared/ui/AppButton.vue';
 import { useSettingsPage } from './useSettingsPage';
 
 const { t, localeModel, localeOptions, theme } = useSettingsPage();

@@ -90,20 +90,15 @@
     </div>
 
     <div class="flex flex-wrap items-center gap-3">
-      <button type="submit" class="btn-primary">
+      <AppButton type="submit">
         {{ t('actions.saveBooking') }}
-      </button>
-      <button type="button" class="btn-ghost" @click="emit('cancel')">
+      </AppButton>
+      <AppButton variant="ghost" type="button" @click="emit('cancel')">
         {{ t('actions.cancel') }}
-      </button>
-      <button
-        v-if="isEdit"
-        type="button"
-        class="btn-muted"
-        @click="emit('delete')"
-      >
+      </AppButton>
+      <AppButton v-if="isEdit" variant="muted" type="button" @click="emit('delete')">
         {{ t('actions.delete') }}
-      </button>
+      </AppButton>
       <span v-if="isEdit" class="pill bg-slate-100 text-slate-600">{{
         statusLabel
       }}</span>
@@ -122,6 +117,7 @@ import {
 import { useServicesStore } from '@/entities/service/model/services.store';
 import { toISO } from '@/shared/lib/date';
 import { translateService, translateStatus } from '@/shared/i18n/labels';
+import AppButton from '@/shared/ui/AppButton.vue';
 
 const props = defineProps<{ initial?: Partial<Appointment> }>();
 const emit = defineEmits<{
