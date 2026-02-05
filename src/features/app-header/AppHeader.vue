@@ -57,12 +57,12 @@ const { t } = useI18n();
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
 }
 
-:global([data-theme='dark']) .app-header {
+:global(.dark) .app-header {
   background: rgba(10, 12, 14, 0.82);
   border-bottom-color: rgba(63, 70, 78, 0.7);
 }
 
-:global([data-theme='dark']) .app-topnav {
+:global(.dark) .app-topnav {
   background: rgba(15, 23, 42, 0.9);
   border-color: #334155;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
@@ -78,7 +78,7 @@ const { t } = useI18n();
     transform: translateY(0);
   }
 }
-[data-theme='dark'] .nav-link.router-link-active {
+.dark .nav-link.router-link-active {
   background: rgba(249, 115, 22, 0.3);
   color: #f8fafc;
 }

@@ -34,6 +34,6 @@
 - Composition API + <script setup> everywhere.
 - TypeScript with tsc --noEmit typecheck script.
 - Local-only persistence (localStorage) for all domain data.
-- App-level theme via data-theme + body class toggles.
+- App-level theme via `dark` class on the document element.
 - Date utilities centralized in src/shared/lib/date.ts.
 - Currency formatting uses ru-RU formatting and labels prices as “so'm”.

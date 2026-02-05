@@ -17,9 +17,7 @@ const applyTheme = (theme: AppTheme) => {
   if (typeof document === 'undefined') {
     return;
   }
-  document.documentElement.setAttribute('data-theme', theme);
-  document.body.classList.toggle('theme-dark', theme === 'dark');
-  document.body.classList.toggle('theme-light', theme === 'light');
+  document.documentElement.classList.toggle('dark', theme === 'dark');
 };
 
 export const setTheme = (theme: AppTheme) => {
