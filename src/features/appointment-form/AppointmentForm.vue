@@ -26,23 +26,33 @@
     <div class="grid gap-4 md:grid-cols-3">
       <div class="space-y-2">
         <label class="label">{{ t('form.service') }}</label>
-        <select v-model="service" class="input">
-          <option v-for="name in serviceOptions" :key="name" :value="name">
-            {{ translateService(name, t) }}
-          </option>
-        </select>
+        <Select v-model="service">
+          <SelectTrigger class="input">
+            <SelectValue :placeholder="t('form.service')" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem v-for="name in serviceOptions" :key="name" :value="name">
+              {{ translateService(name, t) }}
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       <div class="space-y-2">
         <label class="label">{{ t('form.duration') }}</label>
-        <select v-model.number="duration" class="input">
-          <option
-            v-for="option in durationOptions"
-            :key="option"
-            :value="option"
-          >
-            {{ t('time.minutesShort', { count: option }) }}
-          </option>
-        </select>
+        <Select v-model="duration">
+          <SelectTrigger class="input">
+            <SelectValue :placeholder="t('form.duration')" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem
+              v-for="option in durationOptions"
+              :key="option"
+              :value="option"
+            >
+              {{ t('time.minutesShort', { count: option }) }}
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       <div class="space-y-2">
         <label class="label">{{ t('form.price') }}</label>
@@ -118,6 +128,13 @@ import { useServicesStore } from '@/entities/service/model/services.store';
 import { toISO } from '@/shared/lib/date';
 import { translateService, translateStatus } from '@/shared/i18n/labels';
 import AppButton from '@/shared/ui/AppButton.vue';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/ui/select';
 
 const props = defineProps<{ initial?: Partial<Appointment> }>();
 const emit = defineEmits<{

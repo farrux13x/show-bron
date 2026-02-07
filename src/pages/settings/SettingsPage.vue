@@ -31,19 +31,23 @@
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('language.label') }}</p>
-        <select
-          v-model="localeModel"
-          class="input mt-2 text-sm font-semibold text-slate-600"
-          :aria-label="t('language.label')"
-        >
-          <option
-            v-for="option in localeOptions"
-            :key="option.value"
-            :value="option.value"
+        <Select v-model="localeModel">
+          <SelectTrigger
+            class="mt-2 text-sm font-semibold text-slate-600"
+            :aria-label="t('language.label')"
           >
-            {{ option.label }}
-          </option>
-        </select>
+            <SelectValue :placeholder="t('language.label')" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem
+              v-for="option in localeOptions"
+              :key="option.value"
+              :value="option.value"
+            >
+              {{ option.label }}
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
         <p class="label">{{ t('theme.label') }}</p>
@@ -85,6 +89,13 @@
 <script setup lang="ts">
 import ExternalLinkIcon from '@/shared/ui/icons/ExternalLinkIcon.vue';
 import AppButton from '@/shared/ui/AppButton.vue';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/ui/select';
 import { useSettingsPage } from './useSettingsPage';
 
 const { t, localeModel, localeOptions, theme } = useSettingsPage();

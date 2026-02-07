@@ -92,28 +92,25 @@
           <label class="label">{{
             t('schedule.defaultServiceDuration')
           }}</label>
-          <select
-            class="input"
-            :value="scheduleStore.template.defaultServiceMinutes"
-            @change="
-              scheduleStore.setDefaultServiceMinutes(
-                Number(($event.target as HTMLSelectElement).value),
-              )
-            "
-          >
-            <option :value="15">
-              {{ t('time.minutesLong', { count: 15 }) }}
-            </option>
-            <option :value="30">
-              {{ t('time.minutesLong', { count: 30 }) }}
-            </option>
-            <option :value="45">
-              {{ t('time.minutesLong', { count: 45 }) }}
-            </option>
-            <option :value="60">
-              {{ t('time.minutesLong', { count: 60 }) }}
-            </option>
-          </select>
+          <Select v-model="defaultServiceMinutes">
+            <SelectTrigger class="input">
+              <SelectValue :placeholder="t('schedule.defaultServiceDuration')" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem :value="15">
+                {{ t('time.minutesLong', { count: 15 }) }}
+              </SelectItem>
+              <SelectItem :value="30">
+                {{ t('time.minutesLong', { count: 30 }) }}
+              </SelectItem>
+              <SelectItem :value="45">
+                {{ t('time.minutesLong', { count: 45 }) }}
+              </SelectItem>
+              <SelectItem :value="60">
+                {{ t('time.minutesLong', { count: 60 }) }}
+              </SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         <div class="space-y-2">
           <label class="label">{{ t('schedule.bookingRules') }}</label>
@@ -129,7 +126,20 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/shared/ui/select';
 import { useScheduleSetupPage } from './useScheduleSetupPage';
 
 const { days, scheduleStore, t, updateDay } = useScheduleSetupPage();
+
+const defaultServiceMinutes = computed({
+  get: () => scheduleStore.template.defaultServiceMinutes,
+  set: (value) => scheduleStore.setDefaultServiceMinutes(Number(value)),
+});
 </script>
