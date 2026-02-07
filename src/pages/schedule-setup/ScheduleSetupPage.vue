@@ -21,62 +21,62 @@
         >
           <label
             class="flex items-center gap-2 text-sm font-semibold text-slate-700"
+            :for="`day-${day.key}`"
           >
-            <input
-              type="checkbox"
-              class="accent-orange-500"
-              :checked="scheduleStore.template.days[day.key].enabled"
-              @change="
+            <Checkbox
+              :id="`day-${day.key}`"
+              :model-value="scheduleStore.template.days[day.key].enabled"
+              @update:modelValue="
                 updateDay(day.key, {
-                  enabled: ($event.target as HTMLInputElement).checked,
+                  enabled: $event === true,
                 })
               "
             />
             {{ t(`days.${day.key}`) }}
           </label>
           <div class="flex flex-wrap items-center gap-2">
-            <input
+            <Input
               type="time"
               class="input w-[120px]"
-              :value="scheduleStore.template.days[day.key].start"
-              @input="
+              :model-value="scheduleStore.template.days[day.key].start"
+              @update:modelValue="
                 updateDay(day.key, {
-                  start: ($event.target as HTMLInputElement).value,
+                  start: String($event ?? ''),
                 })
               "
             />
             <span class="text-xs text-slate-400">{{ t('time.to') }}</span>
-            <input
+            <Input
               type="time"
               class="input w-[120px]"
-              :value="scheduleStore.template.days[day.key].end"
-              @input="
+              :model-value="scheduleStore.template.days[day.key].end"
+              @update:modelValue="
                 updateDay(day.key, {
-                  end: ($event.target as HTMLInputElement).value,
+                  end: String($event ?? ''),
                 })
               "
             />
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <span class="text-xs text-slate-500">{{ t('time.break') }}</span>
-            <input
+            <Input
               type="time"
               class="input w-[120px]"
-              :value="scheduleStore.template.days[day.key].breakStart"
-              @input="
+              :model-value="scheduleStore.template.days[day.key].breakStart"
+              @update:modelValue="
                 updateDay(day.key, {
-                  breakStart: ($event.target as HTMLInputElement).value,
+                  breakStart: String($event ?? ''),
                 })
               "
             />
             <span class="text-xs text-slate-400">{{ t('time.to') }}</span>
-            <input
+            <Input
               type="time"
               class="input w-[120px]"
-              :value="scheduleStore.template.days[day.key].breakEnd"
-              @input="
+              :model-value="scheduleStore.template.days[day.key].breakEnd"
+              @update:modelValue="
                 updateDay(day.key, {
-                  breakEnd: ($event.target as HTMLInputElement).value,
+                  breakEnd: String($event ?? ''),
                 })
               "
             />
@@ -127,6 +127,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { Input } from '@/shared/ui/input';
 import {
   Select,
   SelectContent,
@@ -134,6 +135,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/shared/ui/select';
+import { Checkbox } from '@/shared/ui/checkbox';
 import { useScheduleSetupPage } from './useScheduleSetupPage';
 
 const { days, scheduleStore, t, updateDay } = useScheduleSetupPage();

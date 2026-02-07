@@ -49,8 +49,8 @@
         <h3 class="font-display text-lg">{{ t('servicesPage.addTitle') }}</h3>
         <div class="mt-4 space-y-2">
           <label class="label">{{ t('servicesPage.nameLabel') }}</label>
-          <input
-            v-model.trim="newName"
+          <Input
+            v-model="newName"
             class="input"
             :placeholder="t('servicesPage.namePlaceholder')"
             required
@@ -58,8 +58,8 @@
         </div>
         <div class="mt-4 space-y-2">
           <label class="label">{{ t('servicesPage.priceLabel') }}</label>
-          <input
-            v-model.number="newPrice"
+          <Input
+            v-model="newPrice"
             type="number"
             min="0"
             class="input"
@@ -78,6 +78,7 @@
 <script setup lang="ts">
 import { useServicesPage } from './useServicesPage';
 import AppButton from '@/shared/ui/AppButton.vue';
+import { Input } from '@/shared/ui/input';
 
 const {
   formatPrice,

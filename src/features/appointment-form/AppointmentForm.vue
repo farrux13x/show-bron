@@ -3,8 +3,8 @@
     <div class="grid gap-4 md:grid-cols-2">
       <div class="space-y-2">
         <label class="label">{{ t('form.clientName') }}</label>
-        <input
-          v-model.trim="clientName"
+        <Input
+          v-model="clientName"
           class="input"
           :placeholder="t('form.placeholder.name')"
           required
@@ -12,8 +12,8 @@
       </div>
       <div class="space-y-2">
         <label class="label">{{ t('form.phone') }}</label>
-        <input
-          v-model.trim="phone"
+        <Input
+          v-model="phone"
           class="input"
           :placeholder="t('form.placeholder.phone')"
           required
@@ -56,8 +56,8 @@
       </div>
       <div class="space-y-2">
         <label class="label">{{ t('form.price') }}</label>
-        <input
-          v-model.number="price"
+        <Input
+          v-model="price"
           type="number"
           min="0"
           class="input"
@@ -69,22 +69,22 @@
     <div class="grid gap-4 md:grid-cols-2">
       <div class="space-y-2">
         <label class="label">{{ t('form.date') }}</label>
-        <input v-model="startDate" type="date" class="input" />
+        <Input v-model="startDate" type="date" class="input" />
       </div>
       <div class="space-y-2">
         <label class="label">{{ t('form.time') }}</label>
-        <input v-model="startTime" type="time" class="input" step="300" />
+        <Input v-model="startTime" type="time" class="input" step="300" />
       </div>
     </div>
 
     <div class="space-y-2">
       <label class="label">{{ t('form.notes') }}</label>
-      <textarea
-        v-model.trim="notes"
+      <Textarea
+        v-model="notes"
         rows="3"
         class="input"
         :placeholder="t('form.placeholder.notes')"
-      ></textarea>
+      />
     </div>
 
     <div
@@ -128,6 +128,7 @@ import { useServicesStore } from '@/entities/service/model/services.store';
 import { toISO } from '@/shared/lib/date';
 import { translateService, translateStatus } from '@/shared/i18n/labels';
 import AppButton from '@/shared/ui/AppButton.vue';
+import { Input } from '@/shared/ui/input';
 import {
   Select,
   SelectContent,
@@ -135,6 +136,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/shared/ui/select';
+import { Textarea } from '@/shared/ui/textarea';
 
 const props = defineProps<{ initial?: Partial<Appointment> }>();
 const emit = defineEmits<{
