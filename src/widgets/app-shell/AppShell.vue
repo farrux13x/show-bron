@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import AppFooter from '@/features/app-dock/AppFooter.vue';
+import AppFooter from '@/features/footer/AppFooter.vue';
 import AppHeader from '@/features/app-header/AppHeader.vue';
 </script>
 
