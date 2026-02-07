@@ -16,9 +16,11 @@
 </template>
 
 <script setup lang="ts">
-import { useTodayPage } from './useTodayPage';
+import { useI18n } from 'vue-i18n';
+import { useAppointmentsStore } from '@/entities/appointment/model/appointments.store';
 import AppButton from '@/shared/ui/AppButton.vue';
 import TodayAppointments from '@/features/today-appointments/TodayAppointments.vue';
 
-const { appointmentsStore, t } = useTodayPage();
+const appointmentsStore = useAppointmentsStore();
+const { t } = useI18n();
 </script>
