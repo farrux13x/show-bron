@@ -305,19 +305,19 @@
 }
 
 .dark .bg-white {
-  background-color: #0f172a;
+  background-color: var(--card);
 }
 
 .dark .bg-white/90 {
-  background-color: rgba(15, 23, 42, 0.9);
+  background-color: color-mix(in oklab, var(--card) 90%, transparent);
 }
 
 .dark .bg-white/80 {
-  background-color: rgba(15, 23, 42, 0.8);
+  background-color: color-mix(in oklab, var(--card) 80%, transparent);
 }
 
 .dark .bg-white/70 {
-  background-color: rgba(15, 23, 42, 0.7);
+  background-color: color-mix(in oklab, var(--card) 70%, transparent);
 }
 
 .dark .calendar-header,

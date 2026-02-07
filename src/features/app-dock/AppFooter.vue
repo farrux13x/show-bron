@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="app-dock fixed bottom-3 left-1/2 z-10 w-[92%] -translate-x-1/2 rounded-3xl border border-fog bg-white/90 px-3 py-2 shadow-soft backdrop-blur sm:hidden"
+    class="app-dock fixed bottom-3 left-1/2 z-10 w-[92%] rounded-3xl border border-fog bg-white/90 px-3 py-2 shadow-soft backdrop-blur sm:hidden"
   >
     <div class="grid grid-cols-4 text-xs font-semibold text-slate-500">
       <RouterLink class="nav-link" to="/">{{ t('nav.today') }}</RouterLink>
