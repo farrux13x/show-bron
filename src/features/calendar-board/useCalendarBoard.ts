@@ -24,7 +24,7 @@ type TimeSlot = {
   isHour: boolean;
 };
 
-export function useCalendarPage() {
+export function useCalendarBoard() {
   const router = useRouter();
   const appointmentsStore = useAppointmentsStore();
   const scheduleStore = useScheduleStore();
