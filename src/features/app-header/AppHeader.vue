@@ -1,15 +1,15 @@
 <template>
-  <header class="app-header px-4 pt-6 pb-4 sm:px-8">
+  <header class="app-header px-4 pt-6 pb-4 sm:px-8 h-[87px]">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-6">
       <div>
-        <p class="text-xs uppercase tracking-[0.3em] text-slate-500">
+        <!-- <p class="text-xs uppercase tracking-[0.3em] text-slate-500">
           Timetrack
         </p>
         <h1 class="font-display text-2xl font-semibold text-ink">
           {{ t('app.consoleTitle') }}
-        </h1>
+        </h1> -->
       </div>
-      <div class="flex flex-wrap items-center gap-3">
+      <!-- <div class="flex flex-wrap items-center gap-3">
         <nav
           class="app-topnav hidden items-center gap-2 text-sm font-semibold text-slate-500 sm:flex"
         >
@@ -27,7 +27,7 @@
         <AppButton to="/appointments/new">
           <span class="text-base">+ {{ t('actions.newBooking') }}</span>
         </AppButton>
-      </div>
+      </div> -->
     </div>
   </header>
 </template>
