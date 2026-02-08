@@ -18,34 +18,48 @@
         {{ translateStatus(appointment.status, t) }}
       </div>
     </div>
-    <div class="mt-4 flex flex-wrap items-center gap-2">
-      <AppButton
-        variant="muted"
-        type="button"
-        @click="appointmentsStore.setStatus(appointment.id, 'arrived')"
-      >
-        {{ t('status.arrived') }}
-      </AppButton>
-      <AppButton
-        variant="muted"
-        type="button"
-        @click="appointmentsStore.setStatus(appointment.id, 'cancelled')"
-      >
-        {{ t('status.cancelled') }}
-      </AppButton>
-      <AppButton
-        variant="muted"
-        type="button"
-        @click="appointmentsStore.setStatus(appointment.id, 'no-show')"
-      >
-        {{ t('status.noShow') }}
-      </AppButton>
-      <AppButton variant="ghost" :to="`/appointments/${appointment.id}`">
-        {{ t('actions.edit') }}
-      </AppButton>
-      <AppButton variant="ghost" :href="`tel:${appointment.phone}`">
-        {{ t('actions.call') }}
-      </AppButton>
+    <div class="mt-4 space-y-2">
+      <div class="flex flex-wrap items-center gap-2">
+        <AppButton
+          variant="muted"
+          type="button"
+          @click="appointmentsStore.setStatus(appointment.id, 'arrived')"
+        >
+          {{ t('status.arrived') }}
+        </AppButton>
+        <AppButton
+          variant="muted"
+          type="button"
+          @click="appointmentsStore.setStatus(appointment.id, 'cancelled')"
+        >
+          {{ t('status.cancelled') }}
+        </AppButton>
+        <AppButton
+          variant="muted"
+          type="button"
+          @click="appointmentsStore.setStatus(appointment.id, 'no-show')"
+        >
+          {{ t('status.noShow') }}
+        </AppButton>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <AppButton
+          variant="ghost"
+          :to="`/appointments/${appointment.id}`"
+          aria-label="Edit"
+          class="h-9 w-9 rounded-full border border-fog bg-white p-0 text-slate-700 shadow-sm hover:bg-slate-50"
+        >
+          <Pencil class="h-4 w-4" />
+        </AppButton>
+        <AppButton
+          variant="ghost"
+          :href="`tel:${appointment.phone}`"
+          aria-label="Call"
+          class="h-9 w-9 rounded-full border border-fog bg-white p-0 text-slate-700 shadow-sm hover:bg-slate-50"
+        >
+          <Phone class="h-4 w-4" />
+        </AppButton>
+      </div>
     </div>
   </div>
 </template>
@@ -57,6 +71,7 @@ import { formatTime } from '@/shared/lib/date';
 import { translateService, translateStatus } from '@/shared/i18n/labels';
 import { useAppointmentsStore } from '@/entities/appointment/model/appointments.store';
 import AppButton from '@/shared/ui/AppButton.vue';
+import { Pencil, Phone } from 'lucide-vue-next';
 
 defineProps<{
   appointment: Appointment;
