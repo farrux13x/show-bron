@@ -11,92 +11,23 @@
     </div>
 
     <div class="mt-6 grid gap-4 md:grid-cols-2">
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('settings.services') }}</p>
-        <p class="mt-2 text-sm text-slate-600">
-          {{ t('settings.servicesText') }}
-        </p>
-        <AppButton variant="muted" to="/services" class="mt-4">
-          {{ t('actions.manageServices') }}
-        </AppButton>
-      </div>
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('settings.statistics') }}</p>
-        <p class="mt-2 text-sm text-slate-600">
-          {{ t('settings.statisticsText') }}
-        </p>
-        <AppButton variant="muted" to="/statistics" class="mt-4">
-          {{ t('actions.viewStatistics') }}
-        </AppButton>
-      </div>
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('language.label') }}</p>
-        <Select v-model="localeModel">
-          <SelectTrigger
-            class="mt-2 text-sm font-semibold text-slate-600"
-            :aria-label="t('language.label')"
-          >
-            <SelectValue :placeholder="t('language.label')" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem
-              v-for="option in localeOptions"
-              :key="option.value"
-              :value="option.value"
-            >
-              {{ option.label }}
-            </SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('theme.label') }}</p>
-        <div class="mt-3 flex flex-wrap items-center gap-2">
-          <AppButton
-            variant="muted"
-            type="button"
-            :class="theme === 'light' ? 'bg-amber-100 text-amber-900' : ''"
-            @click="theme = 'light'"
-          >
-            {{ t('theme.light') }}
-          </AppButton>
-          <AppButton
-            variant="muted"
-            type="button"
-            :class="theme === 'dark' ? 'bg-amber-100 text-amber-900' : ''"
-            @click="theme = 'dark'"
-          >
-            {{ t('theme.dark') }}
-          </AppButton>
-        </div>
-      </div>
-      <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-        <p class="label">{{ t('settings.faq') }}</p>
-        <a
-          class="mt-3 inline-flex w-full items-center justify-between text-sm font-semibold text-ink"
-          href="https://t.me/abdusalomoff_13"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>{{ t('settings.faqCta') }}</span>
-          <ExternalLinkIcon class="h-4 w-4 text-slate-400" />
-        </a>
-      </div>
+      <SettingsServices />
+      <SettingsStatistics />
+      <SettingsLanguage />
+      <SettingsTheme />
+      <SettingsFaq />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import ExternalLinkIcon from '@/shared/ui/icons/ExternalLinkIcon.vue';
+import { useI18n } from 'vue-i18n';
 import AppButton from '@/shared/ui/AppButton.vue';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/shared/ui/select';
-import { useSettingsPage } from './useSettingsPage';
+import SettingsFaq from '@/features/settings-faq/SettingsFaq.vue';
+import SettingsLanguage from '@/features/settings-language/SettingsLanguage.vue';
+import SettingsServices from '@/features/settings-services/SettingsServices.vue';
+import SettingsStatistics from '@/features/settings-statistics/SettingsStatistics.vue';
+import SettingsTheme from '@/features/settings-theme/SettingsTheme.vue';
 
-const { t, localeModel, localeOptions, theme } = useSettingsPage();
+const { t } = useI18n();
 </script>
