@@ -14,7 +14,18 @@
           {{ appointment.phone }}
         </p>
       </div>
-      <div class="pill bg-slate-100 text-slate-600">
+      <div
+        class="pill"
+        :class="{
+          'bg-emerald-100 text-emerald-800': appointment.status === 'arrived',
+          'bg-rose-100 text-rose-800': appointment.status === 'cancelled',
+          'bg-amber-100 text-amber-800': appointment.status === 'no-show',
+          'bg-slate-100 text-slate-600':
+            appointment.status !== 'arrived' &&
+            appointment.status !== 'cancelled' &&
+            appointment.status !== 'no-show',
+        }"
+      >
         {{ translateStatus(appointment.status, t) }}
       </div>
     </div>
