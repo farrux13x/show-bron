@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen app-background">
+  <div class="min-h-screen app-background mt-[87px]">
     <AppHeader />
 
     <main class="px-4 pb-24 sm:px-8">
