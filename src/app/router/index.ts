@@ -1,31 +1,69 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import ScheduleSetupPage from '@/pages/schedule-setup/ScheduleSetupPage.vue';
-import CalendarPage from '@/pages/calendar/CalendarPage.vue';
-import TodayPage from '@/pages/today/TodayPage.vue';
-import AppointmentFormPage from '@/pages/appointment-form/AppointmentFormPage.vue';
-import ClientsPage from '@/pages/clients/ClientsPage.vue';
-import ClientProfilePage from '@/pages/clients/ClientProfilePage.vue';
-import SettingsPage from '@/pages/settings/SettingsPage.vue';
-import ServicesPage from '@/pages/services/ServicesPage.vue';
-import StatisticsPage from '@/pages/statistics/StatisticsPage.vue';
 import { usePostHog } from '@/composables/usePostHog';
 
 const router = createRouter({
   history: createWebHistory(),
+  scrollBehavior() {
+    return { top: 0 };
+  },
   routes: [
-    { path: '/', component: TodayPage },
+    {
+      path: '/',
+      name: 'TodayPage',
+      component: () => import('@/pages/today/TodayPage.vue'),
+    },
     // { path: '/', redirect: '/today' },
-    { path: '/schedule-setup', component: ScheduleSetupPage },
-    { path: '/calendar', component: CalendarPage },
-    { path: '/today', component: TodayPage },
-    { path: '/appointments/new', component: AppointmentFormPage },
-    { path: '/appointments/:id', component: AppointmentFormPage },
-    { path: '/clients', component: ClientsPage },
-    { path: '/clients/:id', component: ClientProfilePage },
-    { path: '/settings', component: SettingsPage },
-    { path: '/services', component: ServicesPage },
-    { path: '/statistics', component: StatisticsPage },
+    {
+      path: '/schedule-setup',
+      name: 'ScheduleSetupPage',
+      component: () => import('@/pages/schedule-setup/ScheduleSetupPage.vue'),
+    },
+    {
+      path: '/calendar',
+      name: 'CalendarPage',
+      component: () => import('@/pages/calendar/CalendarPage.vue'),
+    },
+    {
+      path: '/today',
+      name: 'TodayPageAlias',
+      component: () => import('@/pages/today/TodayPage.vue'),
+    },
+    {
+      path: '/appointments/new',
+      name: 'AppointmentCreatePage',
+      component: () => import('@/pages/appointment-form/AppointmentFormPage.vue'),
+    },
+    {
+      path: '/appointments/:id',
+      name: 'AppointmentEditPage',
+      component: () => import('@/pages/appointment-form/AppointmentFormPage.vue'),
+    },
+    {
+      path: '/clients',
+      name: 'ClientsPage',
+      component: () => import('@/pages/clients/ClientsPage.vue'),
+    },
+    {
+      path: '/clients/:id',
+      name: 'ClientProfilePage',
+      component: () => import('@/pages/clients/ClientProfilePage.vue'),
+    },
+    {
+      path: '/settings',
+      name: 'SettingsPage',
+      component: () => import('@/pages/settings/SettingsPage.vue'),
+    },
+    {
+      path: '/services',
+      name: 'ServicesPage',
+      component: () => import('@/pages/services/ServicesPage.vue'),
+    },
+    {
+      path: '/statistics',
+      name: 'StatisticsPage',
+      component: () => import('@/pages/statistics/StatisticsPage.vue'),
+    },
   ],
 });
 
