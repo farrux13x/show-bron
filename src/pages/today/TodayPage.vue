@@ -6,9 +6,9 @@
         <h2 class="font-display text-2xl">{{ t('today.title') }}</h2>
         <p class="text-sm text-slate-600">{{ t('today.subtitle') }}</p>
       </div>
-      <AppButton variant="ghost" type="button" @click="appointmentsStore.seedDemo">
+      <!-- <AppButton variant="ghost" type="button" @click="appointmentsStore.seedDemo">
         {{ t('actions.loadSample') }}
-      </AppButton>
+      </AppButton> -->
     </div>
 
     <TodayAppointments />
@@ -17,10 +17,10 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
-import { useAppointmentsStore } from '@/entities/appointment/model/appointments.store';
-import AppButton from '@/shared/ui/AppButton.vue';
+// import { useAppointmentsStore } from '@/entities/appointment/model/appointments.store';
+// import AppButton from '@/shared/ui/AppButton.vue';
 import TodayAppointments from '@/features/today-appointments/TodayAppointments.vue';
 
-const appointmentsStore = useAppointmentsStore();
+// const appointmentsStore = useAppointmentsStore();
 const { t } = useI18n();
 </script>
