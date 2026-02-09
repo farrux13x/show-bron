@@ -13,6 +13,7 @@
     <div class="mt-6 grid gap-4 md:grid-cols-2">
       <SettingsServices />
       <SettingsStatistics />
+      <SettingsCatalog />
       <SettingsLanguage />
       <SettingsTheme />
       <SettingsFaq />
@@ -24,6 +25,7 @@
 import { useI18n } from 'vue-i18n';
 import AppButton from '@/shared/ui/AppButton.vue';
 import SettingsFaq from '@/features/settings-faq/SettingsFaq.vue';
+import SettingsCatalog from '@/features/settings-catalog/SettingsCatalog.vue';
 import SettingsLanguage from '@/features/settings-language/SettingsLanguage.vue';
 import SettingsServices from '@/features/settings-services/SettingsServices.vue';
 import SettingsStatistics from '@/features/settings-statistics/SettingsStatistics.vue';

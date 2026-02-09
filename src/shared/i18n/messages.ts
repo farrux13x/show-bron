@@ -39,6 +39,7 @@ export const messages = {
       manageServices: 'Manage services',
       addService: 'Add service',
       viewStatistics: 'View statistics',
+      openCatalog: 'Open catalog',
       signIn: 'Sign in',
       continueDashboard: 'Continue to the dashboard',
     },
@@ -127,6 +128,8 @@ export const messages = {
       servicesText: 'Manage services and pricing for bookings.',
       statistics: 'Statistics',
       statisticsText: 'View customer and revenue performance.',
+      catalog: 'Style catalog',
+      catalogText: 'Browse haircut styles with photos.',
       faq: 'FAQ',
       faqCta: 'Open FAQ',
       bookingRules: 'Booking rules',
@@ -212,6 +215,11 @@ export const messages = {
         avgTicket: 'Average ticket',
       },
     },
+    catalog: {
+      label: 'Catalog',
+      title: 'Hair Styles',
+      subtitle: 'Explore looks and save favorites.',
+    },
   },
   uz: {
     app: {
@@ -253,6 +261,7 @@ export const messages = {
       manageServices: 'Xizmatlarni boshqarish',
       addService: "Xizmat qo'shish",
       viewStatistics: "Statistikani ko'rish",
+      openCatalog: 'Katalogni ochish',
       signIn: 'Kirish',
       continueDashboard: "Boshqaruv paneliga o'tish",
     },
@@ -342,6 +351,8 @@ export const messages = {
       servicesText: 'Bron uchun xizmatlar va narxlarni boshqaring.',
       statistics: 'Statistika',
       statisticsText: "Mijozlar va daromad ko'rsatkichlarini ko'ring.",
+      catalog: 'Stil katalogi',
+      catalogText: "Soch stillarini rasmlar bilan ko'ring.",
       faq: 'FAQ',
       faqCta: 'Savol va murojatlar',
       bookingRules: 'Bron qoidalari',
@@ -428,6 +439,11 @@ export const messages = {
         avgTicket: "O'rtacha chek",
       },
     },
+    catalog: {
+      label: 'Katalog',
+      title: 'Soch stillari',
+      subtitle: "Ko'rinishlarni ko‘rib chiqing va yoqtirganingizni saqlang.",
+    },
   },
   ru: {
     app: {
@@ -469,6 +485,7 @@ export const messages = {
       manageServices: 'Управление услугами',
       addService: 'Добавить услугу',
       viewStatistics: 'Посмотреть статистику',
+      openCatalog: 'Открыть каталог',
       signIn: 'Войти',
       continueDashboard: 'Перейти в панель',
     },
@@ -558,6 +575,8 @@ export const messages = {
       servicesText: 'Управляйте услугами и ценами для записей.',
       statistics: 'Статистика',
       statisticsText: 'Смотрите показатели клиентов и дохода.',
+      catalog: 'Каталог стилей',
+      catalogText: 'Смотрите стили с добавленными фото.',
       faq: 'FAQ',
       faqCta: 'Открыть FAQ',
       bookingRules: 'Правила записи',
@@ -644,6 +663,11 @@ export const messages = {
         revenue: 'Доход',
         avgTicket: 'Средний чек',
       },
+    },
+    catalog: {
+      label: 'ÐšÐ°Ñ‚Ð°Ð»Ð¾Ð³',
+      title: 'ÐŸÑ€Ð¸Ñ‡ÐµÑÐºÐ¸',
+      subtitle: 'Ð˜Ð·ÑƒÑ‡Ð°Ð¹Ñ‚Ðµ Ð¾Ð±Ñ€Ð°Ð·Ñ‹ Ð¸ ÑÐ¾Ñ…Ñ€Ð°Ð½ÑÐ¹Ñ‚Ðµ Ð¸Ð·Ð±Ñ€Ð°Ð½Ð½Ñ‹Ðµ.',
     },
   },
 };

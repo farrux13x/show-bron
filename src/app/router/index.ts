@@ -64,6 +64,11 @@ const router = createRouter({
       name: 'StatisticsPage',
       component: () => import('@/pages/statistics/StatisticsPage.vue'),
     },
+    {
+      path: '/catalog',
+      name: 'StylesCatalogPage',
+      component: () => import('@/pages/catalog/StylesCatalogPage.vue'),
+    },
   ],
 });
 
