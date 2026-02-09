@@ -13,9 +13,11 @@
 
     <TodayAppointments />
   </section>
+  <CalendarFab />
 </template>
 
 <script setup lang="ts">
+import CalendarFab from '@/features/calendar-fab/CalendarFab.vue';
 import { useI18n } from 'vue-i18n';
 // import { useAppointmentsStore } from '@/entities/appointment/model/appointments.store';
 // import AppButton from '@/shared/ui/AppButton.vue';

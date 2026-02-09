@@ -1,8 +1,8 @@
 <template>
   <section class="card relative overflow-hidden">
     <CalendarBoard />
-    <CalendarFab />
   </section>
+  <CalendarFab />
 </template>
 
 <script setup lang="ts">

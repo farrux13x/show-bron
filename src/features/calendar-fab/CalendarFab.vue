@@ -17,9 +17,9 @@ const { t } = useI18n();
 
 <style scoped>
 .calendar-fab {
-  position: absolute;
+  position: fixed;
   right: 24px;
-  bottom: 24px;
+  bottom: 100px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
