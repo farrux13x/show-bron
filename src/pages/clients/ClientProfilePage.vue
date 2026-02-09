@@ -1,15 +1,17 @@
 <template>
   <section class="card p-6 sm:p-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
-      <div>
-        <p class="label">{{ t('clients.profile') }}</p>
-        <h2 class="font-display text-2xl">
-          {{ client?.name ?? t('clients.fallbackName') }}
-        </h2>
-        <p class="text-sm text-slate-600">{{ client?.phone }}</p>
+      <div class="flex items-center gap-3">
+        <AppButton
+          to="/clients"
+          size="icon"
+        >
+          <ChevronLeft class="h-4 w-4" />
+        </AppButton>
+        <h2 class="font-display text-2xl">{{ t('clients.profile') }}</h2>
       </div>
-      <AppButton
-        v-if="client"
+      <!-- <AppButton
+      v-if="client"
         :to="{
           path: '/appointments/new',
           query: {
@@ -20,8 +22,12 @@
         }"
       >
         {{ t('actions.rebook') }}
-      </AppButton>
+      </AppButton> -->
     </div>
+    <h2 class="mt-4 font-display text-2xl">
+      {{ client?.name ?? t('clients.fallbackName') }}
+    </h2>
+    <p class="text-sm text-slate-600">{{ client?.phone }}</p>
 
     <div class="mt-6 grid gap-4 md:grid-cols-3">
       <div class="rounded-2xl border border-fog bg-white px-4 py-4">
@@ -80,6 +86,7 @@ import { buildClientSummaries } from '@/entities/client/model/clients';
 import { formatDate, formatTime, fromISO } from '@/shared/lib/date';
 import { translateService, translateStatus } from '@/shared/i18n/labels';
 import AppButton from '@/shared/ui/AppButton.vue';
+import { ChevronLeft } from 'lucide-vue-next';
 
 const route = useRoute();
 const appointmentsStore = useAppointmentsStore();

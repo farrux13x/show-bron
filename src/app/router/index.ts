@@ -17,6 +17,7 @@ const router = createRouter({
     {
       path: '/schedule-setup',
       name: 'ScheduleSetupPage',
+      meta: { hideMobileFooter: true },
       component: () => import('@/pages/schedule-setup/ScheduleSetupPage.vue'),
     },
     {
@@ -32,6 +33,7 @@ const router = createRouter({
     {
       path: '/appointments/new',
       name: 'AppointmentCreatePage',
+      meta: { hideMobileFooter: true },
       component: () => import('@/pages/appointment-form/AppointmentFormPage.vue'),
     },
     {
@@ -47,6 +49,7 @@ const router = createRouter({
     {
       path: '/clients/:id',
       name: 'ClientProfilePage',
+      meta: { hideMobileFooter: true },
       component: () => import('@/pages/clients/ClientProfilePage.vue'),
     },
     {
@@ -57,16 +60,19 @@ const router = createRouter({
     {
       path: '/services',
       name: 'ServicesPage',
+      meta: { hideMobileFooter: true },
       component: () => import('@/pages/services/ServicesPage.vue'),
     },
     {
       path: '/statistics',
       name: 'StatisticsPage',
+      meta: { hideMobileFooter: true },
       component: () => import('@/pages/statistics/StatisticsPage.vue'),
     },
     {
       path: '/catalog',
       name: 'StylesCatalogPage',
+      meta: { hideMobileFooter: true },
       component: () => import('@/pages/catalog/StylesCatalogPage.vue'),
     },
   ],
