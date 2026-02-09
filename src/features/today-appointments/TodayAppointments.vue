@@ -11,7 +11,7 @@
       class="rounded-2xl border border-dashed border-fog bg-white/70 px-6 py-10 text-center"
     >
       <p class="text-sm text-slate-600">
-        {{ t('today.empty', { action: t('actions.newBooking') }) }}
+        {{ t('today.empty', { action: '+' }) }}
       </p>
     </div>
   </div>
