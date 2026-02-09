@@ -1,6 +1,6 @@
 <template>
   <div class="rounded-2xl border border-fog bg-white px-4 py-4">
-    <div class="flex flex-wrap items-center justify-between gap-4">
+    <div class="flex flex-col gap-3">
       <div>
         <p class="text-xs uppercase tracking-[0.2em] text-slate-400">
           {{ client.phone }}
@@ -16,9 +16,9 @@
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-2">
-        <AppButton variant="ghost" :to="`/clients/${client.id}`">
+        <!-- <AppButton variant="ghost" :to="`/clients/${client.id}`">
           {{ t('actions.profile') }}
-        </AppButton>
+        </AppButton> -->
         <AppButton
           :to="{
             path: '/appointments/new',

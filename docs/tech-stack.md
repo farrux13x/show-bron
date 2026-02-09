@@ -37,3 +37,18 @@
 - App-level theme via `dark` class on the document element.
 - Date utilities centralized in src/shared/lib/date.ts.
 - Currency formatting uses ru-RU formatting and labels prices as “so'm”.
+
+## UI Layering Rules
+
+- `src/shared/ui` only for reusable, domain-agnostic UI primitives (Button, Input, Select, Card wrappers).
+- `src/features/**` for domain-specific UI and behavior (settings cards, service flows, statistics blocks).
+- `src/widgets/**` for page composition/layout blocks used by multiple pages (shell, header, footer, nav containers).
+- If a component has settings-specific text/logic/events, keep it under `features/settings/**`, not `shared/ui`.
+- Promote from `features` to `shared/ui` only after it is reused across multiple domains without business coupling.
+
+## Common Mistakes To Avoid
+
+- Do not hardcode domain UI blocks directly inside `src/pages/**` when they belong to a business feature.
+- Anti-pattern: page-level inline markup for repeated feature cards/items that differ only by text/path/data.
+- FSD-compliant approach: move that block into `src/features/**` (or `src/widgets/**` for layout-level composition) and render via props/data mapping from the page.
+- `src/pages/**` should primarily orchestrate composition, not own reusable feature markup.
