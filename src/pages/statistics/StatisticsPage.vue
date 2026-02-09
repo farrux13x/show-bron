@@ -2,9 +2,9 @@
   <section class="card p-6 sm:p-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <p class="label">{{ t('statistics.label') }}</p>
+        <!-- <p class="label">{{ t('statistics.label') }}</p> -->
         <h2 class="font-display text-2xl">{{ t('statistics.title') }}</h2>
-        <p class="text-sm text-slate-600">{{ t('statistics.subtitle') }}</p>
+        <!-- <p class="text-sm text-slate-600">{{ t('statistics.subtitle') }}</p> -->
       </div>
       <div class="flex items-center gap-2">
         <AppButton

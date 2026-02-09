@@ -2,10 +2,10 @@
   <section class="rounded-2xl border border-border-soft-60 bg-card-soft-90 p-6 text-card-foreground shadow-soft backdrop-blur sm:p-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+        <!-- <p class="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">
           {{ t('settings.label') }}
-        </p>
-        <h2 class="font-display text-2xl">{{ t('settings.title') }}</h2>
+        </p> -->
+        <h2 class="font-display text-2xl">{{ t('settings.label') }}</h2>
       </div>
     </div>
 

@@ -2,12 +2,12 @@
   <section class="card p-6 sm:p-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <p class="label">{{ t('appointment.label') }}</p>
+        <!-- <p class="label">{{ t('appointment.label') }}</p> -->
         <h2 class="font-display text-2xl">{{ pageTitle }}</h2>
       </div>
-      <AppButton variant="ghost" to="/calendar">
+      <!-- <AppButton variant="ghost" to="/calendar">
         {{ t('actions.backToCalendar') }}
-      </AppButton>
+      </AppButton> -->
     </div>
 
     <div class="mt-6">

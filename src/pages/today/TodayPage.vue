@@ -2,9 +2,9 @@
   <section class="card p-6 sm:p-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div>
-        <p class="label">{{ t('today.label') }}</p>
-        <h2 class="font-display text-2xl">{{ t('today.title') }}</h2>
-        <p class="text-sm text-slate-600">{{ t('today.subtitle') }}</p>
+        <!-- <p class="label">{{ t('today.label') }}</p> -->
+        <h2 class="font-display text-2xl">{{ t('today.label') }}</h2>
+        <!-- <p class="text-sm text-slate-600">{{ t('today.subtitle') }}</p> -->
       </div>
       <!-- <AppButton variant="ghost" type="button" @click="appointmentsStore.seedDemo">
         {{ t('actions.loadSample') }}

@@ -2,9 +2,9 @@
   <section class="card p-6 sm:p-8">
     <div class="flex flex-wrap items-start justify-between gap-4">
       <div>
-        <p class="label">{{ t('servicesPage.label') }}</p>
+        <!-- <p class="label">{{ t('servicesPage.label') }}</p> -->
         <h2 class="font-display text-2xl">{{ t('servicesPage.title') }}</h2>
-        <p class="text-sm text-slate-600">{{ t('servicesPage.subtitle') }}</p>
+        <!-- <p class="text-sm text-slate-600">{{ t('servicesPage.subtitle') }}</p> -->
       </div>
     </div>
 

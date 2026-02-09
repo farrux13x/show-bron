@@ -44,7 +44,7 @@ export const messages = {
       continueDashboard: 'Continue to the dashboard',
     },
     today: {
-      label: 'Today',
+      label: "Today's customers",
       title: 'Run the day',
       subtitle: 'Tap to update status, call, or edit in seconds.',
       empty: 'No bookings yet. Tap "{action}" to fill the day.',
@@ -266,7 +266,7 @@ export const messages = {
       continueDashboard: "Boshqaruv paneliga o'tish",
     },
     today: {
-      label: 'Bugun',
+      label: 'Bugungi mijozlar',
       title: 'Kunni boshqaring',
       subtitle:
         "Holatni yangilash, qo'ng'iroq qilish yoki tahrirlash uchun bosing.",
@@ -490,7 +490,7 @@ export const messages = {
       continueDashboard: 'Перейти в панель',
     },
     today: {
-      label: 'Сегодня',
+      label: 'Сегодняшние клиенты',
       title: 'Управляйте днем',
       subtitle:
         'Нажмите, чтобы обновить статус, позвонить или отредактировать за секунды.',

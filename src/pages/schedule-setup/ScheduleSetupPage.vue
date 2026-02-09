@@ -3,14 +3,14 @@
     <section class="card p-6 sm:p-8">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <p class="label">{{ t('schedule.weeklyTemplate') }}</p>
+          <!-- <p class="label">{{ t('schedule.weeklyTemplate') }}</p> -->
           <h2 class="font-display text-2xl">
-            {{ t('schedule.defaultHours') }}
+            {{ t('schedule.weeklyTemplate') }}
           </h2>
         </div>
-        <div class="rounded-2xl bg-orange-50 px-4 py-2 text-sm text-orange-800">
+        <!-- <div class="rounded-2xl bg-orange-50 px-4 py-2 text-sm text-orange-800">
           {{ t('schedule.autoCreated') }}
-        </div>
+        </div> -->
       </div>
 
       <div class="mt-6 space-y-4">
