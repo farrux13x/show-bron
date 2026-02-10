@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
 import { usePostHog } from '@/composables/usePostHog';
 
 const router = createRouter({
@@ -11,6 +10,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'TodayPage',
+      meta: { hideMobileFooter: false },
       component: () => import('@/pages/today/TodayPage.vue'),
     },
     // { path: '/', redirect: '/today' },
@@ -23,12 +23,8 @@ const router = createRouter({
     {
       path: '/calendar',
       name: 'CalendarPage',
+      meta: { hideMobileFooter: false },
       component: () => import('@/pages/calendar/CalendarPage.vue'),
-    },
-    {
-      path: '/today',
-      name: 'TodayPageAlias',
-      component: () => import('@/pages/today/TodayPage.vue'),
     },
     {
       path: '/appointments/new',
@@ -39,11 +35,13 @@ const router = createRouter({
     {
       path: '/appointments/:id',
       name: 'AppointmentEditPage',
+      meta: { hideMobileFooter: true },
       component: () => import('@/pages/appointment-form/AppointmentFormPage.vue'),
     },
     {
       path: '/clients',
       name: 'ClientsPage',
+      meta: { hideMobileFooter: false },
       component: () => import('@/pages/clients/ClientsPage.vue'),
     },
     {
@@ -55,6 +53,7 @@ const router = createRouter({
     {
       path: '/settings',
       name: 'SettingsPage',
+      meta: { hideMobileFooter: false },
       component: () => import('@/pages/settings/SettingsPage.vue'),
     },
     {
@@ -76,6 +75,17 @@ const router = createRouter({
       component: () => import('@/pages/catalog/StylesCatalogPage.vue'),
     },
   ],
+});
+
+router.afterEach((to) => {
+  const tg = window.Telegram?.WebApp;
+  if (!tg) return;
+
+  if (to.meta.hideMobileFooter) {
+    tg.BackButton.show();
+  } else {
+    tg.BackButton.hide();
+  }
 });
 
 usePostHog();

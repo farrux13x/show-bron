@@ -2,12 +2,6 @@
   <section class="card p-6 sm:p-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <AppButton
-          to="/clients"
-          size="icon"
-        >
-          <ChevronLeft class="h-4 w-4" />
-        </AppButton>
         <h2 class="font-display text-2xl">{{ t('clients.profile') }}</h2>
       </div>
       <!-- <AppButton
@@ -85,8 +79,6 @@ import { useAppointmentsStore } from '@/entities/appointment/model/appointments.
 import { buildClientSummaries } from '@/entities/client/model/clients';
 import { formatDate, formatTime, fromISO } from '@/shared/lib/date';
 import { translateService, translateStatus } from '@/shared/i18n/labels';
-import AppButton from '@/shared/ui/AppButton.vue';
-import { ChevronLeft } from 'lucide-vue-next';
 
 const route = useRoute();
 const appointmentsStore = useAppointmentsStore();

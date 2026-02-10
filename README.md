@@ -22,7 +22,7 @@ MVP barber scheduling app (Vue 3 + Vite + TypeScript). Built for fast, one-hand 
 
 ## Routes
 
-- `/today` Today list
+- `/` Today list
 - `/calendar` Calendar (day/week)
 - `/appointments/new` Add appointment
 - `/appointments/:id` Edit appointment

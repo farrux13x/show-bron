@@ -2,12 +2,6 @@
   <section class="card p-6 sm:p-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <AppButton
-          to="/"
-          size="icon"
-        >
-          <ChevronLeft class="h-4 w-4" />
-        </AppButton>
         <!-- <p class="label">{{ t('appointment.label') }}</p> -->
         <h2 class="font-display text-2xl">{{ pageTitle }}</h2>
       </div>
@@ -41,7 +35,6 @@
 import AppointmentForm from '@/features/appointment-form/AppointmentForm.vue';
 import AppButton from '@/shared/ui/AppButton.vue';
 import { useAppointmentFormPage } from './useAppointmentFormPage';
-import { ChevronLeft } from 'lucide-vue-next';
 
 const {
   handleDelete,

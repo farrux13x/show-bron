@@ -3,12 +3,6 @@
         <section class="card p-6 sm:p-8">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-3">
-          <AppButton
-            to="/settings"
-            size="icon"
-          >
-            <ChevronLeft class="h-4 w-4" />
-          </AppButton>
           <!-- <p class="label">{{ t('schedule.weeklyTemplate') }}</p> -->
           <h2 class="font-display text-2xl">
             {{ t('schedule.weeklyTemplate') }}
@@ -133,7 +127,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ChevronLeft } from 'lucide-vue-next';
 import { Input } from '@/shared/ui/input';
 import {
   Select,
@@ -144,7 +137,6 @@ import {
 } from '@/shared/ui/select';
 import { Checkbox } from '@/shared/ui/checkbox';
 import { useScheduleSetupPage } from './useScheduleSetupPage';
-import AppButton from '@/shared/ui/AppButton.vue';
 
 const { days, scheduleStore, t, updateDay } = useScheduleSetupPage();
 
